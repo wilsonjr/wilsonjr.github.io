@@ -10,8 +10,8 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 
-url: wilsonjr.github.io  # the base hostname & protocol for your site
-baseurl: /about # the subpath of your site, e.g. /blog/
+url:   # the base hostname & protocol for your site
+baseurl: /blog # the subpath of your site, e.g. /blog/
 last_updated: # leave blank if you don't want to display last updated
 
 # -----------------------------------------------------------------------------
@@ -33,8 +33,8 @@ google_analytics: UA-XXXXXXXXX # out your google-analytics code
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
-blog_name: al-folio
-blog_description: a simple whitespace theme for academics
+blog_name: Blog name 
+blog_description: Description
 
 # Pagination
 paginate: 4
@@ -47,7 +47,7 @@ text:
     older: 'Older'
 
 # Comments
-disqus_shortname: al-folio # put your disqus shortname
+disqus_shortname: wilson # put your disqus shortname
 
 # Optional features
 show_social_icons:  false
@@ -85,7 +85,7 @@ exclude: [vendor]
 plugins:
     - jekyll-email-protect
     - jekyll-paginate
-    - jekyll/scholar
+    - jekyll-scholar
     - jemoji
 
 # Jekyll-Scholar
