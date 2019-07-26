@@ -85,6 +85,9 @@
   {% if entry.code %}
     [<a href="{{ entry.code }}" target="_blank">Code</a>]
   {% endif %}
+  {% if entry.doi %}
+    [<a href="https://doi.org/{{ entry.doi }}" target="_blank">URL</a>]
+  {% endif %}
   </span>
 
   <!-- Hidden abstract block -->
