@@ -1,12 +1,12 @@
 ---
 layout: about
 permalink: /
-title: <strong>Wilson E. Marcílio Júnior</strong>
+title: Wilson E. <strong>Marcílio Júnior</strong>
 description: <a href="">São Paulo State University</a> - Faculty of Sciences and Technology
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: avatar.jpg
   address: >
     <!--<p>555 your office number</p>
     <p>123 your address street</p>-->
