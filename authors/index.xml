@@ -5,7 +5,7 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
@@ -15,7 +15,7 @@
     <item>
       <title></title>
       <link>/authors/admin/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
       <description>&lt;p&gt;Hi, I&amp;rsquo;m a PhD candidate at São Paulo State University (&lt;a href=&#34;https://www.ibilce.unesp.br/&#34; target=&#34;_blank&#34;&gt;UNESP&lt;/a&gt;) where I work in the intersection between Visualization and Machine Learning.&lt;/p&gt;
 
@@ -26,15 +26,23 @@
     <item>
       <title>Danilo Medeiros Eler</title>
       <link>/authors/danilo-medeiros-eler/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/authors/danilo-medeiros-eler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ives Rene Venturini Pola</title>
+      <link>/authors/ives-rene-venturini-pola/</link>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/ives-rene-venturini-pola/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rogério Eduardo Garcia</title>
       <link>/authors/rogerio-eduardo-garcia/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/authors/rogerio-eduardo-garcia/</guid>
       <description></description>
     </item>
@@ -44,14 +52,6 @@
       <link>/authors/priscila-alves-macanha/</link>
       <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
       <guid>/authors/priscila-alves-macanha/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Robert Ford</title>
-      <link>/authors/robert-ford/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>/authors/robert-ford/</guid>
       <description></description>
     </item>
     

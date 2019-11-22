@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Multidimensional Projections | Wilson E Marcilio Jr</title>
-    <link>/tags/multidimensional-projections/</link>
-      <atom:link href="/tags/multidimensional-projections/index.xml" rel="self" type="application/rss+xml" />
-    <description>Multidimensional Projections</description>
+    <title>Ives Rene Venturini Pola | Wilson E Marcilio Jr</title>
+    <link>/authors/ives-rene-venturini-pola/</link>
+      <atom:link href="/authors/ives-rene-venturini-pola/index.xml" rel="self" type="application/rss+xml" />
+    <description>Ives Rene Venturini Pola</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
-      <title>Multidimensional Projections</title>
-      <link>/tags/multidimensional-projections/</link>
+      <title>Ives Rene Venturini Pola</title>
+      <link>/authors/ives-rene-venturini-pola/</link>
     </image>
     
     <item>
@@ -17,14 +17,6 @@
       <link>/publication/infovis2019/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/publication/infovis2019/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>An Approach to Perform Local Analysis on Multidimensional Projection</title>
-      <link>/publication/conf-sibgrapi/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
-      <guid>/publication/conf-sibgrapi/</guid>
       <description></description>
     </item>
     

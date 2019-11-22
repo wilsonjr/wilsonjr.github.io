@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 03 May 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Tags</title>
@@ -13,17 +13,9 @@
     </image>
     
     <item>
-      <title>Source Themes</title>
-      <link>/tags/source-themes/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/source-themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Evaluation</title>
       <link>/tags/evaluation/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/tags/evaluation/</guid>
       <description></description>
     </item>
@@ -31,16 +23,32 @@
     <item>
       <title>Multidimensional Projections</title>
       <link>/tags/multidimensional-projections/</link>
-      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
       <guid>/tags/multidimensional-projections/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Overlap Removal</title>
+      <link>/tags/overlap-removal/</link>
+      <pubDate>Fri, 03 May 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/overlap-removal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Classification</title>
       <link>/tags/classification/</link>
-      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
       <guid>/tags/classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dimensionality Reduction</title>
+      <link>/tags/dimensionality-reduction/</link>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/dimensionality-reduction/</guid>
       <description></description>
     </item>
     
