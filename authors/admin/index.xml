@@ -95,6 +95,22 @@ date: 2019-09-01
     </item>
     
     <item>
+      <title>An Approach to Perform Local Analysis on Multidimensional Projection</title>
+      <link>/publication/conf-sibgrapi/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/conf-sibgrapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Handwritten Feature Descriptor Methods Applied to Fruit Classification</title>
+      <link>/publication/book-itng2018/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/book-itng2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Academic: the website builder for Hugo</title>
       <link>/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
@@ -233,14 +249,6 @@ date: 2019-09-01
 
 &lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>An Approach to Perform Local Analysis on Multidimensional Projection</title>
-      <link>/publication/conference-paper/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>/publication/conference-paper/</guid>
-      <description></description>
     </item>
     
   </channel>

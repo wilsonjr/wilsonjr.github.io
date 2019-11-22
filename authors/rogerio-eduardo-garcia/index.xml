@@ -5,7 +5,7 @@
     <link>/authors/rogerio-eduardo-garcia/</link>
       <atom:link href="/authors/rogerio-eduardo-garcia/index.xml" rel="self" type="application/rss+xml" />
     <description>Rogério Eduardo Garcia</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 07 Nov 2017 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Rogério Eduardo Garcia</title>
@@ -14,9 +14,17 @@
     
     <item>
       <title>An Approach to Perform Local Analysis on Multidimensional Projection</title>
-      <link>/publication/conference-paper/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      <guid>/publication/conference-paper/</guid>
+      <link>/publication/conf-sibgrapi/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/conf-sibgrapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Handwritten Feature Descriptor Methods Applied to Fruit Classification</title>
+      <link>/publication/book-itng2018/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/book-itng2018/</guid>
       <description></description>
     </item>
     
