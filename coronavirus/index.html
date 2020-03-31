@@ -169,9 +169,19 @@
         font: 14px;
     }
 
+
+     .ticks {
+        font-family: "Lucida Console", Courier, monospace;
+        font: 16px;
+    }
+
     .note {
         font-family: "Lucida Console", Courier, monospace;
         font: 8px;
+    }
+
+    svg {
+        border: 1px solid #dfe7f5;
     }
 
 
@@ -357,15 +367,19 @@
 
 
 <div class="universal-wrapper">
+
+  <div>
+    <span class="note">* As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação e da Secretaria do Estado de São Paulo.</span><br/>
+      <span class="note">** Última atualização: 31/03/2020 às 8h59.</span>
+  </div>
   
-  <ul class="list-unstyled">
+  <!-- <ul class="list-unstyled">
     
     
     <li>
-      <span class="note">* As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação e da Secretaria do Estado de São Paulo.</span><br/>
-      <span class="note">** Última atualização: 31/03/2020 às 8h59.</span>
+      
     </li>
-  </ul>
+  </ul> -->
 
   <br/>
 
@@ -587,7 +601,7 @@
           }
       }
 
-      function drawStatisticalCharts(tweets, store) {
+      function drawStatisticalCharts(store) {
           let geoJson = store.geoJSON;
           let evolucao = store.evolucao;
 
@@ -606,15 +620,19 @@
           }
 
           let legends = d3.select("#statisticalCharts")
-              .attr('width', 500)
-              .attr('height', 800);
+              .attr('width', 800)
+              .attr('height', 500);
 
           g_evolucao = legends.append('g')
               .attr('transform', 'translate(50, 50)');
 
+
+          let height_graph = 300;
+          let width_graph = 700;
+
           let yScaleEvolucao = d3.scaleLinear()
               .domain([0, d3.max(evolucao, d => d.evolucao)])
-              .range([100, 0]);
+              .range([height_graph, 0]);
 
           let yAxisEvolucao = d3.axisLeft()
               .scale(yScaleEvolucao)
@@ -622,14 +640,14 @@
 
           g_evolucao.append('g')
               .style('stroke-width', 1.5)
-              .attr('class', 'tick_values')
+              .attr('class', 'ticks')
               .attr('transform', 'translate(0,'+yScaleEvolucao(d3.max(evolucao, d => d.evolucao))+')')
               .call(yAxisEvolucao);
 
 
           let xScaleEvolucao = d3.scaleTime()
               .domain([evolucao[0].date, evolucao[evolucao.length-1].date])
-              .range([0, 380]);
+              .range([0, width_graph]);
 
           let xAxisEvolucao = d3.axisBottom()
               .scale(xScaleEvolucao);
@@ -644,6 +662,7 @@
               .attr("y", 0)
               .attr("x", 25)
               .attr("dy", ".35em")
+              .attr('class', 'ticks')
               .style("text-anchor", "start")
               .attr("transform", "rotate(90)");
 
@@ -659,10 +678,11 @@
               .attr('fill', 'none');
 
           g_evolucao.append('text')
-              .attr('x', 380/2)
+              .attr('x', width_graph/2)
               .attr('y', -yScaleEvolucao(d3.max(evolucao, d => d.evolucao))-20)
               .attr('text-anchor', 'middle')
-              .text('COVID-19 Cases in the São Paulo State');
+              .attr('class', 'title')
+              .text('Casos confirmados no Estado de São Paulo');
 
 
 
@@ -701,12 +721,14 @@
           g_evolucao.append('text')
               .attr('x', 40)
               .attr('y', 10)
-              .text('Infected');
+              .attr('class', 'numbers')
+              .text('Infectados');
 
           g_evolucao.append('text')
               .attr('x', 40)
               .attr('y', 30)
-              .text('New cases');
+              .attr('class', 'numbers')
+              .text('Novos casos');
 
       }
 
@@ -732,11 +754,13 @@
       function loadData() {
           return Promise.all([
               d3.json('geo/sp.geo.json'),
-              d3.csv('data/cases-sp-cities.csv')
+              d3.csv('data/cases-sp-cities.csv'),
+              d3.csv('data/evolucao_casos.csv')
           ]).then(datasets => {
 
               store.geoJSON = datasets[0];
               casosByCity = datasets[1];
+              store.evolucao = datasets[2];
 
               lastDate = new Date(2020, 0, 1);
               let temp = "";
