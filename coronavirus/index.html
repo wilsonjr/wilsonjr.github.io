@@ -230,7 +230,7 @@
     
     
     
-      <a class="navbar-brand" href="/coronavirus">Radar COVID - SP</a>
+      <a class="navbar-brand" href="/coronavirus">Radar COVID-19</a>
     
 
     
@@ -676,7 +676,7 @@ Estamos trabalhando em duas frentes: análise de dados de redes sociais e análi
     <h3>Dados</h3>
     <ul>
       
-      <li>*** Github:<a href="https://github.com/wcota/covid19br">COVID19BR</a></li>
+      <li>*** Github:<a href="https://github.com/wcota/covid19br"> COVID19BR</a></li>
       
     </ul>
   </div>
@@ -829,6 +829,22 @@ Estamos trabalhando em duas frentes: análise de dados de redes sociais e análi
               let max = 4;
               let step = (d3.max(backup, d => +d.casos) - d3.min(backup, d => +d.casos))/max;
 
+              g_legend.append('circle')
+                  .attr('cx', d => 45)
+                  .attr('cy', d => 50)
+                  .attr('r', scaleArea(1))
+                  .style('fill', '#eb4034')
+                  .style('fill-opacity', 0.2)
+                  .style('stroke', '#eb4034')
+                  .style('stroke-opacity', 0.8);  
+
+              g_legend.append('text')
+                      .attr('x', d => 45)
+                      .attr('y', d => 50 + scaleArea(4*step) + 20)
+                      .attr('text-anchor', 'middle')
+                      .attr('class', 'numbers')
+                      .text('1');
+
               for( let  i = 1; i <= max; i++ ) {
 
                   let r = scaleArea(i*step);
@@ -851,7 +867,7 @@ Estamos trabalhando em duas frentes: análise de dados de redes sociais e análi
 
               }
               g_legend.append('text')
-                      .attr('x', d => 75 - scaleArea(step))
+                      .attr('x', d => 75 - scaleArea(step) - 5)
                       .attr('y', d => 20)
                       .attr('class', 'title')
                       .attr('text-anchor', 'start')
