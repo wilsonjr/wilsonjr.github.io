@@ -386,7 +386,7 @@
   <div class="mainView">
     <div>
       <svg id="map-covid">        
-        <foreignobject class="node" x="500" y="10" width="300" height="100">                
+        <foreignobject class="node" x="700" y="5" width="300" height="100">                
             <label id="titleProgression" class="title">Dia: Hoje</label><br/>
             <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">  
         </foreignobject>
@@ -416,7 +416,7 @@
           unesps[i] = unesps[i].replace(/[^\x00-\x7F]/g, "");
       }
 
-      let width = 800;
+      let width = 900;
       let height = 750;
 
       let casosByCity = null;
@@ -557,13 +557,12 @@
 
                   g_legend.append('text')
                       .attr('x', d => 50*i + 30)
-                      .attr('y', d => 50 + scaleArea(4*step) + 15)
+                      .attr('y', d => 50 + scaleArea(4*step) + 20)
                       .attr('text-anchor', 'middle')
                       .attr('class', 'numbers')
                       .text(Math.floor(i*step));
 
               }
-
               g_legend.append('text')
                       .attr('x', d => 80 - scaleArea(step))
                       .attr('y', d => 20)
@@ -620,7 +619,7 @@
           }
 
           let legends = d3.select("#statisticalCharts")
-              .attr('width', 800)
+              .attr('width', 900)
               .attr('height', 500);
 
           g_evolucao = legends.append('g')
@@ -628,7 +627,7 @@
 
 
           let height_graph = 300;
-          let width_graph = 700;
+          let width_graph = 800;
 
           let yScaleEvolucao = d3.scaleLinear()
               .domain([0, d3.max(evolucao, d => d.evolucao)])
