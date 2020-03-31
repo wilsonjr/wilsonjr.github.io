@@ -585,7 +585,7 @@
 
               }
               g_legend.append('text')
-                      .attr('x', d => 80 - scaleArea(step))
+                      .attr('x', d => 75 - scaleArea(step))
                       .attr('y', d => 20)
                       .attr('class', 'title')
                       .attr('text-anchor', 'start')
@@ -827,7 +827,7 @@
 
               trends_legend.append('circle')
                   .attr('cx', 0)
-                  .attr('cy', i * 30)
+                  .attr('cy', i * 30 + 10)
                   .attr('r', 7)
                   .style('fill', colors(googleTrends[i]))
                   .on('click', d => {
@@ -840,7 +840,7 @@
 
               trends_legend.append('text')
                   .attr('x',  12)
-                  .attr('y', i * 30 + 5)
+                  .attr('y', i * 30 + 5 + 10)
                   .text(googleTrends[i]);
           }
 
@@ -852,7 +852,7 @@
           trends_legend.append('rect')
               .attr('x', -20)
               .attr('y', -10)
-              .attr('width', 130)
+              .attr('width', 150)
               .attr('height', 180)
               .style('stroke', 'black')
               .style('fill', 'none');
