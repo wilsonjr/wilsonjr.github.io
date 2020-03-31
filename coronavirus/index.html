@@ -397,6 +397,20 @@
     <div>
       <svg id="statisticalCharts"></svg>
     </div>
+
+    <div>
+
+      <svg id="map-google">
+
+          <foreignobject class="node" x="727" y="230" width="200" height="100">                
+               <label id="progressionGoogleTrends" class="title">Dia: hoje</label><br/>
+              <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0">
+          </foreignobject>
+
+      </svg>
+
+
+    </div>
   </div>
 
 
@@ -420,37 +434,44 @@
       let height = 750;
 
       let casosByCity = null;
+      let googleTrendsMap = null;
+      let colors = null;
+      let colorTrends = null;
+      let termTrends = null;
+      let subsetGoogleTrendsMap = null;
 
       let store = {};
 
       let months = {
-            '0': 'January',
-            '1': 'February',
-            '2': 'March',
-            '3': 'April',
-            '4': 'May',
-            '5': 'June',
-            '6': 'July',
-            '7': 'August',
-            '8': 'September',
-            '9': 'October',
-            '10': 'November',
-            '11': 'December'
-        };
+          '0': 'January',
+          '1': 'February',
+          '2': 'March',
+          '3': 'April',
+          '4': 'May',
+          '5': 'June',
+          '6': 'July',
+          '7': 'August',
+          '8': 'September',
+          '9': 'October',
+          '10': 'November',
+          '11': 'December'
+      };
 
-        let map_month = {
-            'fev': 2,
-            'mar': 3,
-            'abr': 4,
-            'mai': 5,
-            'jun': 6,
-            'jul': 7,
-            'ago': 8,
-            'set': 9,
-            'out': 10,
-            'nov': 11,
-            'dez': 12
-        };
+      let map_month = {
+          'fev': 2,
+          'mar': 3,
+          'abr': 4,
+          'mai': 5,
+          'jun': 6,
+          'jul': 7,
+          'ago': 8,
+          'set': 9,
+          'out': 10,
+          'nov': 11,
+          'dez': 12
+      };
+
+
 
 
       loadData().then(showData);
@@ -741,6 +762,109 @@
          drawBaseMapReal(config.container, geoJSON.features, projection, geoJSON, null);
       }
 
+      function drawMapGoogleTrends(container, countries, projection, geoJson, color, symptom) {
+
+          let path = d3.geoPath()
+              .projection(projection);
+
+          let paths = container.selectAll('path')
+            .data(countries, d => d.id);
+
+          paths.exit().remove();
+
+          container.selectAll('path').style('fill-opacity', 0);
+          paths.enter().append('path')
+              .attr('d', d => { return path(d); })
+              .style('stroke', '#ccc')
+              .style('stroke-width', 1)
+              .style('fill-opacity', 0)
+              // .transition()
+              // .duration(2000)
+              //     .style('fill-opacity', 0)                    
+              .transition()
+              .duration(1000)
+                  .style('fill', color)
+                  .style('fill-opacity', (d, j) => { 
+                      let value = 0;
+
+                      for( let i = 0; i < subsetGoogleTrendsMap.length; i++) {
+                          if( subsetGoogleTrendsMap[i].Cidade.trim().replace(/[^\x00-\x7F]/g, "") == d.properties.name.trim().replace(/[^\x00-\x7F]/g, "") ) {
+                              value = subsetGoogleTrendsMap[i][symptom];
+                              break;
+                          }
+                      }
+
+                      let opacity =  value == 0 ? 0 : value/d3.max(subsetGoogleTrendsMap, v => v[symptom]);
+
+                      return opacity;
+                  });
+      }
+
+
+      function drawGoogleTrendsLegend(container) {
+          // container.select('.twitter_colorscale')
+          //     .selectAll('*')
+          //     .transition()
+          //     .duration(2000)
+          //         .style('fill-opacity', 0);
+
+          container.append("text")
+            .attr('x', width/2)
+            .attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('class', 'title')
+            .text('Interesse nos sistomas de COVID-19 ao longo do tempo')
+
+
+
+          let trends_legend = container.append('g')  
+              .attr('class', 'trends_legend')
+              .attr('transform', 'translate(750, 50)');
+
+          let googleTrends = googleTrendsMap.columns.slice(2, 7);
+
+          for( let i = 0; i < googleTrends.length; i++ ) {
+
+              trends_legend.append('circle')
+                  .attr('cx', 0)
+                  .attr('cy', i * 30)
+                  .attr('r', 7)
+                  .style('fill', colors(googleTrends[i]))
+                  .on('click', d => {
+                      colorTrends = colors(googleTrends[i]);
+                      termTrends = googleTrends[i];
+
+                      drawGoogleTrends(colors(googleTrends[i]), googleTrends[i]);
+                  });
+
+
+              trends_legend.append('text')
+                  .attr('x',  12)
+                  .attr('y', i * 30 + 5)
+                  .text(googleTrends[i]);
+          }
+
+          // trends_legend.append('text')
+          //     .attr('x', -7)
+          //     .attr('y', 10)
+          //     .text('Google Trends');
+
+          trends_legend.append('rect')
+              .attr('x', -20)
+              .attr('y', -10)
+              .attr('width', 130)
+              .attr('height', 180)
+              .style('stroke', 'black')
+              .style('fill', 'none');
+      }
+
+      function drawGoogleTrends(color, symptom) {
+          let config = getMapConfig("#map-google");
+          let projection = getMapProjection(config, geoJson);
+
+          drawMapGoogleTrends(config.container, geoJson.features, projection, geoJson, color, symptom);
+      }
+
 
       function showData() {
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
@@ -748,18 +872,22 @@
 
           drawMapReal(store.geoJSON);
           drawStatisticalCharts(store);
+          drawGoogleTrendsLegend(getMapConfig("#map-google").container);
+          drawGoogleTrends(colors(googleTrendsMap.columns[2]), googleTrendsMap.columns[2]);
       } 
 
       function loadData() {
           return Promise.all([
               d3.json('geo/sp.geo.json'),
               d3.csv('data/cases-sp-cities.csv'),
-              d3.csv('data/evolucao_casos.csv')
+              d3.csv('data/evolucao_casos.csv'),
+              d3.csv('data/geoMap.csv')
           ]).then(datasets => {
 
               store.geoJSON = datasets[0];
               casosByCity = datasets[1];
               store.evolucao = datasets[2];
+              googleTrendsMap = datasets[3];
 
               lastDate = new Date(2020, 0, 1);
               let temp = "";
@@ -778,6 +906,40 @@
 
                   casosByCity[i].date = date;
               }
+
+              let googleTrendsMapLastDate = new Date(2020, 0, 1);
+
+
+              for( let i = 0; i < googleTrendsMap.length; ++i ) {
+                    let date_string = googleTrendsMap[i].ate.split('/');
+                    let day = +date_string[0];
+
+                    let month = map_month[date_string[1]];
+
+                    let date = new Date(2020, month-1, day);
+                    if( date > googleTrendsMapLastDate ) {
+                        googleTrendsMapLastDate = date;
+                        temp = googleTrendsMap[i].ate;
+                    }
+
+                    googleTrendsMap[i]['tosse'] = +googleTrendsMap[i]['tosse'];
+                    googleTrendsMap[i]['febre'] = +googleTrendsMap[i]['febre'];
+                    googleTrendsMap[i]['tosse seca'] = +googleTrendsMap[i]['tosse seca'];
+                    googleTrendsMap[i]['febre alta'] = +googleTrendsMap[i]['febre alta'];
+                    googleTrendsMap[i]['falta de ar'] = +googleTrendsMap[i]['falta de ar'];
+                    googleTrendsMap[i]['lat'] = +googleTrendsMap[i]['lat'];
+                    googleTrendsMap[i]['long'] = +googleTrendsMap[i]['long'];
+
+                    googleTrendsMap[i]['id'] = i;
+
+                    googleTrendsMap[i].date = date;
+                }
+
+                colors = d3.scaleOrdinal(d3.schemeCategory10)
+                  .domain(googleTrendsMap.columns.slice(2, 7));
+
+                subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == temp);
+                document.getElementById('progressionGoogleTrends').innerHTML = "Day: "+temp;
               
 
               return store;
@@ -823,6 +985,31 @@
 
           return projection;
       }
+
+      document.getElementById('dateGoogleTrends').addEventListener('input', function() {
+          let value = this.value;
+
+          let countDifferent = 0;
+          let targetDate = googleTrendsMap[0].ate;
+
+          for (var i = 0; i < googleTrendsMap.length; i++) {
+
+              if( value == countDifferent ) {
+                  targetDate = googleTrendsMap[i].ate;
+                  break;
+              }
+
+              if( targetDate != googleTrendsMap[i].ate ) {
+                  countDifferent += 1;
+                  targetDate = googleTrendsMap[i].ate;
+              }
+          }
+
+          subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+
+          drawGoogleTrends(colorTrends, termTrends);
+          document.getElementById('progressionGoogleTrends').innerHTML = 'Day: '+targetDate+'.';
+      });
 
       document.getElementById('realProgression').addEventListener('input', function() {
           let value = this.value;
