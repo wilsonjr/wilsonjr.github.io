@@ -676,7 +676,7 @@ Estamos trabalhando em duas frentes: análise de dados de redes sociais e análi
     <h3>Dados</h3>
     <ul>
       
-      <li><a href="https://github.com/wcota/covid19br">*** Github: COVID19BR</a></li>
+      <li>*** Github:<a href="https://github.com/wcota/covid19br">COVID19BR</a></li>
       
     </ul>
   </div>
@@ -1135,6 +1135,7 @@ Estamos trabalhando em duas frentes: análise de dados de redes sociais e análi
       function showData() {
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
           document.getElementById('realProgression').max = distinctDates.length-1;
+          document.getElementById('realProgression').value = distinctDates.length-1;
 
           let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
           document.getElementById('dateGoogleTrends').max = maxValue;
