@@ -1,0 +1,434 @@
+data,cidade,casos,obitos,lat,long
+25/fev,São Paulo,1,0,-23.5475,-46.63611
+29/fev,São Paulo,2,0,-23.5475,-46.63611
+04/mar,São Paulo,3,0,-23.5475,-46.63611
+05/mar,São Paulo,6,0,-23.5475,-46.63611
+06/mar,São Paulo,10,0,-23.5475,-46.63611
+07/mar,São Paulo,13,0,-23.5475,-46.63611
+08/mar,São Paulo,15,0,-23.5475,-46.63611
+08/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+09/mar,São Paulo,15,0,-23.5475,-46.63611
+09/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+10/mar,São Paulo,18,0,-23.5475,-46.63611
+10/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+11/mar,São Paulo,44,0,-23.5475,-46.63611
+11/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+12/mar,São Paulo,62,0,-23.5475,-46.63611
+12/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+12/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+13/mar,São Paulo,62,0,-23.5475,-46.63611
+13/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+13/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+14/mar,Carapicuíba,1,0,-23.52272,-46.835
+14/mar,São Paulo,62,0,-23.5475,-46.63611
+14/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+14/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+15/mar,São Paulo,131,0,-23.5475,-46.63611
+15/mar,São Bernardo do Campo,1,0,-23.69389,-46.565
+15/mar,São Caetano do Sul,1,0,-23.62306,-46.55111
+15/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+15/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+15/mar,Carapicuíba,1,0,-23.52272,-46.835
+16/mar,São Paulo,145,0,-23.5475,-46.63611
+16/mar,São Bernardo do Campo,2,0,-23.69389,-46.565
+16/mar,Mauá,1,0,-23.66778,-46.46139
+16/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+16/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+16/mar,Carapicuíba,1,0,-23.52272,-46.835
+16/mar,São Caetano do Sul,1,0,-23.62306,-46.55111
+17/mar,São Paulo,156,0,-23.5475,-46.63611
+17/mar,Santo André,1,0,-23.66389,-46.53833
+17/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+17/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+17/mar,Carapicuíba,1,0,-23.52272,-46.835
+17/mar,São Bernardo do Campo,2,0,-23.69389,-46.565
+17/mar,São Caetano do Sul,1,0,-23.62306,-46.55111
+17/mar,Mauá,1,0,-23.66778,-46.46139
+18/mar,São Paulo,228,0,-23.5475,-46.63611
+18/mar,São Bernardo do Campo,3,0,-23.69389,-46.565
+18/mar,Santo André,2,0,-23.66389,-46.53833
+18/mar,Jaguariúna,1,0,-22.69473,-47.01728
+18/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+18/mar,Campinas,1,0,-22.90556,-47.06083
+18/mar,Guarulhos,1,0,-23.46278,-46.53333
+18/mar,Barueri,1,0,-23.51056,-46.87611
+18/mar,Cotia,1,0,-23.60389,-46.91917
+18/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+18/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+18/mar,Carapicuíba,1,0,-23.52272,-46.835
+18/mar,São Caetano do Sul,1,0,-23.62306,-46.55111
+18/mar,Mauá,1,0,-23.66778,-46.46139
+19/mar,São Paulo,267,0,-23.5475,-46.63611
+19/mar,Carapicuíba,2,0,-23.52272,-46.835
+19/mar,Cotia,2,0,-23.60389,-46.91917
+19/mar,Taubaté,1,0,-23.02639,-45.55528
+19/mar,Suzano,1,0,-23.5425,-46.31083
+19/mar,Santana de Parnaíba,1,0,-23.44417,-46.91778
+19/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+19/mar,São Bernardo do Campo,3,0,-23.69389,-46.565
+19/mar,São Caetano do Sul,1,0,-23.62306,-46.55111
+19/mar,Mauá,1,0,-23.66778,-46.46139
+19/mar,Santo André,2,0,-23.66389,-46.53833
+19/mar,Jaguariúna,1,0,-22.69473,-47.01728
+19/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+19/mar,Campinas,1,0,-22.90556,-47.06083
+19/mar,Guarulhos,1,0,-23.46278,-46.53333
+19/mar,Barueri,1,0,-23.51056,-46.87611
+20/mar,São Paulo,366,0,-23.5475,-46.63611
+20/mar,Santana de Parnaíba,2,0,-23.44417,-46.91778
+20/mar,São Bernardo do Campo,4,0,-23.69389,-46.565
+20/mar,São Caetano do Sul,4,0,-23.62306,-46.55111
+20/mar,Santo André,3,0,-23.66389,-46.53833
+20/mar,Osasco,1,0,-23.5325,-46.79167
+20/mar,São José dos Campos,1,0,-23.17944,-45.88694
+20/mar,Hortolândia,1,0,-22.85833,-47.22
+20/mar,Mogi das Cruzes,1,0,-23.52278,-46.18833
+20/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+20/mar,Carapicuíba,2,0,-23.52272,-46.835
+20/mar,Mauá,1,0,-23.66778,-46.46139
+20/mar,Jaguariúna,1,0,-22.69473,-47.01728
+20/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+20/mar,Campinas,1,0,-22.90556,-47.06083
+20/mar,Guarulhos,1,0,-23.46278,-46.53333
+20/mar,Barueri,1,0,-23.51056,-46.87611
+20/mar,Cotia,2,0,-23.60389,-46.91917
+20/mar,Taubaté,1,0,-23.02639,-45.55528
+20/mar,Suzano,1,0,-23.5425,-46.31083
+21/mar,São Paulo,418,0,-23.5475,-46.63611
+21/mar,Mauá,2,0,-23.66778,-46.46139
+21/mar,Santo André,6,0,-23.66389,-46.53833
+21/mar,Campinas,4,0,-22.90556,-47.06083
+21/mar,Valinhos,1,0,-22.97056,-46.99583
+21/mar,Taboão da Serra,1,0,-23.62611,-46.79167
+21/mar,Poá,1,0,-23.52806,-46.34472
+21/mar,Caieiras,1,0,-23.38134,-46.73815
+21/mar,Santana de Parnaíba,2,0,-23.44417,-46.91778
+21/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+21/mar,Carapicuíba,2,0,-23.52272,-46.835
+21/mar,São Bernardo do Campo,4,0,-23.69389,-46.565
+21/mar,São Caetano do Sul,4,0,-23.62306,-46.55111
+21/mar,Jaguariúna,1,0,-22.69473,-47.01728
+21/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+21/mar,Guarulhos,1,0,-23.46278,-46.53333
+21/mar,Barueri,1,0,-23.51056,-46.87611
+21/mar,Cotia,2,0,-23.60389,-46.91917
+21/mar,Taubaté,1,0,-23.02639,-45.55528
+21/mar,Suzano,1,0,-23.5425,-46.31083
+21/mar,Osasco,1,0,-23.5325,-46.79167
+21/mar,São José dos Campos,1,0,-23.17944,-45.88694
+21/mar,Hortolândia,1,0,-22.85833,-47.22
+21/mar,Mogi das Cruzes,1,0,-23.52278,-46.18833
+22/mar,São Paulo,583,0,-23.5475,-46.63611
+22/mar,Santo André,12,0,-23.66389,-46.53833
+22/mar,São Sebastião,1,0,-23.76,-45.40972
+22/mar,Santana de Parnaíba,2,0,-23.44417,-46.91778
+22/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+22/mar,Carapicuíba,2,0,-23.52272,-46.835
+22/mar,São Bernardo do Campo,4,0,-23.69389,-46.565
+22/mar,São Caetano do Sul,4,0,-23.62306,-46.55111
+22/mar,Mauá,2,0,-23.66778,-46.46139
+22/mar,Jaguariúna,1,0,-22.69473,-47.01728
+22/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+22/mar,Campinas,4,0,-22.90556,-47.06083
+22/mar,Guarulhos,1,0,-23.46278,-46.53333
+22/mar,Barueri,1,0,-23.51056,-46.87611
+22/mar,Cotia,2,0,-23.60389,-46.91917
+22/mar,Taubaté,1,0,-23.02639,-45.55528
+22/mar,Suzano,1,0,-23.5425,-46.31083
+22/mar,Osasco,1,0,-23.5325,-46.79167
+22/mar,São José dos Campos,1,0,-23.17944,-45.88694
+22/mar,Hortolândia,1,0,-22.85833,-47.22
+22/mar,Mogi das Cruzes,1,0,-23.52278,-46.18833
+22/mar,Valinhos,1,0,-22.97056,-46.99583
+22/mar,Taboão da Serra,1,0,-23.62611,-46.79167
+22/mar,Poá,1,0,-23.52806,-46.34472
+22/mar,Caieiras,1,0,-23.38134,-46.73815
+23/mar,São Paulo,687,0,-23.5475,-46.63611
+23/mar,São José dos Campos,2,0,-23.17944,-45.88694
+23/mar,São Sebastião,2,0,-23.76,-45.40972
+23/mar,FORA DO ESTADO,5,0,-4.98333,-38.11667
+23/mar,Iracemápolis,1,0,-22.61601,-47.51989
+23/mar,Jundiaí,1,0,-23.18639,-46.88417
+23/mar,Embu,1,0,-0.53987,37.45743
+23/mar,Santana de Parnaíba,2,0,-23.44417,-46.91778
+23/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+23/mar,Carapicuíba,2,0,-23.52272,-46.835
+23/mar,São Bernardo do Campo,4,0,-23.69389,-46.565
+23/mar,São Caetano do Sul,4,0,-23.62306,-46.55111
+23/mar,Mauá,2,0,-23.66778,-46.46139
+23/mar,Santo André,12,0,-23.66389,-46.53833
+23/mar,Jaguariúna,1,0,-22.69473,-47.01728
+23/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+23/mar,Campinas,4,0,-22.90556,-47.06083
+23/mar,Guarulhos,1,0,-23.46278,-46.53333
+23/mar,Barueri,1,0,-23.51056,-46.87611
+23/mar,Cotia,2,0,-23.60389,-46.91917
+23/mar,Taubaté,1,0,-23.02639,-45.55528
+23/mar,Suzano,1,0,-23.5425,-46.31083
+23/mar,Osasco,1,0,-23.5325,-46.79167
+23/mar,Hortolândia,1,0,-22.85833,-47.22
+23/mar,Mogi das Cruzes,1,0,-23.52278,-46.18833
+23/mar,Valinhos,1,0,-22.97056,-46.99583
+23/mar,Taboão da Serra,1,0,-23.62611,-46.79167
+23/mar,Poá,1,0,-23.52806,-46.34472
+23/mar,Caieiras,1,0,-23.38134,-46.73815
+24/mar,São Paulo,718,0,-23.5475,-46.63611
+24/mar,Guarulhos,5,0,-23.46278,-46.53333
+24/mar,FORA DO ESTADO,8,0,-4.98333,-38.11667
+24/mar,ESTRANGEIRO,27,0,-7.23333,-37.5
+24/mar,Santana de Parnaíba,2,0,-23.44417,-46.91778
+24/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+24/mar,Carapicuíba,2,0,-23.52272,-46.835
+24/mar,São Bernardo do Campo,4,0,-23.69389,-46.565
+24/mar,São Caetano do Sul,4,0,-23.62306,-46.55111
+24/mar,Mauá,2,0,-23.66778,-46.46139
+24/mar,Santo André,12,0,-23.66389,-46.53833
+24/mar,Jaguariúna,1,0,-22.69473,-47.01728
+24/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+24/mar,Campinas,4,0,-22.90556,-47.06083
+24/mar,Barueri,1,0,-23.51056,-46.87611
+24/mar,Cotia,2,0,-23.60389,-46.91917
+24/mar,Taubaté,1,0,-23.02639,-45.55528
+24/mar,Suzano,1,0,-23.5425,-46.31083
+24/mar,Osasco,1,0,-23.5325,-46.79167
+24/mar,São José dos Campos,2,0,-23.17944,-45.88694
+24/mar,Hortolândia,1,0,-22.85833,-47.22
+24/mar,Mogi das Cruzes,1,0,-23.52278,-46.18833
+24/mar,Valinhos,1,0,-22.97056,-46.99583
+24/mar,Taboão da Serra,1,0,-23.62611,-46.79167
+24/mar,Poá,1,0,-23.52806,-46.34472
+24/mar,Caieiras,1,0,-23.38134,-46.73815
+24/mar,São Sebastião,2,0,-23.76,-45.40972
+24/mar,Iracemápolis,1,0,-22.61601,-47.51989
+24/mar,Jundiaí,1,0,-23.18639,-46.88417
+24/mar,Embu,1,0,-0.53987,37.45743
+25/mar,São Paulo,733,0,-23.5475,-46.63611
+25/mar,Santana de Parnaíba,4,0,-23.44417,-46.91778
+25/mar,São Bernardo do Campo,13,0,-23.69389,-46.565
+25/mar,São Caetano do Sul,16,0,-23.62306,-46.55111
+25/mar,Santo André,16,0,-23.66389,-46.53833
+25/mar,Cotia,5,0,-23.60389,-46.91917
+25/mar,Osasco,3,0,-23.5325,-46.79167
+25/mar,Mogi das Cruzes,4,0,-23.52278,-46.18833
+25/mar,Rio Claro,1,0,10.30594,-61.17556
+25/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+25/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+25/mar,Carapicuíba,2,0,-23.52272,-46.835
+25/mar,Mauá,2,0,-23.66778,-46.46139
+25/mar,Jaguariúna,1,0,-22.69473,-47.01728
+25/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+25/mar,Campinas,4,0,-22.90556,-47.06083
+25/mar,Guarulhos,5,0,-23.46278,-46.53333
+25/mar,Barueri,1,0,-23.51056,-46.87611
+25/mar,Taubaté,1,0,-23.02639,-45.55528
+25/mar,Suzano,1,0,-23.5425,-46.31083
+25/mar,São José dos Campos,2,0,-23.17944,-45.88694
+25/mar,Hortolândia,1,0,-22.85833,-47.22
+25/mar,Valinhos,1,0,-22.97056,-46.99583
+25/mar,Taboão da Serra,1,0,-23.62611,-46.79167
+25/mar,Poá,1,0,-23.52806,-46.34472
+25/mar,Caieiras,1,0,-23.38134,-46.73815
+25/mar,São Sebastião,2,0,-23.76,-45.40972
+25/mar,FORA DO ESTADO,8,0,-4.98333,-38.11667
+25/mar,Iracemápolis,1,0,-22.61601,-47.51989
+25/mar,Jundiaí,1,0,-23.18639,-46.88417
+25/mar,Embu,1,0,-0.53987,37.45743
+25/mar,ESTRANGEIRO,27,0,-7.23333,-37.5
+26/mar,São Paulo,902,0,-23.5475,-46.63611
+26/mar,Santana de Parnaíba,6,0,-23.44417,-46.91778
+26/mar,Guarulhos,9,0,-23.46278,-46.53333
+26/mar,Barueri,3,0,-23.51056,-46.87611
+26/mar,Mogi das Cruzes,7,0,-23.52278,-46.18833
+26/mar,Taboão da Serra,2,0,-23.62611,-46.79167
+26/mar,Caieiras,2,0,-23.38134,-46.73815
+26/mar,Jundiaí,2,0,-23.18639,-46.88417
+26/mar,Tatuí,1,0,-23.35556,-47.85694
+26/mar,Ribeirão Preto,1,0,-21.1775,-47.81028
+26/mar,Arujá,1,0,-23.39611,-46.32083
+26/mar,Mairiporã,1,0,-23.31861,-46.58667
+26/mar,Louveira,2,0,-23.08252,-46.93308
+26/mar,Vargem Grande Paulista,1,0,-23.62856,-47.01914
+26/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+26/mar,Carapicuíba,2,0,-23.52272,-46.835
+26/mar,São Bernardo do Campo,13,0,-23.69389,-46.565
+26/mar,São Caetano do Sul,16,0,-23.62306,-46.55111
+26/mar,Mauá,2,0,-23.66778,-46.46139
+26/mar,Santo André,16,0,-23.66389,-46.53833
+26/mar,Jaguariúna,1,0,-22.69473,-47.01728
+26/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+26/mar,Campinas,4,0,-22.90556,-47.06083
+26/mar,Cotia,5,0,-23.60389,-46.91917
+26/mar,Taubaté,1,0,-23.02639,-45.55528
+26/mar,Suzano,1,0,-23.5425,-46.31083
+26/mar,Osasco,3,0,-23.5325,-46.79167
+26/mar,São José dos Campos,2,0,-23.17944,-45.88694
+26/mar,Hortolândia,1,0,-22.85833,-47.22
+26/mar,Valinhos,1,0,-22.97056,-46.99583
+26/mar,Poá,1,0,-23.52806,-46.34472
+26/mar,São Sebastião,2,0,-23.76,-45.40972
+26/mar,FORA DO ESTADO,8,0,-4.98333,-38.11667
+26/mar,Iracemápolis,1,0,-22.61601,-47.51989
+26/mar,Embu,1,0,-0.53987,37.45743
+26/mar,ESTRANGEIRO,27,0,-7.23333,-37.5
+26/mar,Rio Claro,1,0,10.30594,-61.17556
+26/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+27/mar,São Paulo,1044,0,-23.5475,-46.63611
+27/mar,Ferraz de Vasconcelos,2,0,-23.54083,-46.36861
+27/mar,São Bernardo do Campo,15,0,-23.69389,-46.565
+27/mar,Santo André,17,0,-23.66389,-46.53833
+27/mar,Campinas,5,0,-22.90556,-47.06083
+27/mar,Guarulhos,13,0,-23.46278,-46.53333
+27/mar,Cotia,6,0,-23.60389,-46.91917
+27/mar,Osasco,4,0,-23.5325,-46.79167
+27/mar,São José dos Campos,4,0,-23.17944,-45.88694
+27/mar,Mogi das Cruzes,8,0,-23.52278,-46.18833
+27/mar,FORA DO ESTADO,14,0,-4.98333,-38.11667
+27/mar,Jundiaí,3,0,-23.18639,-46.88417
+27/mar,Ribeirão Preto,3,0,-21.1775,-47.81028
+27/mar,Mairiporã,2,0,-23.31861,-46.58667
+27/mar,Vargem Grande Paulista,2,0,-23.62856,-47.01914
+27/mar,Diadema,1,0,-23.68611,-46.62278
+27/mar,Santana de Parnaíba,6,0,-23.44417,-46.91778
+27/mar,Carapicuíba,2,0,-23.52272,-46.835
+27/mar,São Caetano do Sul,16,0,-23.62306,-46.55111
+27/mar,Mauá,2,0,-23.66778,-46.46139
+27/mar,Jaguariúna,1,0,-22.69473,-47.01728
+27/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+27/mar,Barueri,3,0,-23.51056,-46.87611
+27/mar,Taubaté,1,0,-23.02639,-45.55528
+27/mar,Suzano,1,0,-23.5425,-46.31083
+27/mar,Hortolândia,1,0,-22.85833,-47.22
+27/mar,Valinhos,1,0,-22.97056,-46.99583
+27/mar,Taboão da Serra,2,0,-23.62611,-46.79167
+27/mar,Poá,1,0,-23.52806,-46.34472
+27/mar,Caieiras,2,0,-23.38134,-46.73815
+27/mar,São Sebastião,2,0,-23.76,-45.40972
+27/mar,Iracemápolis,1,0,-22.61601,-47.51989
+27/mar,Embu,1,0,-0.53987,37.45743
+27/mar,ESTRANGEIRO,27,0,-7.23333,-37.5
+27/mar,Rio Claro,1,0,10.30594,-61.17556
+27/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+27/mar,Tatuí,1,0,-23.35556,-47.85694
+27/mar,Arujá,1,0,-23.39611,-46.32083
+27/mar,Louveira,2,0,-23.08252,-46.93308
+28/mar,São Paulo,899,0,-23.5475,-46.63611
+28/mar,São Caetano do Sul,17,0,-23.62306,-46.55111
+28/mar,Santo André,16,0,-23.66389,-46.53833
+28/mar,São Bernardo do Campo,12,0,-23.69389,-46.565
+28/mar,Guarulhos,9,0,-23.46278,-46.53333
+28/mar,Mogi das Cruzes,7,0,-23.52278,-46.18833
+28/mar,Cotia,6,0,-23.60389,-46.91917
+28/mar,Santana de Parnaíba,6,0,-23.44417,-46.91778
+28/mar,Campinas,4,0,-22.90556,-47.06083
+28/mar,Barueri,3,0,-23.51056,-46.87611
+28/mar,Osasco,3,0,-23.5325,-46.79167
+28/mar,Caieiras,2,0,-23.38134,-46.73815
+28/mar,Carapicuíba,2,0,-23.52272,-46.835
+28/mar,Jundiaí,2,0,-23.18639,-46.88417
+28/mar,Louveira,2,0,-23.08252,-46.93308
+28/mar,Mauá,2,0,-23.66778,-46.46139
+28/mar,São José dos Campos,2,0,-23.17944,-45.88694
+28/mar,São Sebastião,2,0,-23.76,-45.40972
+28/mar,Suzano,2,0,-23.5425,-46.31083
+28/mar,Taboão da Serra,2,0,-23.62611,-46.79167
+28/mar,Arujá,1,0,-23.39611,-46.32083
+28/mar,Embu das Artes,1,0,-23.64889,-46.85222
+28/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+28/mar,Hortolândia,1,0,-22.85833,-47.22
+28/mar,Iracemápolis,1,0,-22.61601,-47.51989
+28/mar,Jaguariúna,1,0,-22.69473,-47.01728
+28/mar,Mairiporã,1,0,-23.31861,-46.58667
+28/mar,Poá,1,0,-23.52806,-46.34472
+28/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+28/mar,Ribeirão Preto,1,0,-21.1775,-47.81028
+28/mar,Rio Claro,1,0,10.30594,-61.17556
+28/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+28/mar,Tatuí,1,0,-23.35556,-47.85694
+28/mar,Taubaté,1,0,-23.02639,-45.55528
+28/mar,Valinhos,1,0,-22.97056,-46.99583
+28/mar,Vargem Grande Paulista,1,0,-23.62856,-47.01914
+29/mar,São Paulo,899,0,-23.5475,-46.63611
+29/mar,São Caetano do Sul,17,0,-23.62306,-46.55111
+29/mar,Santo André,16,0,-23.66389,-46.53833
+29/mar,São Bernardo do Campo,12,0,-23.69389,-46.565
+29/mar,Guarulhos,9,0,-23.46278,-46.53333
+29/mar,Mogi das Cruzes,7,0,-23.52278,-46.18833
+29/mar,Cotia,6,0,-23.60389,-46.91917
+29/mar,Santana de Parnaíba,6,0,-23.44417,-46.91778
+29/mar,Campinas,4,0,-22.90556,-47.06083
+29/mar,Barueri,3,0,-23.51056,-46.87611
+29/mar,Osasco,3,0,-23.5325,-46.79167
+29/mar,Caieiras,2,0,-23.38134,-46.73815
+29/mar,Carapicuíba,2,0,-23.52272,-46.835
+29/mar,Jundiaí,2,0,-23.18639,-46.88417
+29/mar,Louveira,2,0,-23.08252,-46.93308
+29/mar,Mauá,2,0,-23.66778,-46.46139
+29/mar,São José dos Campos,2,0,-23.17944,-45.88694
+29/mar,São Sebastião,2,0,-23.76,-45.40972
+29/mar,Suzano,2,0,-23.5425,-46.31083
+29/mar,Taboão da Serra,2,0,-23.62611,-46.79167
+29/mar,Arujá,1,0,-23.39611,-46.32083
+29/mar,Embu das Artes,1,0,-23.64889,-46.85222
+29/mar,Ferraz de Vasconcelos,1,0,-23.54083,-46.36861
+29/mar,Hortolândia,1,0,-22.85833,-47.22
+29/mar,Iracemápolis,1,0,-22.61601,-47.51989
+29/mar,Jaguariúna,1,0,-22.69473,-47.01728
+29/mar,Mairiporã,1,0,-23.31861,-46.58667
+29/mar,Poá,1,0,-23.52806,-46.34472
+29/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+29/mar,Ribeirão Preto,1,0,-21.1775,-47.81028
+29/mar,Rio Claro,1,0,10.30594,-61.17556
+29/mar,São José do Rio Preto,1,0,-20.8166,-49.4065
+29/mar,Tatuí,1,0,-23.35556,-47.85694
+29/mar,Taubaté,1,0,-23.02639,-45.55528
+29/mar,Valinhos,1,0,-22.97056,-46.99583
+29/mar,Vargem Grande Paulista,1,0,-23.62856,-47.01914
+30/mar,Barueri,6,0,-23.51056,-46.87611
+30/mar,Brodowski,1,0,-21.0506,-47.61728
+30/mar,Caieiras,3,0,-23.38134,-46.73815
+30/mar,Cajamar,1,0,-23.35193,-46.88129
+30/mar,Campinas,11,0,-22.90556,-47.06083
+30/mar,Carapicuíba,3,0,-23.52272,-46.835
+30/mar,Cotia,6,0,-23.60389,-46.91917
+30/mar,Diadema,2,0,-23.68611,-46.62278
+30/mar,Embu das Artes,3,0,-23.64889,-46.85222
+30/mar,Ferraz de Vasconcelos,3,0,-23.54083,-46.36861
+30/mar,Guarulhos,14,0,-23.46278,-46.53333
+30/mar,Hortolândia,1,0,-22.85833,-47.22
+30/mar,Importados/Indefinidos,48,0,,
+30/mar,Iracemápolis,1,0,-22.61601,-47.51989
+30/mar,Itapevi,1,0,-23.54889,-46.93417
+30/mar,Itupeva,1,0,-23.15306,-47.05778
+30/mar,Jaguariúna,1,0,-22.69473,-47.01728
+30/mar,Jandira,1,0,-23.54082,-46.89571
+30/mar,Jundiaí,3,0,-23.18639,-46.88417
+30/mar,Louveira,1,0,-23.08252,-46.93308
+30/mar,Mairiporã,2,0,-23.31861,-46.58667
+30/mar,Mauá,2,0,-23.66778,-46.46139
+30/mar,Mogi das Cruzes,9,0,-23.52278,-46.18833
+30/mar,Osasco,14,0,-23.5325,-46.79167
+30/mar,Paulínia,1,0,-22.76111,-47.15417
+30/mar,Penápolis,1,0,-21.41972,-50.0775
+30/mar,Piracicaba,3,0,-22.72528,-47.64917
+30/mar,Poá,1,0,-23.52806,-46.34472
+30/mar,Porto Feliz,1,0,-23.21472,-47.52389
+30/mar,Ribeirão Pires,1,0,-23.71056,-46.41333
+30/mar,Ribeirão Preto,5,0,-21.1775,-47.81028
+30/mar,Rio Claro,1,0,10.30594,-61.17556
+30/mar,Santana de Parnaíba,7,0,-23.44417,-46.91778
+30/mar,Santo André,40,0,-23.66389,-46.53833
+30/mar,Santos,1,0,-23.96083,-46.33361
+30/mar,São Bernardo do Campo,33,0,-23.69389,-46.565
+30/mar,São Caetano do Sul,27,0,-23.62306,-46.55111
+30/mar,São José do Rio Preto,3,0,-20.8166,-49.4065
+30/mar,São José dos Campos,5,0,-23.17944,-45.88694
+30/mar,São Paulo,1233,0,-23.5475,-46.63611
+30/mar,São Pedro,1,0,-22.83917,-42.10278
+30/mar,São Sebastião,2,0,-23.76,-45.40972
+30/mar,Sorocaba,3,0,-23.50167,-47.45806
+30/mar,Suzano,1,0,-23.5425,-46.31083
+30/mar,Taboão da Serra,3,0,-23.62611,-46.79167
+30/mar,Tatuí,1,0,-23.35556,-47.85694
+30/mar,Taubaté,1,0,-23.02639,-45.55528
+30/mar,Valinhos,1,0,-22.97056,-46.99583
+30/mar,Vargem Grande Paulista,2,0,-23.62856,-47.01914
