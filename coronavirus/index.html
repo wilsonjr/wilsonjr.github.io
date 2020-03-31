@@ -870,9 +870,18 @@
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
           document.getElementById('realProgression').max = distinctDates.length-1;
 
+          let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
+          document.getElementById('dateGoogleTrends').max = maxValue;
+          document.getElementById('dateGoogleTrends').value = maxValue;
+
           drawMapReal(store.geoJSON);
           drawStatisticalCharts(store);
           drawGoogleTrendsLegend(getMapConfig("#map-google").container);
+
+          colorTrends = colors(googleTrendsMap.columns[2]);
+          termTrends = googleTrendsMap.columns[2];
+
+
           drawGoogleTrends(colors(googleTrendsMap.columns[2]), googleTrendsMap.columns[2]);
       } 
 
