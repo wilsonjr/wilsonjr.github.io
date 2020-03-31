@@ -139,6 +139,9 @@
 
   <title>Courses | Wilson E Marcilio Jr</title>
 
+
+  <script type="text/javascript" src="js/d3.js"></script>
+
 </head>
 
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -306,25 +309,6 @@
   </div>
 </nav>
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
     
   
 <div class="universal-wrapper pt-3">
@@ -346,10 +330,30 @@
       * As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação.<br/>
       ** Última atualização: 31/03/2020 às 8h59.
     </li>
-    
-    
   </ul>
+
+  <div class="mainView">
+
+      <svg id="map-covid"></svg>
+    
+
+  </div>
+
+
 </div>
+
+
+    <script type="text/javascript">
+      
+
+      let container = d3.select('#map-covid');
+
+      container
+          .attr('width', 300)
+          .attr('height', 300);
+
+
+    </script>
 
       
 
