@@ -1441,10 +1441,10 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
               .attr('cx', d => //projection([d.long, d.lat])[0]
               { 
                   if( Math.floor(Math.random() * 2) + 1 ) {
-                      let jitter_x = Math.floor(Math.random() * 5) + 1;
+                      let jitter_x = Math.floor(Math.random() * 10) + 1;
                       return projection([d.long, d.lat])[0] + jitter_x;
                   } else {
-                      let jitter_x = -(Math.floor(Math.random() * 5) + 1);
+                      let jitter_x = -(Math.floor(Math.random() * 10) + 1);
                       return projection([d.long, d.lat])[0] + jitter_x;
                   }
               }
@@ -1452,10 +1452,10 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
               .attr('cy', d => //projection([d.long, d.lat])[1]
               { 
                   if( Math.floor(Math.random() * 2) + 1 ) {
-                      let jitter_y = Math.floor(Math.random() * 5) + 1;
+                      let jitter_y = Math.floor(Math.random() * 10) + 1;
                       return projection([d.long, d.lat])[1] + jitter_y;
                   } else {
-                      let jitter_y = -(Math.floor(Math.random() * 5) + 1);
+                      let jitter_y = -(Math.floor(Math.random() * 10) + 1);
                       return projection([d.long, d.lat])[1] + jitter_y;
                   }
               }
