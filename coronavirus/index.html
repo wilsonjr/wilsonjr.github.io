@@ -922,13 +922,14 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                       .attr('text-anchor', 'middle')
                       .attr('class', 'numbers')
                       .text('1');
-
+              let r_before = scaleArea(1);
+              let x_before = 45;
               for( let  i = 1; i <= max; i++ ) {
 
                   let r = scaleArea(i*step);
-
+                  console.log(r_before, 40, r, r_before + 40 + r)
                   g_legend.append('circle')
-                      .attr('cx', d => 50*i + 30)
+                      .attr('cx', d => x_before + r_before + 20 + r)
                       .attr('cy', d => 50)
                       .attr('r', r)
                       .style('fill', '#eb4034')
@@ -937,17 +938,22 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                       .style('stroke-opacity', 0.8);  
 
                   g_legend.append('text')
-                      .attr('x', d => 50*i + 30)
+                      .attr('x', d => x_before + r_before + 20 + r)
                       .attr('y', d => 50 + scaleArea(4*step) + 20)
                       .attr('text-anchor', 'middle')
-                      .attr('class', 'numbers')
+                      .style('font', '14px')
+                      .style('font-family', 'Times New Roman')
                       .text(Math.floor(i*step));
+
+                  r_before = r;
+                  x_before = x_before + r_before + 20 + r;
 
               }
               g_legend.append('text')
                       .attr('x', d => 35)
                       .attr('y', d => 20)
-                      .attr('class', 'title')
+                      .style('font', '14px')
+                      .style('font-family', 'Times New Roman')
                       .attr('text-anchor', 'start')
                       .text('CASOS CONFIRMADOS');
 
@@ -1362,9 +1368,9 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                 }
 
                 g_density.append('text')
-                  .attr('x', i*50)
-                  .attr('y', 60)
-                  .attr('text-anchor', 'start')
+                  .attr('x', i*50 + 45/2)
+                  .attr('y', 63)
+                  .attr('text-anchor', 'middle')
                   .style('font-family', 'Times New Roman')
                   .style('font', '14px')
                   .text(elements[i] == 15 ? '+15' : elements[i]);
