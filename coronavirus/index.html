@@ -321,7 +321,7 @@
 <!--   <div style="text-align: center; width:100%;">
     
   </div> -->
-  <img src="radar-icon.jpg" width="300" height="300" style="float: left; margin: 10px;" />
+  <img src="radar-icon.jpg" width="300" height="300" style="float: right; margin: 10px;" />
   <p>O RADAR COVID-19 é uma iniciativa de pesquisadores da Faculdade de Ciências e Tecnologia, Campus de Presidente Prudente da Universidade Estadual Paulista “Júlio de Mesquita Filho” (FCT-UNESP) para análise e mineração de dados referente à disseminação do novo coronavírus (COVID-19) no interior paulista. Detalhes acerca dos projetos podem ser encontrados <a href="#detalhes-projetos">aqui</a>.<p>
 
 <ul>
@@ -340,13 +340,27 @@
   <h3>Monitoramento COVID-19 - São Paulo</h3>  
   <div>
     <span class="note">* As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação e da Secretaria do Estado de São Paulo***.</span><br/>
-      <span class="note">** Última atualização: 31/03/2020 às 8h59.</span>
+      <span class="note">** Última atualização: 01/04/2020 às 10h00.</span>
 
   </div>
 
   <br/>
 
   <div class="mainView">
+
+    <h4>Tweets com palavras correspondentes aos sintomas do novo coronavírus </h4>
+    <div>
+      <svg id="map-twitter">        
+        <foreignobject class="node" x="700" y="5" width="300" height="100">                
+            <label id="progressionTwitter" class="title">Dia: Hoje</label><br/>
+            <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">  
+        </foreignobject>
+
+      </svg>
+    </div>
+
+    <br/>
+    <br/>
 
     <h4>Casos confirmados no Estado de São Paulo</h4>
     <div>
@@ -362,13 +376,13 @@
     <br/>
     <br/>
 
-    <h4>Evolução dos casos ao longo do tempo</h4>
+    <!-- <h4>Evolução dos casos ao longo do tempo</h4>
     <div>
       <svg id="statisticalCharts"></svg>
     </div>
 
     <br/>
-    <br/>
+    <br/> -->
 
     <h4>Interesse nos sistomas de acordo com Google Trends</h4>
     <div>
@@ -732,6 +746,9 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
       let colorTrends = null;
       let termTrends = null;
       let subsetGoogleTrendsMap = null;
+      let allTweets = null;
+      let cityById = null;
+
 
       let store = {};
 
@@ -1160,7 +1177,6 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
       }
 
-
       function drawGoogleTrendsLegend(container) {
           // container.select('.twitter_colorscale')
           //     .selectAll('*')
@@ -1225,8 +1241,129 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           drawMapGoogleTrends(config.container, geoJson.features, projection, geoJson, color, symptom);
       }
 
+      function drawSubsetTweets(tweets, store, update) {
+          let geoJson = store.geoJSON;
+          let evolucao = store.evolucao;
+
+
+          let config = getMapConfig('#map-twitter');
+          let projection = getMapProjection(config, geoJson);
+          let container = config.container;
+          let states = geoJson.features;
+
+          if( !update ) {
+              let path = d3.geoPath()
+                  .projection(projection);
+    
+              let paths = container.selectAll('path')
+                .data(states, d => d.id);
+    
+              paths.exit().remove();
+              paths.enter().append('path')
+                  .attr('d', d => { return path(d); })
+                  .style('stroke', '#ccc')
+                  .style('stroke-width', 1)
+                  .style('fill-opacity', 0);
+          }
+
+          let g = null;
+          if( !update ) {
+              g = container.append('g')
+                  .attr('class', 'tweets_geo');
+          } else {
+              g = container.select('.tweets_geo');
+          }
+
+
+          // console.log('meus tweets');
+          // console.log(tweets);
+
+          // let tweetsById = groupByCityId(tweets);
+          // console.log('tweets by id');
+          // console.log(tweetsById);
+
+
+          // let scaleArea = d3.scaleLinear()
+          //     .domain([d3.min(tweetsById, d => d.Count), d3.max(tweetsById, d => d.Count)])
+          //     .range([3, 25]);
+
+          // console.log('min: '+d3.min(tweetsById, d => d.Count));
+          // console.log('max: '+d3.max(tweetsById, d => d.Count));
+
+
+          let circle = g.selectAll('circle')
+              .data(tweets, d => d.id);
+
+          circle.exit().remove();
+
+          circle.enter().append('circle')    
+              .attr('cx', d => //projection([d.long, d.lat])[0]
+              { 
+                  if( Math.floor(Math.random() * 2) + 1 ) {
+                      let jitter_x = Math.floor(Math.random() * 5) + 1;
+                      return projection([d.long, d.lat])[0] + jitter_x;
+                  } else {
+                      let jitter_x = -(Math.floor(Math.random() * 5) + 1);
+                      return projection([d.long, d.lat])[0] + jitter_x;
+                  }
+              }
+              )
+              .attr('cy', d => //projection([d.long, d.lat])[1]
+              { 
+                  if( Math.floor(Math.random() * 2) + 1 ) {
+                      let jitter_y = Math.floor(Math.random() * 5) + 1;
+                      return projection([d.long, d.lat])[1] + jitter_y;
+                  } else {
+                      let jitter_y = -(Math.floor(Math.random() * 5) + 1);
+                      return projection([d.long, d.lat])[1] + jitter_y;
+                  }
+              }
+              )
+              .style('fill-opacity', 0.3)
+              .style('fill', '#f23c33')
+              .on('click', (d, i) => {
+                  d3.select('#tweet')
+                      .html('<p>'+d.text+'</p>')
+              })
+            .merge(circle)
+              .transition()
+              .duration(500)
+                  .attr('r', 5)
+                // .attr('r', d => {
+                //   console.log(d.cidade+": "+d.Count+" >> "+scaleArea(d.Count));
+                //   return scaleArea(d.Count);
+                // });
+        }
 
       function showData() {
+
+          let tweets = store.tweets;
+          cityById = groupByCity(tweets);
+
+          let last_date = new Date(2020, 1, 27);
+          for( let i = 0; i < tweets.length; ++i ) {
+            let temp = tweets[i].date.split(" ")[0].split("-");
+            let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+
+            tweets[i].date_object = date;
+            tweets[i].lat = +tweets[i].lat;
+            tweets[i].long = +tweets[i].long;
+            tweets[i].id = i;
+
+            if( last_date < tweets[i].date_object ) {
+                last_date = tweets[i].date_object;
+            }
+          }          
+          let subsetTwitter = tweets.filter(d => d.date_object.getDay() == last_date.getDay() &&
+                                                 d.date_object.getMonth() == last_date.getMonth() &&
+                                                 d.date_object.getYear() == last_date.getYear());
+
+
+          let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
+          document.getElementById('dateTwitter').max = distinctDatesTwitter.length;
+          document.getElementById('dateTwitter').value = distinctDatesTwitter.length;
+
+
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
           document.getElementById('realProgression').max = distinctDates.length-1;
           document.getElementById('realProgression').value = distinctDates.length-1;
@@ -1235,8 +1372,12 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           document.getElementById('dateGoogleTrends').max = maxValue;
           document.getElementById('dateGoogleTrends').value = maxValue;
 
+
+          allTweets = tweets;
+          drawSubsetTweets(subsetTwitter, store, false);
+
           drawMapReal(store.geoJSON);
-          drawStatisticalCharts(store);
+          // drawStatisticalCharts(store);
           drawGoogleTrendsLegend(getMapConfig("#map-google").container);
 
           let g_description = getMapConfig("#map-google").container.append('g')
@@ -1249,18 +1390,54 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           drawGoogleTrends(colors(googleTrendsMap.columns[2]), googleTrendsMap.columns[2]);
       } 
 
+      function groupByCity(data) {
+          let result = data.reduce((result, d) => {
+              let currentDest = result[d.cityid] || {
+                  'cityid': d.cityid,
+                  'cidade': d.cidade,
+                  'lat': +d.lat,
+                  'long': +d.long,
+                  'diasfrom': +d.diasfrom,
+                  'Count': 0,
+                  'first_tweet': +d.diasfrom
+              };
+
+              currentDest.Count += 1;
+              
+              if( result[d.cityid] )
+                  currentDest.first_tweet = Math.min(currentDest.first_tweet, result[d.cityid].first_tweet);
+              result[d.cityid] = currentDest;
+              return result;
+          }, {});
+
+          result = Object.keys(result).map(key => result[key]);
+          return result;
+      }
+
       function loadData() {
           return Promise.all([
               d3.json('geo/sp.geo.json'),
               d3.csv('data/cases-sp-cities.csv'),
               d3.csv('data/evolucao_casos.csv'),
-              d3.csv('data/geoMap.csv')
+              d3.csv('data/geoMap.csv'),
+              d3.csv('data/all_tweets.csv')
           ]).then(datasets => {
 
               store.geoJSON = datasets[0];
               casosByCity = datasets[1];
               store.evolucao = datasets[2];
               googleTrendsMap = datasets[3];
+
+              store.tweets = datasets[4].filter(d => {
+
+                  let temp = d.date.split(" ")[0].split("-");
+                  let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+                  // tweets[i].data = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+
+
+                  return date >= new Date(2020, 1, 27);
+              });
+
 
               lastDate = new Date(2020, 0, 1);
               let temp = "";
@@ -1407,7 +1584,28 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
           document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate+'.';
-      })
+      });
+
+      document.getElementById('dateTwitter').addEventListener('input', function() {
+          let days = this.value;
+          let one_day = 1000*60*60*24;
+          for( let i = 0; i < allTweets.length; ++i ) {
+
+              let value = Math.round(allTweets[i].date_object-(new Date(2020, 1, 27)))/one_day;
+
+              if( value == days ) {
+                  date = allTweets[i].date_object;
+                  break;
+              }
+          }
+
+          let subsetTwitter = allTweets.filter(d => d.date_object.getDay() == date.getDay() &&
+                                               d.date_object.getMonth() == date.getMonth() &&
+                                               d.date_object.getYear() == date.getYear());
+          drawSubsetTweets(subsetTwitter, store, true);
+
+
+      });
       
     </script>
 
