@@ -340,7 +340,7 @@
   <h3>Monitoramento COVID-19 - São Paulo</h3>  
   <div>
     <span class="note">* As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação e da Secretaria do Estado de São Paulo***.</span><br/>
-      <span class="note">** Última atualização: 01/04/2020 às 10h00.</span>
+      <span class="note">** Última atualização: 01/04/2020 às 10h59.</span>
 
   </div>
 
@@ -352,7 +352,7 @@
     <div>
       <svg id="map-twitter">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
-            <label id="progressionTwitter" class="title">Dia: Hoje</label><br/>
+            <label id="progressionTwitter" class="title">Dia: 31/mar</label><br/>
             <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">  
         </foreignobject>
 
@@ -366,7 +366,7 @@
     <div>
       <svg id="map-covid">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
-            <label id="titleProgression" class="title">Dia: Hoje</label><br/>
+            <label id="titleProgression" class="title">Dia: 31/mar</label><br/>
             <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">  
         </foreignobject>
 
@@ -388,7 +388,7 @@
     <div>
       <svg id="map-google">
           <foreignobject class="node" x="727" y="230" width="200" height="100">                
-               <label id="progressionGoogleTrends" class="title">Dia: hoje</label><br/>
+               <label id="progressionGoogleTrends" class="title">Dia: 31/mar</label><br/>
               <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0">
           </foreignobject>
       </svg>
@@ -780,6 +780,21 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           'nov': 11,
           'dez': 12
       };
+
+      let number_to_month = {
+        0: 'jan',
+        1: 'fev',
+        2: 'mar',
+        3: 'abr',
+        4: 'mai',
+        5: 'jun',
+        6: 'jul',
+        7: 'ago',
+        8: 'set',
+        9: 'out',
+        10: 'nov',
+        11: 'dez'
+      }
 
 
 
@@ -1360,8 +1375,8 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
           let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
-          document.getElementById('dateTwitter').max = distinctDatesTwitter.length;
-          document.getElementById('dateTwitter').value = distinctDatesTwitter.length;
+          document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
+          document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
 
 
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
@@ -1589,12 +1604,14 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
       document.getElementById('dateTwitter').addEventListener('input', function() {
           let days = this.value;
           let one_day = 1000*60*60*24;
+          let object = null;
           for( let i = 0; i < allTweets.length; ++i ) {
 
               let value = Math.round(allTweets[i].date_object-(new Date(2020, 1, 27)))/one_day;
 
               if( value == days ) {
                   date = allTweets[i].date_object;
+                  object = allTweets[i];
                   break;
               }
           }
@@ -1603,8 +1620,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                                                d.date_object.getMonth() == date.getMonth() &&
                                                d.date_object.getYear() == date.getYear());
           drawSubsetTweets(subsetTwitter, store, true);
-
-
+          document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+number_to_month[+object.date.split(" ")[0].split("-")[1] - 1];
       });
       
     </script>
