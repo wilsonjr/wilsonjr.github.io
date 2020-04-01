@@ -353,9 +353,9 @@
       <svg id="map-twitter">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
             <label id="progressionTwitter" class="title">Dia: 31/mar</label><br/>
-            <button id="twitter-back"><<</button>     <button id="twitter-front" style="margin-left: 10px;">>></button>
+            <button id="twitter-back"><<</button>     <button id="twitter-front" style="margin-left: 10px;">>></button> <br>
 
-            <!-- <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">   -->
+            <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">   
         </foreignobject>
 
       </svg>
@@ -369,8 +369,8 @@
       <svg id="map-covid">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
             <label id="titleProgression" class="title">Dia: 31/mar</label><br/>
-            <button id="progression-back"><<</button>     <button id="progression-front" style="margin-left: 10px;">>></button>
-            <!-- <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">   -->
+            <button id="progression-back"><<</button>     <button id="progression-front" style="margin-left: 10px;">>></button> <br>
+            <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">   
         </foreignobject>
 
       </svg>
@@ -392,8 +392,8 @@
       <svg id="map-google">
           <foreignobject class="node" x="727" y="230" width="200" height="100">                
                <label id="progressionGoogleTrends" class="title">Dia: 31/mar</label><br/>
-               <button id="google-back"><<</button>     <button id="google-front" style="margin-left: 10px;">>></button>
-             <!--  <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0"> -->
+               <button id="google-back"><<</button>     <button id="google-front" style="margin-left: 10px;">>></button> <br>
+               <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0">
           </foreignobject>
       </svg>
     </div>
@@ -1501,23 +1501,23 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
           let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
-          // document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
-          // document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
+          document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
+          document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
           twitterDayMax = distinctDatesTwitter.length-1;
           twitterDay = distinctDatesTwitter.length-1;
           document.getElementById('twitter-front').disabled = true;          
 
 
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
-          // document.getElementById('realProgression').max = distinctDates.length-1;
-          // document.getElementById('realProgression').value = distinctDates.length-1;
+          document.getElementById('realProgression').max = distinctDates.length-1;
+          document.getElementById('realProgression').value = distinctDates.length-1;
           progressionDayMax = distinctDates.length-1;
           progressionDay = distinctDates.length-1;
           document.getElementById('progression-front').disabled = true;          
 
           let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
-          // document.getElementById('dateGoogleTrends').max = maxValue;
-          // document.getElementById('dateGoogleTrends').value = maxValue;
+          document.getElementById('dateGoogleTrends').max = maxValue;
+          document.getElementById('dateGoogleTrends').value = maxValue;
           googleDayMax = maxValue;
           googleDay = maxValue;
           document.getElementById('google-front').disabled = true;
@@ -1810,6 +1810,117 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           if( googleDay == 0 )
               document.getElementById('google-back').disabled = true;
         } 
+      });
+
+
+
+      document.getElementById('dateGoogleTrends').addEventListener('input', function() {
+          let value = this.value;
+          googleDay = value;
+          if( googleDay == 0 ) {
+              document.getElementById('google-back').disabled = true; 
+              document.getElementById('google-front').disabled = false; 
+          } else if( googleDay == googleDayMax ) {
+              document.getElementById('google-back').disabled = false; 
+              document.getElementById('google-front').disabled = true; 
+          } else {
+              document.getElementById('google-back').disabled = false; 
+              document.getElementById('google-front').disabled = false; 
+          }
+
+          let countDifferent = 0;
+          let targetDate = googleTrendsMap[0].ate;
+
+          for (var i = 0; i < googleTrendsMap.length; i++) {
+
+              if( value == countDifferent ) {
+                  targetDate = googleTrendsMap[i].ate;
+                  break;
+              }
+
+              if( targetDate != googleTrendsMap[i].ate ) {
+                  countDifferent += 1;
+                  targetDate = googleTrendsMap[i].ate;
+              }
+          }
+
+          subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+
+          drawGoogleTrends(colorTrends, termTrends);
+          document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate+'.';
+      });
+
+      document.getElementById('realProgression').addEventListener('input', function() {
+          let value = this.value;
+          progressionDay = value;
+          if( progressionDay == 0 ) {
+              document.getElementById('progression-back').disabled = true; 
+              document.getElementById('progression-front').disabled = false; 
+          } else if( progressionDay == progressionDayMax ) {
+              document.getElementById('progression-back').disabled = false; 
+              document.getElementById('progression-front').disabled = true; 
+          } else {
+              document.getElementById('progression-back').disabled = false; 
+              document.getElementById('progression-front').disabled = false; 
+          }
+
+
+          let countDifferent = 0;
+          let targetDate = casosByCity[0].data;
+
+          for (var i = 0; i < casosByCity.length; i++) {
+
+              if( value == countDifferent ) {
+                  targetDate = casosByCity[i].data;
+                  break;
+              }
+
+              if( targetDate != casosByCity[i].data ) {
+                  countDifferent += 1;
+                  targetDate = casosByCity[i].data;
+              }
+          }
+
+          let subset = casosByCity.filter(d => d.data == targetDate);
+          drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, subset, true);
+
+
+          document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate+'.';
+      });
+
+      document.getElementById('dateTwitter').addEventListener('input', function() {
+          let days = this.value;
+          twitterDay = days;
+          if( twitterDay == 0 ) {
+              document.getElementById('twitter-back').disabled = true; 
+              document.getElementById('twitter-front').disabled = false; 
+          } else if( twitterDay == twitterDayMax ) {
+              document.getElementById('twitter-back').disabled = false; 
+              document.getElementById('twitter-front').disabled = true; 
+          } else {
+              document.getElementById('twitter-back').disabled = false; 
+              document.getElementById('twitter-front').disabled = false; 
+          }
+
+
+          let one_day = 1000*60*60*24;
+          let object = null;
+          for( let i = 0; i < allTweets.length; ++i ) {
+
+              let value = Math.round(allTweets[i].date_object-(new Date(2020, 1, 27)))/one_day;
+
+              if( value == days ) {
+                  date = allTweets[i].date_object;
+                  object = allTweets[i];
+                  break;
+              }
+          }
+
+          let subsetTwitter = allTweets.filter(d => d.date_object.getDay() == date.getDay() &&
+                                               d.date_object.getMonth() == date.getMonth() &&
+                                               d.date_object.getYear() == date.getYear());
+          drawSubsetTweets(subsetTwitter, store, true);
+          document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+number_to_month[+object.date.split(" ")[0].split("-")[1] - 1];
       });
       
     </script>
