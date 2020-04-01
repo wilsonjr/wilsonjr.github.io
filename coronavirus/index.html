@@ -159,9 +159,13 @@
     }   
 
     .title {
-        font-family: "Lucida Console", Courier, monospace;
+        /*font-family: "Times New Roman";*/
         font: 14px;
-        font-weight: bold;
+    }
+
+    .department {
+        /*font-family: "Lucida Console", Courier, monospace;*/
+        font: 12px;
     }
 
      .numbers {
@@ -888,6 +892,11 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                       .text('CASOS CONFIRMADOS');
 
 
+              let g_description = container.append('g')
+                  .attr('transform', 'translate(10,650)');   
+
+              addUnespDescription(g_description);
+
           } else {
               g = container.select('.real_cases');
           }
@@ -1094,6 +1103,46 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
                       return opacity;
                   });
+      }
+
+      function addUnespDescription(g) {
+
+        console.log('adding description');
+
+        g.append('image')
+          .attr('x', 0)
+          .attr('y', -70)
+          .attr('xlink:href', 'unesp.svg')
+          .attr('width', 100)
+          .attr('height', 50)
+
+        g.append('text')
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr('text-anchor', 'start')
+          .attr('class', 'title')
+          .text('UNIVERSIDADE ESTADUAL PAULISTA')
+        g.append('text')
+          .attr('x', 0)
+          .attr('y', 17)
+          .attr('text-anchor', 'start')
+          .attr('class', 'title')
+          .text('"JÚLIO MESQUITA FILHO"')
+
+        g.append('text')
+          .attr('x', 0)
+          .attr('y', 40)
+          .attr('text-anchor', 'start')
+          .attr('class', 'department')
+          .text('Departamento de Matemática e Computação')
+
+        g.append('text')
+          .attr('x', 0)
+          .attr('y', 55)
+          .attr('text-anchor', 'start')
+          .attr('class', 'department')
+          .text('Campus de Presidente Prudente')
+
       }
 
 
