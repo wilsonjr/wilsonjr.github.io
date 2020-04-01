@@ -160,12 +160,12 @@
 
     .title {
         /*font-family: "Times New Roman";*/
-        font: 14px;
+        font: 12px;
     }
 
     .department {
         /*font-family: "Lucida Console", Courier, monospace;*/
-        font: 12px;
+        font: 10px;
     }
 
      .numbers {
@@ -885,7 +885,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
               }
               g_legend.append('text')
-                      .attr('x', d => 40)
+                      .attr('x', d => 35)
                       .attr('y', d => 20)
                       .attr('class', 'title')
                       .attr('text-anchor', 'start')
@@ -1078,6 +1078,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           paths.exit().remove();
 
           container.selectAll('path').style('fill-opacity', 0);
+
           paths.enter().append('path')
               .attr('d', d => { return path(d); })
               .style('stroke', '#ccc')
@@ -1224,10 +1225,13 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           drawStatisticalCharts(store);
           drawGoogleTrendsLegend(getMapConfig("#map-google").container);
 
+          let g_description = getMapConfig("#map-google").container.append('g')
+              .attr('transform', 'translate(10,650)');   
+          addUnespDescription(g_description);
+
+
           colorTrends = colors(googleTrendsMap.columns[2]);
           termTrends = googleTrendsMap.columns[2];
-
-
           drawGoogleTrends(colors(googleTrendsMap.columns[2]), googleTrendsMap.columns[2]);
       } 
 
