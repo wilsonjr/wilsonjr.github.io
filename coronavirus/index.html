@@ -353,7 +353,9 @@
       <svg id="map-twitter">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
             <label id="progressionTwitter" class="title">Dia: 31/mar</label><br/>
-            <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">  
+            <button id="twitter-back"><<</button>     <button id="twitter-front" style="margin-left: 10px;">>></button>
+
+            <!-- <input type="range" id="dateTwitter" name="dateTwitter" class="progressionRange" value="0">   -->
         </foreignobject>
 
       </svg>
@@ -367,7 +369,8 @@
       <svg id="map-covid">        
         <foreignobject class="node" x="700" y="5" width="300" height="100">                
             <label id="titleProgression" class="title">Dia: 31/mar</label><br/>
-            <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">  
+            <button id="progression-back"><<</button>     <button id="progression-front" style="margin-left: 10px;">>></button>
+            <!-- <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">   -->
         </foreignobject>
 
       </svg>
@@ -389,7 +392,8 @@
       <svg id="map-google">
           <foreignobject class="node" x="727" y="230" width="200" height="100">                
                <label id="progressionGoogleTrends" class="title">Dia: 31/mar</label><br/>
-              <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0">
+               <button id="google-back"><<</button>     <button id="google-front" style="margin-left: 10px;">>></button>
+             <!--  <input type="range" id="dateGoogleTrends" name="dateGoogleTrends" class="progressionRange" value="0"> -->
           </foreignobject>
       </svg>
     </div>
@@ -754,6 +758,15 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
       let subsetGoogleTrendsMap = null;
       let allTweets = null;
       let cityById = null;
+
+      let googleDayMax = 0;
+      let googleDay = 0;
+
+      let progressionDayMax = 0;
+      let progressionDay = 0;
+
+      let twitterDayMax = 0;
+      let twitterDay = 0;
 
 
       let store = {};
@@ -1226,11 +1239,13 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                   .attr('cx', 0)
                   .attr('cy', i * 30 + 10)
                   .attr('r', 7)
-                  .style('fill', colors(googleTrends[i]))
-                  .on('click', d => {
+                  .style('fill', termTrends == googleTrends[i] ? colors(googleTrends[i]) : 'gray')
+                  .on('click', function() {
                       colorTrends = colors(googleTrends[i]);
                       termTrends = googleTrends[i];
 
+                      trends_legend.selectAll('circle').style('fill', 'gray');                      
+                      d3.select(this).style('fill', colorTrends);
                       drawGoogleTrends(colors(googleTrends[i]), googleTrends[i]);
                   });
 
@@ -1314,9 +1329,76 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
               let g_description = container.append('g')
-                  .attr('transform', 'translate(10,650)');   
-
+                  .attr('transform', 'translate(10,650)');  
               addUnespDescription(g_description);
+
+
+              let g_density = container.append('g')
+                .attr('transform', 'translate(10, 30)');
+
+
+               g_density.append('text')
+                .attr('x', 0)
+                .attr('y', -5)
+                .attr('text-anchor', 'start')
+                .style('font-family', 'Times New Roman')
+                .style('font', '14px')
+                .text('Número de tweets');
+
+
+              let elements = [1, 5, 15];
+
+              for( let i = 0; i < elements.length; ++i ) {
+
+                for( let j = 0; j < elements[i]; ++j ) {
+                  g_density.append('rect')
+                    .attr('x', i*50)
+                    .attr('y', 0)
+                    .attr('width', 45)
+                    .attr('height', 45)
+                    .style('fill', 'red')
+                    .style('fill-opacity', 0.1)
+                    .style('stroke', 'none');
+                }
+
+                g_density.append('text')
+                  .attr('x', i*50)
+                  .attr('y', 60)
+                  .attr('text-anchor', 'start')
+                  .style('font-family', 'Times New Roman')
+                  .style('font', '14px')
+                  .text(elements[i] == 15 ? '+15' : elements[i]);
+
+
+              }
+
+
+
+
+              // let scaleWidth = 300;
+              // let colorScale = d3.scaleSequential(d3.interpolateReds)
+              //     .domain([0, scaleWidth*2]);
+
+              // let bars = g_density.selectAll(".bars")
+              //     .data(d3.range(scaleWidth*2), function(d) { return d; })
+              //   .enter().append("rect")
+              //     .attr("class", "bars")
+              //     .attr("x", d => d/2.0)
+              //     .attr("y", 0)
+              //     .attr("height", 20)
+              //     .attr("width", 1)
+              //     .style("fill", function(d, i ) { return colorScale(d); })
+              //     .style('stroke-opacity', 0);
+
+              // g_density.append('text')
+              //   .attr('x', 0)
+              //   .attr('y', 25)
+              //   .attr('text-anchor', 'start')
+              //   .style('font-family', 'Times New Roman')
+              //   .style('font', '14px')
+              //   .text('max');
+
+              
           }
 
           let g = null;
@@ -1372,8 +1454,8 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                   }
               }
               )
-              .style('fill-opacity', 0.3)
-              .style('fill', '#f23c33')
+              .style('fill-opacity', 0.1)
+              .style('fill', 'red')
               .on('click', (d, i) => {
                   d3.select('#tweet')
                       .html('<p>'+d.text+'</p>')
@@ -1413,17 +1495,26 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
           let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
-          document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
-          document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
+          // document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
+          // document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
+          twitterDayMax = distinctDatesTwitter.length-1;
+          twitterDay = distinctDatesTwitter.length-1;
+          document.getElementById('twitter-front').disabled = true;          
 
 
           let distinctDates = [...new Set(casosByCity.map(d => d.data))];
-          document.getElementById('realProgression').max = distinctDates.length-1;
-          document.getElementById('realProgression').value = distinctDates.length-1;
+          // document.getElementById('realProgression').max = distinctDates.length-1;
+          // document.getElementById('realProgression').value = distinctDates.length-1;
+          progressionDayMax = distinctDates.length-1;
+          progressionDay = distinctDates.length-1;
+          document.getElementById('progression-front').disabled = true;          
 
           let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
-          document.getElementById('dateGoogleTrends').max = maxValue;
-          document.getElementById('dateGoogleTrends').value = maxValue;
+          // document.getElementById('dateGoogleTrends').max = maxValue;
+          // document.getElementById('dateGoogleTrends').value = maxValue;
+          googleDayMax = maxValue;
+          googleDay = maxValue;
+          document.getElementById('google-front').disabled = true;
 
 
           allTweets = tweets;
@@ -1431,7 +1522,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
           drawMapReal(store.geoJSON);
           // drawStatisticalCharts(store);
-          drawGoogleTrendsLegend(getMapConfig("#map-google").container);
+         
 
           let g_description = getMapConfig("#map-google").container.append('g')
               .attr('transform', 'translate(10,650)');   
@@ -1440,6 +1531,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
           colorTrends = colors(googleTrendsMap.columns[2]);
           termTrends = googleTrendsMap.columns[2];
+           drawGoogleTrendsLegend(getMapConfig("#map-google").container);
           drawGoogleTrends(colors(googleTrendsMap.columns[2]), googleTrendsMap.columns[2]);
       } 
 
@@ -1589,33 +1681,7 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
           return projection;
       }
 
-      document.getElementById('dateGoogleTrends').addEventListener('input', function() {
-          let value = this.value;
-
-          let countDifferent = 0;
-          let targetDate = googleTrendsMap[0].ate;
-
-          for (var i = 0; i < googleTrendsMap.length; i++) {
-
-              if( value == countDifferent ) {
-                  targetDate = googleTrendsMap[i].ate;
-                  break;
-              }
-
-              if( targetDate != googleTrendsMap[i].ate ) {
-                  countDifferent += 1;
-                  targetDate = googleTrendsMap[i].ate;
-              }
-          }
-
-          subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
-
-          drawGoogleTrends(colorTrends, termTrends);
-          document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate+'.';
-      });
-
-      document.getElementById('realProgression').addEventListener('input', function() {
-          let value = this.value;
+      function updateProgressionMap(value) {
           let countDifferent = 0;
           let targetDate = casosByCity[0].data;
 
@@ -1637,10 +1703,27 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
 
 
           document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate+'.';
+      }
+
+      document.getElementById('progression-front').addEventListener('click', () => {
+        if( progressionDay < progressionDayMax ) {
+          updateProgressionMap(++progressionDay);
+          document.getElementById('progression-back').disabled = false;
+          if( progressionDay == progressionDayMax )
+              document.getElementById('progression-front').disabled = true;
+        }
       });
 
-      document.getElementById('dateTwitter').addEventListener('input', function() {
-          let days = this.value;
+      document.getElementById('progression-back').addEventListener('click', () => {
+        if( progressionDay > 0 ) {
+          updateProgressionMap(--progressionDay);
+          document.getElementById('progression-front').disabled = false;
+          if( progressionDay == 0 )
+              document.getElementById('progression-back').disabled = true;
+        } 
+      });
+
+      function updateTwitterMap(days) {
           let one_day = 1000*60*60*24;
           let object = null;
           for( let i = 0; i < allTweets.length; ++i ) {
@@ -1659,6 +1742,68 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                                                d.date_object.getYear() == date.getYear());
           drawSubsetTweets(subsetTwitter, store, true);
           document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+number_to_month[+object.date.split(" ")[0].split("-")[1] - 1];
+      }
+
+
+      document.getElementById('twitter-front').addEventListener('click', () => {
+        if( twitterDay < twitterDayMax ) {
+          updateTwitterMap(++twitterDay);
+          document.getElementById('twitter-back').disabled = false;
+          if( twitterDay == twitterDayMax )
+              document.getElementById('twitter-front').disabled = true;
+        }
+      });
+
+      document.getElementById('twitter-back').addEventListener('click', () => {
+        if( twitterDay > 0 ) {
+          updateTwitterMap(--twitterDay);
+          document.getElementById('twitter-front').disabled = false;
+          if( twitterDay == 0 )
+              document.getElementById('twitter-back').disabled = true;
+        } 
+      });
+
+
+      function updateGoogleMap(value) {
+        let countDifferent = 0;
+        let targetDate = googleTrendsMap[0].ate;
+
+        for (var i = 0; i < googleTrendsMap.length; i++) {
+
+            if( value == countDifferent ) {
+                targetDate = googleTrendsMap[i].ate;
+                break;
+            }
+
+            if( targetDate != googleTrendsMap[i].ate ) {
+                countDifferent += 1;
+                targetDate = googleTrendsMap[i].ate;
+            }
+        }
+
+        subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+
+        drawGoogleTrends(colorTrends, termTrends);
+        document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate+'.';
+      }
+
+
+      document.getElementById('google-front').addEventListener('click', () => {
+        if( googleDay < googleDayMax ) {
+          updateGoogleMap(++googleDay);
+          document.getElementById('google-back').disabled = false;
+          if( googleDay == googleDayMax )
+              document.getElementById('google-front').disabled = true;
+        }
+      });
+
+      document.getElementById('google-back').addEventListener('click', () => {
+        if( googleDay > 0 ) {
+          updateGoogleMap(--googleDay);
+          document.getElementById('google-front').disabled = false;
+          if( googleDay == 0 )
+              document.getElementById('google-back').disabled = true;
+        } 
       });
       
     </script>
