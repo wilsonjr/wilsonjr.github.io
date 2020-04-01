@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="RADAR COVID-19 - UNESP atuando no mapeamento de Casos de Coronavirus no interior paulista.">
+  <meta name="description" content="RADAR COVID-19 - UNESP atuando no mapeamento de Casos de Coronavírus no interior paulista.">
 
   
   <link rel="alternate" hreflang="en-us" href="/coronavirus/">
@@ -116,8 +116,8 @@
   
   <meta property="og:site_name" content="RADAR COVID-19">
   <meta property="og:url" content="/coronavirus/">
-  <meta property="og:title" content="RADAR COVID-19 - UNESP atuando no mapeamento de Casos de Coronavirus no interior paulista.">
-  <meta property="og:description" content="UNESP atuando no mapeamento de Casos de Coronavirus no interior paulista."><meta property="og:image" content="/img/radar-icon.png">
+  <meta property="og:title" content="RADAR COVID-19 - UNESP atuando no mapeamento de Casos de Coronavírus no interior paulista.">
+  <meta property="og:description" content="UNESP atuando no mapeamento de Casos de Coronavírus no interior paulista."><meta property="og:image" content="/img/radar-icon.png">
   <meta property="twitter:image" content="/img/radar-icon.png"><meta property="og:locale" content="en-us">
   
     
@@ -1284,7 +1284,33 @@ Duas frentes são consideradas na análise e mineração de dados: uma de dados 
                   .attr('d', d => { return path(d); })
                   .style('stroke', '#ccc')
                   .style('stroke-width', 1)
-                  .style('fill-opacity', 0);
+                  .style('fill-opacity', 0)
+                  .on('mouseover', d => {
+
+                      tooltip.transition()
+                          .duration(200)
+                          .style('opacity', .9);
+
+                      let value = 0;
+
+                      let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+
+                      for (var i = 0; i < tweets.length; i++) {
+                          let cityName = tweets[i]['cidade'].split('-')[0].replace(/[^\x00-\x7F]/g, "");
+                          if( cityName.trim() == name.trim() ) {
+                              value++;
+                          }
+                      }
+                      tooltip.html("<p>"+d.properties.name+"</p>"+
+                                  "<p>"+value+" tweet(s).</p>")
+                          .style('left', (d3.event.pageX)+'px')
+                          .style('top', (d3.event.pageY - 28)+'px');
+                  })
+                  .on('mouseout', d => {
+                      tooltip.transition()
+                          .duration(500)
+                          .style('opacity', 0);
+                  });
 
 
               let g_description = container.append('g')
