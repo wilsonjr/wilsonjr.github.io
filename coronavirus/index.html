@@ -337,6 +337,16 @@
       </svg>
     </div>
 
+
+    <h5>Mapa 4: Qual seria o título desse mapa?</h5>
+    <div>
+        
+        <img src="data/mapas/image1.jpeg" id="image-mapa"/><br/>
+        <input type="button" id="dia-anterior" value="Dia anterior" />
+        <input type="button" id="proximo-dia" value="Próximo dia" />   
+    </div>
+
+
   </div>
 
 
@@ -791,8 +801,6 @@ Três pesquisas estão em desenvolvimento, frente a atual situação da dissemin
       }
 
       let showingTooltip = false;
-
-
 
       loadData().then(showData);
 
@@ -2170,6 +2178,36 @@ Três pesquisas estão em desenvolvimento, frente a atual situação da dissemin
           drawSubsetTweets(subsetTwitter, store, true);
           document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+number_to_month[+object.date.split(" ")[0].split("-")[1] - 1];
       });
+
+
+
+      /*****CODE FOR ANIMATION******/
+      let max_days = 30;
+      let day_mapa = 1;
+      
+      document.getElementById('proximo-dia').addEventListener('click', function() {
+        
+        day_mapa += 1;
+        document.getElementById('dia-anterior').disabled = false;          
+        document.getElementById('image-mapa').src = "data/mapas/image"+day_mapa+".jpeg";
+        if( day_mapa == max_days ) {
+          document.getElementById('proximo-dia').disabled = true;
+          
+        }
+      }); 
+
+      document.getElementById('dia-anterior').disabled = true;
+      document.getElementById('dia-anterior').addEventListener('click', function() {
+        day_mapa -= 1;
+                  
+        document.getElementById('proximo-dia').disabled = true;
+        document.getElementById('image-mapa').src = "data/mapas/image"+day_mapa+".jpeg";
+        if( day_mapa == 1 ) {
+          document.getElementById('dia-anterior').disabled = false;           
+        }
+      }); 
+
+      /*****************************/
       
     </script>
 
