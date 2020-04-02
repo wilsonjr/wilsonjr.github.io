@@ -752,6 +752,7 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
         11: 'dez'
       }
 
+      let showingTooltip = false;
 
 
 
@@ -782,32 +783,38 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
                   .data(countries)
                   .enter().append('path')
                   .attr('d', d => { return path(d); })
-                  .on('mouseover', d => {
-                      tooltip.transition()
-                          .duration(200)
-                          .style('opacity', .9);
+                  .on('click', d => {
 
-                      let value = 0;
-
-                      let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
-
-                      for (var i = 0; i < current.length; i++) {
-                          let cityName = current[i]['cidade'].replace(/[^\x00-\x7F]/g, "");
-                          if( cityName.trim() == name.trim() ) {
-                              value = current[i]['casos'];
-                              break;
-                          }
-                      }
-                      tooltip.html("<p>"+d.properties.name+"</p>"+
-                                  "<p>"+value+" caso(s) confirmados.</p>")
-                          .style('left', (d3.event.pageX)+'px')
-                          .style('top', (d3.event.pageY - 28)+'px');
-                  })
-                  .on('mouseout', d => {
+                    if( showingTooltip ) {
                       tooltip.transition()
                           .duration(500)
                           .style('opacity', 0);
-                  });
+                    } else {
+                        tooltip.transition()
+                            .duration(200)
+                            .style('opacity', 1);
+  
+                        let value = 0;
+  
+                        let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+  
+                        for (var i = 0; i < current.length; i++) {
+                            let cityName = current[i]['cidade'].replace(/[^\x00-\x7F]/g, "");
+                            if( cityName.trim() == name.trim() ) {
+                                value = current[i]['casos'];
+                                break;
+                            }
+                        }
+                        tooltip.html("<p>"+d.properties.name+"</p>"+
+                                    "<p>"+value+" caso(s) confirmados.</p>")
+                            .style('left', (d3.event.pageX)+'px')
+                            .style('top', (d3.event.pageY - 28)+'px');
+                    }
+                    showingTooltip = !showingTooltip;
+                  })
+                  // .on('mouseout', d => {
+                      
+                  // });
 
 
           } 
@@ -1313,8 +1320,13 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
                   .style('stroke', '#ccc')
                   .style('stroke-width', 1)
                   .style('fill-opacity', 0)
-                  .on('mouseover', d => {
+                  .on('click', d => {
 
+                    if( showingTooltip ) {
+                      tooltip.transition()
+                          .duration(500)
+                          .style('opacity', 0);
+                    } else {
                       tooltip.transition()
                           .duration(200)
                           .style('opacity', .9);
@@ -1333,12 +1345,15 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
                                   "<p>"+value+" tweet(s).</p>")
                           .style('left', (d3.event.pageX)+'px')
                           .style('top', (d3.event.pageY - 28)+'px');
+                    }
+                    showingTooltip = !showingTooltip;
+                     
                   })
-                  .on('mouseout', d => {
-                      tooltip.transition()
-                          .duration(500)
-                          .style('opacity', 0);
-                  });
+                  // .on('mouseout', d => {
+                  //     tooltip.transition()
+                  //         .duration(500)
+                  //         .style('opacity', 0);
+                  // });
 
 
               let g_description = container.append('g')
