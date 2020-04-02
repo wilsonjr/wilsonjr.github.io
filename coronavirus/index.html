@@ -864,7 +864,6 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
               for( let  i = 1; i <= max; i++ ) {
 
                   let r = scaleArea(i*step);
-                  console.log(r_before, 40, r, r_before + 40 + r)
                   g_legend.append('circle')
                       .attr('cx', d => x_before + r_before + 20 + r)
                       .attr('cy', d => 50)
@@ -1168,6 +1167,48 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           //   .attr('class', 'title')
           //   .text('Interesse nos sintomas de COVID-19 ao longo do tempo')
 
+          let g_density = container.append('g')  
+              .attr('class', 'g_density')
+              .attr('transform', 'translate(10, 25)');
+
+          let scaleWidth = 300;
+          let colorScale = d3.scaleSequential(d3.interpolateGreys)
+              .domain([0, scaleWidth*2]);
+
+          let bars = g_density.selectAll(".bars")
+              .data(d3.range(scaleWidth*2), function(d) { return d; })
+            .enter().append("rect")
+              .attr("class", "bars")
+              .attr("x", d => d/2.0)
+              .attr("y", 0)
+              .attr("height", 20)
+              .attr("width", 1)
+              .style("fill", function(d, i ) { return colorScale(d); })
+              .style('stroke-opacity', 0);
+
+          g_density.append('text')
+            .attr('x', 0)
+            .attr('y', 35)
+            .attr('text-anchor', 'start')
+            .style('font-family', 'Times New Roman')
+            .style('font', '14px')
+            .text('Sem interesse');
+
+          g_density.append('text')
+            .attr('x', scaleWidth)
+            .attr('y', 35)
+            .attr('text-anchor', 'end')
+            .style('font-family', 'Times New Roman')
+            .style('font', '14px')
+            .text('Maior interesse');
+
+          g_density.append('text')
+            .attr('x', scaleWidth/2)
+            .attr('y', -8)
+            .attr('text-anchor', 'middle')
+            .style('font-family', 'Times New Roman')
+            .style('font', '16px')
+            .text('INTERESSE NO SINTOMA');
 
 
           let trends_legend = container.append('g')  
@@ -1220,6 +1261,25 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           drawMapGoogleTrends(config.container, geoJson.features, projection, geoJson, color, symptom);
       }
 
+      function groupByCityName(data) {
+          let result = data.reduce((result, d) => {
+              let currentDest = result[d.cidade.split('-')[0].replace(/[^\x00-\x7F]/g, "")] || {
+                  'cidade': d.cidade,
+                  'lat': +d.lat,
+                  'long': +d.long,
+                  'Count': 0
+              };
+
+              currentDest.Count += 1;
+              
+              result[d.cidade.split('-')[0].replace(/[^\x00-\x7F]/g, "")] = currentDest;
+              return result;
+          }, {});
+
+          result = Object.keys(result).map(key => result[key]);
+          return result;
+      }
+
       function drawSubsetTweets(tweets, store, update) {
           let geoJson = store.geoJSON;
           let evolucao = store.evolucao;
@@ -1229,6 +1289,7 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           let projection = getMapProjection(config, geoJson);
           let container = config.container;
           let states = geoJson.features;
+          let g_legend = null;
 
           if( !update ) {
               let path = d3.geoPath()
@@ -1276,44 +1337,47 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
               addUnespDescription(g_description);
 
 
-              let g_density = container.append('g')
+              g_legend = container.append('g')
                 .attr('transform', 'translate(10, 30)');
 
 
-               g_density.append('text')
-                .attr('x', 0)
-                .attr('y', -5)
-                .attr('text-anchor', 'start')
-                .style('font-family', 'Times New Roman')
-                .style('font', '14px')
-                .text('Número de tweets');
+              //  g_density.append('text')
+              //   .attr('x', 0)
+              //   .attr('y', -5)
+              //   .attr('text-anchor', 'start')
+              //   .style('font-family', 'Times New Roman')
+              //   .style('font', '14px')
+              //   .text('Número de tweets');
 
 
-              let elements = [1, 5, 15];
+              // let elements = [1, 5, 15];
 
-              for( let i = 0; i < elements.length; ++i ) {
+              // for( let i = 0; i < elements.length; ++i ) {
 
-                for( let j = 0; j < elements[i]; ++j ) {
-                  g_density.append('rect')
-                    .attr('x', i*50)
-                    .attr('y', 0)
-                    .attr('width', 45)
-                    .attr('height', 45)
-                    .style('fill', 'red')
-                    .style('fill-opacity', 0.1)
-                    .style('stroke', 'none');
-                }
+              //   for( let j = 0; j < elements[i]; ++j ) {
+              //     g_density.append('rect')
+              //       .attr('x', i*50)
+              //       .attr('y', 0)
+              //       .attr('width', 45)
+              //       .attr('height', 45)
+              //       .style('fill', 'red')
+              //       .style('fill-opacity', 0.1)
+              //       .style('stroke', 'none');
+              //   }
 
-                g_density.append('text')
-                  .attr('x', i*50 + 45/2)
-                  .attr('y', 63)
-                  .attr('text-anchor', 'middle')
-                  .style('font-family', 'Times New Roman')
-                  .style('font', '14px')
-                  .text(elements[i] == 15 ? '+15' : elements[i]);
+              //   g_density.append('text')
+              //     .attr('x', i*50 + 45/2)
+              //     .attr('y', 63)
+              //     .attr('text-anchor', 'middle')
+              //     .style('font-family', 'Times New Roman')
+              //     .style('font', '14px')
+              //     .text(elements[i] == 15 ? '+15' : elements[i]);
 
 
-              }
+              // }
+
+
+              
 
 
 
@@ -1361,44 +1425,56 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           // console.log(tweetsById);
 
 
-          // let scaleArea = d3.scaleLinear()
-          //     .domain([d3.min(tweetsById, d => d.Count), d3.max(tweetsById, d => d.Count)])
-          //     .range([3, 25]);
 
           // console.log('min: '+d3.min(tweetsById, d => d.Count));
           // console.log('max: '+d3.max(tweetsById, d => d.Count));
 
+          let groupedCities = groupByCity(tweets);
+          console.log('groupedCities');
+          console.log(groupedCities);
+
+          let groupedCitiesName = groupByCityName(tweets);
+          console.log('groupedCitiesName');
+          console.log(groupedCitiesName);
+          // groupedCitiesName = groupedCitiesName.filter(d => d.cidade.split('-')[0].replace(/[^\x00-\x7F]/g, "") != "São Paulo".replace(/[^\x00-\x7F]/g, ""))
+
+
+          let scaleArea = d3.scaleLinear()
+              .domain([d3.min(groupedCitiesName, d => d.Count), d3.max(groupedCitiesName, d => d.Count)])
+              .range([5, 15]);
 
           let circle = g.selectAll('circle')
-              .data(tweets, d => d.id);
+              .data(groupedCitiesName, d => d.cidade.split('-')[0].replace(/[^\x00-\x7F]/g, ""));
 
           circle.exit().remove();
 
           circle.enter().append('circle')    
-              .attr('cx', d => //projection([d.long, d.lat])[0]
-              { 
-                  if( Math.floor(Math.random() * 2) + 1 ) {
-                      let jitter_x = Math.floor(Math.random() * 10) + 1;
-                      return projection([d.long, d.lat])[0] + jitter_x;
-                  } else {
-                      let jitter_x = -(Math.floor(Math.random() * 10) + 1);
-                      return projection([d.long, d.lat])[0] + jitter_x;
-                  }
-              }
+              .attr('cx', d => projection([d.long, d.lat])[0]
+              // { 
+              //     if( Math.floor(Math.random() * 2) + 1 ) {
+              //         let jitter_x = Math.floor(Math.random() * 10) + 1;
+              //         return projection([d.long, d.lat])[0] + jitter_x;
+              //     } else {
+              //         let jitter_x = -(Math.floor(Math.random() * 10) + 1);
+              //         return projection([d.long, d.lat])[0] + jitter_x;
+              //     }
+              // }
               )
-              .attr('cy', d => //projection([d.long, d.lat])[1]
-              { 
-                  if( Math.floor(Math.random() * 2) + 1 ) {
-                      let jitter_y = Math.floor(Math.random() * 10) + 1;
-                      return projection([d.long, d.lat])[1] + jitter_y;
-                  } else {
-                      let jitter_y = -(Math.floor(Math.random() * 10) + 1);
-                      return projection([d.long, d.lat])[1] + jitter_y;
-                  }
-              }
+              .attr('cy', d => projection([d.long, d.lat])[1]
+              // { 
+              //     if( Math.floor(Math.random() * 2) + 1 ) {
+              //         let jitter_y = Math.floor(Math.random() * 10) + 1;
+              //         return projection([d.long, d.lat])[1] + jitter_y;
+              //     } else {
+              //         let jitter_y = -(Math.floor(Math.random() * 10) + 1);
+              //         return projection([d.long, d.lat])[1] + jitter_y;
+              //     }
+              // }
               )
-              .style('fill-opacity', 0.1)
-              .style('fill', 'red')
+              .style('fill', '#eb4034')
+              .style('fill-opacity', 0.3)
+              .style('stroke','#eb4034' )
+              .style('stroke-opacity', 0.8)
               .on('click', (d, i) => {
                   d3.select('#tweet')
                       .html('<p>'+d.text+'</p>')
@@ -1406,12 +1482,73 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
             .merge(circle)
               .transition()
               .duration(500)
-                  .attr('r', 5)
-                // .attr('r', d => {
-                //   console.log(d.cidade+": "+d.Count+" >> "+scaleArea(d.Count));
-                //   return scaleArea(d.Count);
-                // });
-        }
+                  // .attr('r', 5)
+                .attr('r', d => {
+                  console.log(d.cidade+": "+d.Count+" >> "+scaleArea(d.Count));
+                  return scaleArea(d.Count);
+                });
+
+          if( !update ) {
+
+              let max = 4;
+              let step = (d3.max(groupedCitiesName, d => d.Count) - d3.min(groupedCitiesName, d => d.Count))/max;
+
+
+              g_legend.append('text')
+                .attr('x', d => 10)
+                .attr('y', d => 20)
+                .attr('text-anchor', 'start')
+                .style('font', '16px')
+                .style('font-family', 'Times New Roman')
+                .text('NÚMERO DE TWEETS'); 
+
+              g_legend.append('circle')
+                .attr('cx', d => 10)
+                .attr('cy', d => 50)
+                .attr('r', scaleArea(d3.min(groupedCitiesName, d => d.Count)))
+                .style('fill', '#eb4034')
+                .style('fill-opacity', 0.2)
+                .style('stroke', '#eb4034')
+                .style('stroke-opacity', 0.8); 
+
+              g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 50 + scaleArea(4*step) + 20)
+                  .attr('text-anchor', 'middle')
+                  .style('font', '14px')
+                  .style('font-family', 'Times New Roman')
+                  .text(d3.min(groupedCitiesName, d => d.Count)); 
+
+              let r_before = scaleArea(1);
+              let x_before = 10;
+              
+
+              for( let  i = 1; i <= max; i++ ) {
+
+                  let r = scaleArea(i*step);
+                  g_legend.append('circle')
+                      .attr('cx', d => x_before + r_before + 20 + r)
+                      .attr('cy', d => 50)
+                      .attr('r', r)
+                      .style('fill', '#eb4034')
+                      .style('fill-opacity', 0.2)
+                      .style('stroke', '#eb4034')
+                      .style('stroke-opacity', 0.8);  
+
+                  g_legend.append('text')
+                      .attr('x', d => x_before + r_before + 20 + r)
+                      .attr('y', d => 50 + scaleArea(4*step) + 20)
+                      .attr('text-anchor', 'middle')
+                      .style('font', '14px')
+                      .style('font-family', 'Times New Roman')
+                      .text(Math.floor(i*step));
+
+                  r_before = r;
+                  x_before = x_before + r_before + 20 + r;
+
+              }
+          }
+      }
 
       function showData() {
 
