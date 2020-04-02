@@ -283,7 +283,7 @@
 
   <div class="mainView">
 
-    <h4>Mapa 1: Rumores dos sintomas do novo coronavírus considerando <em>tweets</em>.</h4>
+    <h4>Mapa 1: Rumores dos sintomas do COVID-19 considerando <em>tweets</em>.</h4>
     <div>
       <svg id="map-twitter">        
         <foreignobject class="node" x="700" y="5" width="300" height="150">                
@@ -299,7 +299,7 @@
     <br/>
     <br/>
 
-    <h4>Mapa 2: Casos confirmados no Estado de São Paulo.</h4>
+    <h4>Mapa 2: Casos confirmados por cidade no Estado de São Paulo.</h4>
     <div>
       <span style="font: 6px;">* As informações apresentadas são de origem pública, obtidas por meio de veículos de comunicação e da Secretaria do Estado de São Paulo***.</span><br/>
       <span style="font: 6px;">** Última atualização: 01/04/2020 às 10h59.</span>
@@ -326,7 +326,7 @@
     <br/>
     <br/> -->
 
-    <h4>Mapa 3: Pesquisas dos sistomas do novo coronavírus (Google Trends).</h4>
+    <h4>Mapa 3: Resultado de pesquisas no Google considerando os sintomas do COVID-19.</h4>
     <div>
       <svg id="map-google">
           <foreignobject class="node" x="727" y="230" width="200" height="150">                
@@ -1160,12 +1160,21 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           //     .duration(2000)
           //         .style('fill-opacity', 0);
 
-          // container.append("text")
-          //   .attr('x', width/2)
-          //   .attr('y', 30)
-          //   .attr('text-anchor', 'middle')
-          //   .attr('class', 'title')
-          //   .text('Interesse nos sintomas de COVID-19 ao longo do tempo')
+          container.append("text")
+            .attr('x', 805)
+            .attr('y', 15)
+            .attr('text-anchor', 'middle')
+            .style('font-family', 'Times New Roman')
+            .style('font', '16px')
+            .text('Clique no círculo para')
+
+          container.append("text")
+            .attr('x', 805)
+            .attr('y', 35)
+            .attr('text-anchor', 'middle')
+            .style('font-family', 'Times New Roman')
+            .style('font', '16px')
+            .text('mudar de sintoma')
 
           let g_density = container.append('g')  
               .attr('class', 'g_density')
@@ -1485,7 +1494,6 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
                   // .attr('r', 5)
                 .attr('r', d => {
                   // console.log(d.Count+ ", "+Math.log(d.Count)+": "+scaleArea(Math.log(d.Count)));
-                  console.log("***"+scaleArea(Math.log(d.Count))+"***");
                   return scaleArea(Math.log(d.Count));
                 });
 
@@ -1650,6 +1658,7 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
           ]).then(datasets => {
 
               store.geoJSON = datasets[0];
+
               casosByCity = datasets[1];
               store.evolucao = datasets[2];
               googleTrendsMap = datasets[3];
@@ -1660,9 +1669,120 @@ Duas pesquisas estão em desenvolvimento, frente a atual situação da dissemina
                   let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
                   // tweets[i].data = new Date(+temp[0], +temp[1] - 1, +temp[2]);
 
-
                   return date >= new Date(2020, 1, 27);
               });
+
+              // cityid,cidade,lat,long,diasfrom,date,
+
+
+
+
+              // mais tarde
+
+              // let first_date = ""; 
+
+              
+              // let map_date = {};
+
+              // let all_tweets_normalized = [];
+
+
+              // for( let j = 0; j < store.tweets.length; ++j ) {
+              //   // console.log("hello "+j);
+              //   let date = store.tweets[j].date.split(" ")[0];
+
+              //   console.log(first_date+" != "+date);
+              //   if( first_date != date ) {
+
+              //     console.log('entrei aqui');
+              //     console.log(Object.keys(map_date).map(key => map_date[key]));
+              //     first_date = date;
+                  
+
+              //     all_tweets_normalized = all_tweets_normalized.concat(Object.keys(map_date).map(key => map_date[key]));
+              //     map_date = {};
+              //     store.geoJSON.features.forEach(function(d, i) {
+              //       let centroid = d3.geoCentroid(d);
+              //       map_date[d.properties.name.replace(/[^\x00-\x7F]/g, "")] = {
+              //         'cityid': i,
+              //         'cidade': d.properties.name,
+              //         'lat': +centroid[0],
+              //         'long': +centroid[1],
+              //         'Count': 0,
+              //         'date': store.tweets[i].date
+              //       }
+              //     });
+              //   }
+
+              //   for( let i = 0; i < store.geoJSON.features.length; ++i ) {
+              //     if( d3.geoContains(store.geoJSON.features[i], [+store.tweets[i].long, +store.tweets[i].lat]) ) {
+              //       map_date[store.geoJSON.features[i].properties.name.replace(/[^\x00-\x7F]/g, "")].Count += 1;
+              //       break;
+              //     }
+              //   } 
+                
+              // }
+              // console.log('all_tweets_normalized');
+              // console.log(all_tweets_normalized);
+
+              
+
+
+              // for( let i = 0; i < polygons.length; ++i ) {
+              //   console.log('Is '+store.tweets[0].cidade+' in '+polygons[i].properties.name+'? '+);
+              //   // console.log(polygons[i]);
+              //   console.log(d3.geoContains(polygons[i].geometry, [+store.tweets[0].lat, +store.tweets[0].long]))
+              //   // console.log([+store.tweets[0].lat, +store.tweets[0].long]);
+              //   // console.log(polygons[i]);
+              //   // if( d3.geoContains(polygons[i], [+store.tweets[0].lat, +store.tweets[0].long]) ) {
+              //   //     console.log("yes");
+              //   // } else
+              //   //   console.log('no');
+
+              // }
+
+
+
+              // store.geoJSON.features.forEach(function(d, i) {
+              //   map_date[d.properties.name] =
+              // });
+
+
+
+
+
+              // console.log('map_date')
+              // console.log(map_date);
+              // console.log(Object.keys(map_date).map(key => map_date[key]));
+
+
+
+
+
+
+              // store.geoJSON.features.forEach(function(d) {
+
+              //     if( d3.geoContains(d, [+store.tweets[0].long, +store.tweets[0].lat]) ) {
+              //       console.log("ACHEI");
+              //       console.log(d);
+              //       console.log(store.tweets);
+              //     }else
+              //       console.log("não achei")
+              // });
+
+              // let polygons = store.geoJSON.features;
+              // for( let i = 0; i < polygons.length; ++i ) {
+              //   console.log('Is '+store.tweets[0].cidade+' in '+polygons[i].properties.name+'? '+d3.geoContains(polygons[i], [+store.tweets[0].lat, +store.tweets[0].long]));
+              //   // console.log(polygons[i]);
+              //   console.log(d3.geoContains(polygons[i].geometry, [+store.tweets[0].lat, +store.tweets[0].long]))
+              //   // console.log([+store.tweets[0].lat, +store.tweets[0].long]);
+              //   // console.log(polygons[i]);
+              //   // if( d3.geoContains(polygons[i], [+store.tweets[0].lat, +store.tweets[0].long]) ) {
+              //   //     console.log("yes");
+              //   // } else
+              //   //   console.log('no');
+
+              // }
 
 
               lastDate = new Date(2020, 0, 1);
