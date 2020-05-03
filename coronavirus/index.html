@@ -341,7 +341,7 @@
 
     <div class="mainView">
 
-      <h4 id="casos-confirmados">Mapa Interativo 1: Casos confirmados por municípios no Estado de São Paulo.</h4>
+      <h4 id="casos-confirmados">KNN para difusão hierárquica - Arestas.</h4>
       <p>Dica: clique nos munícipios ou nos círculos para obter a quantidade de casos confirmados.</p>
       <div>
         <span style="font-size: 12px;">* As informações obtidas são origem pública, noticiadas pela secretaria de saúde do Estado.</span>
@@ -354,6 +354,28 @@
               <label id="titleProgression" class="title">Dia: 25/Fevereiro</label><br/>
               <button id="progression-back"><<</button>     <button id="progression-front" style="margin-left: 10px;">>></button> <br>
               <input type="range" id="realProgression" name="realProgression" class="progressionRange" value="0">   
+          </foreignobject>
+
+        </svg>
+      </div>
+
+      <br/>
+      <br/>
+
+
+      <h4 id="casos-confirmados-color">KNN para difusão hierárquica - Cores.</h4>
+      <p>Dica: clique nos munícipios ou nos círculos para obter a quantidade de casos confirmados.</p>
+      <div>
+        <span style="font-size: 12px;">* As informações obtidas são origem pública, noticiadas pela secretaria de saúde do Estado.</span>
+        <br/>
+        <span style="font-size: 12px;">** Última atualização: 08/04/2020 às 08h10, utilizando dados do dia anterior.</span>
+      </div>
+      <div>
+        <svg id="map-covid-color">        
+          <foreignobject class="node" x="700" y="5" width="300" height="150">                
+              <label id="titleProgressionColor" class="title">Dia: 25/Fevereiro</label><br/>
+              <button id="progression-back-color"><<</button>     <button id="progression-front-color" style="margin-left: 10px;">>></button> <br>
+              <input type="range" id="realProgressionColor" name="realProgressionColor" class="progressionRangeColor" value="0">   
           </foreignobject>
 
         </svg>
@@ -945,6 +967,9 @@
         let progressionDayMax = 0;
         let progressionDay = 0;
 
+        let progressionDayMaxColor = 0;
+        let progressionDayColor = 0;
+
         let twitterDayMax = 0;
         let twitterDay = 0;
 
@@ -1033,10 +1058,21 @@
 
         let showingTooltip = false;
 
+        let neighboring_cities = null, previous_neighboring_cities = [];
+
+
+        let configMapReal = null;
+        let projectionMapReal = null;
+        let geoJson = null;
+
+        let configMapRealColor = null;
+        let projectionMapRealColor = null;
+        let geoJsonColor = null;
+
         // loadData();
         loadData().then(showData);
 
-        function drawBaseMapReal(container, countries, projection, geoJson, subset, update) {
+        function drawBaseMapRealColor(container, countries, projection, geoJson, subset, update) {
             let backup = null;
 
             if( subset != null ) {
@@ -1100,22 +1136,48 @@
 
 
             } 
-
-            // container.selectAll('path').remove();
             
+            let filtered_current = current.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") in knn_cities);
+            // container.selectAll('path').remove();
+            let citiesWithCases = filtered_current.map(d => d.cidade.replace(/[^\x00-\x7F]/g, ""));
+
+            
+            neighboring_cities = [];
+
+            for( let i = 0; i < filtered_current.length; ++i ) {
+                let name_current = filtered_current[i].cidade.replace(/[^\x00-\x7F]/g, "");
+                let values = getKNN(name_current);
+
+                for( let j = 0; j < values.length; ++j ) {
+                  let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
+                  if( (citiesWithCases.indexOf(name_knn) == -1) )
+                    neighboring_cities.push(name_knn);
+                }
+            } 
+
+
+
             container.selectAll('path')
               .transition()
               .duration(update ? 1000 : 0)
                 .style('stroke', '#ccc')
                 .style('stroke-width', 1)
-                .style('fill', d => { 
-                    let value = 0;
-                    if( value == 0 )
+                .style('fill', d => {
+                    let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+
+                    if( neighboring_cities.indexOf(name) != -1 )
+                        return '#ffbb00';
+                    else if( previous_neighboring_cities != null && previous_neighboring_cities.indexOf(name) != -1 )
+                        return '#3455eb';
+                    else 
                         return '#fff';
 
-                    return d3.interpolateReds(value/max_casos);
-                });
+                    // let value = 0;
+                    // if( value == 0 )
+                    //     return '#fff';
 
+                    // return d3.interpolateReds(value/max_casos);
+                });
 
             let scaleArea = d3.scaleLog()
                 .domain([1, d3.max(backup, d => +d.casos)])
@@ -1235,7 +1297,245 @@
             }
 
             
+            
+            let circle = g.selectAll('circle')
+                .data(filtered_current, d => d.cidade);
+
+            circle.exit().remove();
+
+            circle.enter().append('circle')
+                .attr('cx', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[0])// 
+                .attr('cy', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[1])//
+                .on('click', d => {
+                    tooltip.html("<p>"+d.cidade+"</p>"+
+                                "<p>"+d.casos+" caso(s) confirmados.</p>")
+                        .style('left', (d3.event.pageX)+'px')
+                        .style('top', (d3.event.pageY - 28)+'px');
+
+                    let s = document.getElementById('tooltip').style;
+                    s.opacity = 1;
+                    function fade() {
+                      (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                    }
+                    fade();
+                 })
+                .style('fill', '#eb4034')
+                .style('fill-opacity', 0.2)
+                .style('stroke', '#eb4034')
+                .style('stroke-opacity', 0.8)
+              .merge(circle)
+              .transition()
+              .duration(500)
+                  .attr('r', d => scaleArea(+d.casos));
+
+
+            
+                
+            if( backup != null ) {
+                casosByCity = backup;
+            }
+        }
+
+        function drawBaseMapReal(container, countries, projection, geoJson, subset, update) {
+            let backup = null;
+
+            if( subset != null ) {
+                backup = casosByCity;
+                casosByCity = subset;
+            } else {
+
+                backup = casosByCity;
+
+                // casosByCity = backup.filter(d => d.date.getTime() == lastDate.getTime());
+                casosByCity = backup.filter(d => d.date.getTime() == casosByCity[0].date.getTime())
+            }
+
+            current = casosByCity;
+            let max_casos = d3.max(casosByCity, d => d.casos);
+
+
+            let path = d3.geoPath()
+                .projection(projection);
+
+            if( !update ) {
+                container.selectAll('path')
+                    .data(countries)
+                    .enter().append('path')
+                    .attr('d', d => { return path(d); })
+                    .on('click', d => {
+
+                      // if( showingTooltip ) {
+                      //   tooltip.transition()
+                      //       .duration(500)
+                      //       .style('opacity', 0);
+                      // } else {
+                          let value = 0;
+    
+                          let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+    
+                          for (var i = 0; i < current.length; i++) {
+                              let cityName = current[i]['cidade'].replace(/[^\x00-\x7F]/g, "");
+                              if( cityName.trim() == name.trim() ) {
+                                  value = current[i]['casos'];
+                                  break;
+                              }
+                          }
+                          tooltip.html("<p>"+d.properties.name+"</p>"+
+                                      "<p>"+value+" caso(s) confirmados.</p>")
+                              .style('left', (d3.event.pageX)+'px')
+                              .style('top', (d3.event.pageY - 28)+'px');
+
+                          let s = document.getElementById('tooltip').style;
+                          s.opacity = 1;
+                          function fade() {
+                            (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                          }
+                          fade();
+                      // }
+                      // showingTooltip = !showingTooltip;
+                    })
+                    // .on('mouseout', d => {
+                        
+                    // });
+
+
+            } 
+            
             let filtered_current = current.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") in knn_cities);
+
+            container.selectAll('path')
+              .transition()
+              .duration(update ? 1000 : 0)
+                .style('stroke', '#ccc')
+                .style('stroke-width', 1)
+                .style('fill', d => {
+
+                    let value = 0;
+                    if( value == 0 )
+                        return '#fff';
+
+                    // return d3.interpolateReds(value/max_casos);
+                });
+
+            let scaleArea = d3.scaleLog()
+                .domain([1, d3.max(backup, d => +d.casos)])
+                .range([5, 20]);
+
+            let scaleArea2 = d3.scaleLog()
+                .domain([1, Math.pow(Math.round(scaleArea.invert(25/2)), 2)])
+                .range([5, 20])
+
+            let scaleLegend = Math.pow(Math.round(scaleArea.invert(25/2)), 2) > d3.max(backup, d => +d.casos) ?
+                              scaleArea : scaleArea2;
+
+
+            let g = null, g_knn = null;
+            if( !update ) {
+                g = container.append('g')
+                    .attr('class', 'real_cases');     
+
+                g_knn = container.append('g')
+                  .attr('class', 'knn_cases');
+
+                let g_legend = container.append('g')
+                    .attr('transform', 'translate(0,20)');   
+
+                let max = 4;
+                let step = (d3.max(backup, d => +d.casos) - d3.min(backup, d => +d.casos))/max;
+
+
+                let numbers = [...new Set(backup.map(d =>  +d.casos))].sort(function compare(a, b) {
+                    if (a < b) return -1;
+                    if (a > b) return 1;
+                    return 0;
+                });
+              
+                let numbers_legend = [1,  Math.round(scaleArea.invert((20+5)/2)), Math.pow(Math.round(scaleArea.invert(25/2)), 2)];
+
+                g_legend.append('circle')
+                    .attr('cx', d => 15)
+                    .attr('cy', d => 50)
+                    .attr('r', scaleLegend(numbers_legend[0]))
+                    .style('fill', '#eb4034')
+                    .style('fill-opacity', 0.2)
+                    .style('stroke', '#eb4034')
+                    .style('stroke-opacity', 0.8);  
+
+                g_legend.append('text')
+                        .attr('x', d => 15)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text('1');
+                
+                let r_before = scaleLegend(numbers_legend[0]);
+                let x_before = 15;
+
+                for( let  i = 1; i < numbers_legend.length; i++ ) {
+
+                    let r = scaleLegend(numbers_legend[i]);
+
+                    g_legend.append('circle')
+                        .attr('cx', d => x_before + r_before + 20 + r)
+                        .attr('cy', d => 50)
+                        .attr('r', r)
+                        .style('fill', '#eb4034')
+                        .style('fill-opacity', 0.2)
+                        .style('stroke', '#eb4034')
+                        .style('stroke-opacity', 0.8);  
+
+                    g_legend.append('text')
+                        .attr('x', d => x_before + r_before + 20 + r)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text(numbers_legend[i]);
+
+                    r_before = r;
+                    x_before = x_before + r_before + 20 + r;
+
+                }
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 20)
+                  .style('font-size', 16)
+                  .style('font-family', 'Helvetica')
+                  .attr('text-anchor', 'start')
+                  .text('CASOS CONFIRMADOS*');
+
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 120)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('*Dimensionamento dos círculos:'); 
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 130)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('Escala logarítmica.');  
+
+
+                let g_description = container.append('g')
+                    .attr('transform', 'translate(10,650)');   
+
+                addUnespDescription(g_description);
+
+            } else {
+                g = container.select('.real_cases');
+                container.select('.knn_cases').selectAll("*").remove();
+                g_knn = container.select('.knn_cases');
+            }
+
+            
+            
             let circle = g.selectAll('circle')
                 .data(filtered_current, d => d.cidade);
 
@@ -1289,9 +1589,6 @@
 
                   let end = knn_cities[name_knn].centroid_xy;
 
-                  console.log('drawing line')
-                  console.log('from '+start+' to '+end);
-
                   g_knn.append('line')
                     .attr('x1', start[0])
                     .attr('y1', start[1])
@@ -1319,13 +1616,6 @@
                 casosByCity = backup;
             }
         }
-
-
-
-        
-
-
-
 
         function filterByCityName(cityName) {
           return casosByCity.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") == cityName.replace(/[^\x00-\x7F]/g, ""));
@@ -2602,6 +2892,16 @@
            drawBaseMapReal(config.container, geoJSON.features, projection, geoJSON, null);
         }
 
+        function drawMapRealColor(geoJSON) {
+            let config = getMapConfig('#map-covid-color');
+            let projection = getMapProjection(config, geoJSON);
+
+            configMapRealColor = config;
+            projectionMapRealColor = projection;
+            geoJsonColor = geoJSON;
+           drawBaseMapRealColor(config.container, geoJSON.features, projection, geoJSON, null);
+        }
+
         function drawMapGoogleTrends(container, countries, projection, geoJson, color, symptom) {
 
             let path = d3.geoPath()
@@ -3492,13 +3792,25 @@
             document.getElementById('twitter-front').disabled = true;          
 
 
+
+
             let distinctDates = [...new Set(casosByCity.map(d => d.data))];
             document.getElementById('realProgression').max = distinctDates.length-1;
             document.getElementById('realProgression').value = 0;// distinctDates.length-1;
             progressionDayMax = distinctDates.length-1;
             progressionDay = 0//distinctDates.length-1;
             // document.getElementById('progression-front').disabled = true;
-            document.getElementById('progression-back').disabled = true;          
+            document.getElementById('progression-back-color').disabled = true;   
+
+            document.getElementById('realProgressionColor').max = distinctDates.length-1;
+            document.getElementById('realProgressionColor').value = 0;// distinctDates.length-1;
+            progressionDayMaxColor = distinctDates.length-1;
+            progressionDayColor = 0//distinctDates.length-1;
+            // document.getElementById('progression-front').disabled = true;
+            document.getElementById('progression-back-color').disabled = true;          
+
+
+       
 
             let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
             document.getElementById('dateGoogleTrends').max = maxValue;
@@ -3511,6 +3823,7 @@
             
 
             drawMapReal(store.geoJSON);
+            drawMapRealColor(store.geoJSON);
             drawStatisticalCharts(store);
 
             // // must be after drawStatisticalCHarts: it uses firstDayAnalysis
@@ -3746,31 +4059,31 @@
             return result;
         }
 
-        // public static double DistanceTo(double lat1, double lon1, double lat2, double lon2, char unit = 'K')
-        // {
-        //     double rlat1 = Math.PI*lat1/180;
-        //     double rlat2 = Math.PI*lat2/180;
-        //     double theta = lon1 - lon2;
-        //     double rtheta = Math.PI*theta/180;
-        //     double dist =
-        //         Math.Sin(rlat1)*Math.Sin(rlat2) + Math.Cos(rlat1)*
-        //         Math.Cos(rlat2)*Math.Cos(rtheta);
-        //     dist = Math.Acos(dist);
-        //     dist = dist*180/Math.PI;
-        //     dist = dist*60*1.1515;
+        function distanceTo(lat1, lon1, lat2, lon2) {
+            let unit = 'K';
+            let rlat1 = Math.PI*lat1/180;
+            let rlat2 = Math.PI*lat2/180;
+            let theta = lon1 - lon2;
+            let rtheta = Math.PI*theta/180;
+            let dist =
+                Math.sin(rlat1)*Math.sin(rlat2) + Math.cos(rlat1)*
+                Math.cos(rlat2)*Math.cos(rtheta);
+            dist = Math.acos(dist);
+            dist = dist*180/Math.PI;
+            dist = dist*60*1.1515;
 
-        //     switch (unit)
-        //     {
-        //         case 'K': //Kilometers -> default
-        //             return dist*1.609344;
-        //         case 'N': //Nautical Miles 
-        //             return dist*0.8684;
-        //         case 'M': //Miles
-        //             return dist;
-        //     }
+            switch (unit)
+            {
+                case 'K': //Kilometers -> default
+                    return dist*1.609344;
+                case 'N': //Nautical Miles 
+                    return dist*0.8684;
+                case 'M': //Miles
+                    return dist;
+            }
 
-        //     return dist;
-        // }
+            return dist;
+        }
 
          function getKNN(name) {
           let value = knn_cities[name];
@@ -3790,6 +4103,8 @@
 
 
               for( let i = 0; i < temp_cities.length; ++i ) {
+
+                // temp_cities[i].temp_distance = distanceTo(value.centroid[0], value.centroid[1], temp_cities[i].centroid[0], temp_cities[i].centroid[1]);
                 temp_cities[i].temp_distance = distance(value.centroid_xy, temp_cities[i].centroid_xy);
               }
 
@@ -3799,14 +4114,6 @@
                 value.knn.push(temp_cities[i].name);
               }
           });
-
-
-
-
-          
-          console.log('temp_cities');
-          console.log(temp_cities);
-
         }
 
 
@@ -4132,6 +4439,7 @@
 
         document.getElementById('progression-front').addEventListener('click', () => {
           if( progressionDay < progressionDayMax ) {
+
             updateProgressionMap(++progressionDay);
             document.getElementById('progression-back').disabled = false;
             if( progressionDay == progressionDayMax )
@@ -4145,6 +4453,58 @@
             document.getElementById('progression-front').disabled = false;
             if( progressionDay == 0 )
                 document.getElementById('progression-back').disabled = true;
+          } 
+        });
+
+
+        function updateProgressionMapColor(value) {
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
+
+
+            document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        }
+
+        document.getElementById('progression-front-color').addEventListener('click', () => {
+          if( progressionDayColor < progressionDayMaxColor ) {
+
+            for( let i = 0; i < neighboring_cities.length; ++i )
+              previous_neighboring_cities.push(neighboring_cities[i]);
+
+
+            updateProgressionMapColor(++progressionDayColor);
+            document.getElementById('progression-back-color').disabled = false;
+            if( progressionDayColor == progressionDayMaxColor )
+                document.getElementById('progression-front-color').disabled = true;
+          }
+        });
+
+        document.getElementById('progression-back-color').addEventListener('click', () => {
+          if( progressionDayColor > 0 ) {
+
+            for( let i = 0; i < neighboring_cities.length; ++i )
+              previous_neighboring_cities.pop();
+
+            updateProgressionMapColor(--progressionDayColor);
+            document.getElementById('progression-front-color').disabled = false;
+            if( progressionDayColor == 0 )
+                document.getElementById('progression-back-color').disabled = true;
           } 
         });
 
@@ -4333,6 +4693,45 @@
 
             let subset = casosByCity.filter(d => d.data == targetDate);
             drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, subset, true);
+
+
+            document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        });
+
+
+        document.getElementById('realProgressionColor').addEventListener('input', function() {
+            let value = this.value;
+            progressionDayColor = value;
+            if( progressionDayColor == 0 ) {
+                document.getElementById('progression-back-color').disabled = true; 
+                document.getElementById('progression-front-color').disabled = false; 
+            } else if( progressionDayColor == progressionDayMaxColor ) {
+                document.getElementById('progression-back-color').disabled = false; 
+                document.getElementById('progression-front-color').disabled = true; 
+            } else {
+                document.getElementById('progression-back-color').disabled = false; 
+                document.getElementById('progression-front-color').disabled = false; 
+            }
+
+
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
 
 
             document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
