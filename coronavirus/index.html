@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
     <meta name="generator" content="Source Themes Academic 4.6.0">
     <meta name="author" content="Wilson E. Marcílio Júnior">
     
@@ -1069,6 +1071,15 @@
         let projectionMapRealColor = null;
         let geoJsonColor = null;
 
+        let kFirstLevel = 10;
+        let kSecondLevel = 5;
+
+
+        let ks = prompt("K1 e K2 separados por espaço (K2 <= K1)");
+        kFirstLevel = +ks.split(" ")[0];
+        kSecondLevel = Math.min(kFirstLevel, +ks.split(" ")[0]);
+
+
         // loadData();
         loadData().then(showData);
 
@@ -1584,10 +1595,15 @@
                   .style('stroke-width', 1);
 
 
+                let points = [];
+                let points_level2 = [];
+
                 for( let j = 0; j < values.length; ++j ) {
                   let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
 
                   let end = knn_cities[name_knn].centroid_xy;
+
+                  points.push(end);
 
                   g_knn.append('line')
                     .attr('x1', start[0])
@@ -1607,7 +1623,36 @@
                     .style('stroke', '#000')
                     .style('stroke-width', 1);
 
+
+                  let second_level = getKNN(name_knn);
+
+                  for( let k = 0; k < kSecondLevel; ++k ) {
+                    let name = second_level[k].replace(/[^\x00-\x7F]/g, "");
+
+                    points_level2.push(knn_cities[name].centroid_xy);
+                  }
+
                 }
+
+                g_knn.append('path')
+                  .attr('class', 'hull')
+                  .datum(d3.polygonHull(points_level2))
+                    .attr('d', d => "M" + d.join("L") + "Z")
+                    .style('fill','#4287f5')
+                    .style('fill-opacity', 0.2)
+                    .style('stroke','#4287f5')
+                    .style('stroke-width','0.4px')
+                    .style('stroke-linejoin', 'round');
+
+                g_knn.append('path')
+                  .attr('class', 'hull')
+                  .datum(d3.polygonHull(points))
+                    .attr('d', d => "M" + d.join("L") + "Z")
+                    .style('fill','#9205eb')
+                    .style('fill-opacity', 0.2)
+                    .style('stroke','#9205eb')
+                    .style('stroke-width','0.4px')
+                    .style('stroke-linejoin', 'round');
               }
 
             
@@ -1616,6 +1661,7 @@
                 casosByCity = backup;
             }
         }
+
 
         function filterByCityName(cityName) {
           return casosByCity.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") == cityName.replace(/[^\x00-\x7F]/g, ""));
@@ -4147,16 +4193,8 @@
                   }
                 }
 
-
-                compute_knn(knn_cities, 10);
-
-                console.log('knn_cities');
-                console.log(knn_cities);
-
-                let knnAM = getKNN('Santo Anastcio');
-                console.log("knnAM");
-                console.log(knnAM); 
-
+                console.log(kFirstLevel, kSecondLevel);
+                compute_knn(knn_cities, kFirstLevel);
 
                 casosByCity = datasets[1];
                 store.evolucao = datasets[2];
