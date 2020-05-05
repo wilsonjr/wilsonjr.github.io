@@ -344,12 +344,6 @@
     <div class="mainView">
 
       <h4 id="casos-confirmados">KNN para difusão hierárquica - Arestas.</h4>
-      <p>Dica: clique nos munícipios ou nos círculos para obter a quantidade de casos confirmados.</p>
-      <div>
-        <span style="font-size: 12px;">* As informações obtidas são origem pública, noticiadas pela secretaria de saúde do Estado.</span>
-        <br/>
-        <span style="font-size: 12px;">** Última atualização: 08/04/2020 às 08h10, utilizando dados do dia anterior.</span>
-      </div>
       <div>
         <svg id="map-covid">        
           <foreignobject class="node" x="700" y="5" width="300" height="150">                
@@ -366,18 +360,42 @@
 
 
       <h4 id="casos-confirmados-color">KNN para difusão hierárquica - Cores.</h4>
-      <p>Dica: clique nos munícipios ou nos círculos para obter a quantidade de casos confirmados.</p>
-      <div>
-        <span style="font-size: 12px;">* As informações obtidas são origem pública, noticiadas pela secretaria de saúde do Estado.</span>
-        <br/>
-        <span style="font-size: 12px;">** Última atualização: 08/04/2020 às 08h10, utilizando dados do dia anterior.</span>
-      </div>
-      <div>
+       <div>
         <svg id="map-covid-color">        
           <foreignobject class="node" x="700" y="5" width="300" height="150">                
               <label id="titleProgressionColor" class="title">Dia: 25/Fevereiro</label><br/>
               <button id="progression-back-color"><<</button>     <button id="progression-front-color" style="margin-left: 10px;">>></button> <br>
               <input type="range" id="realProgressionColor" name="realProgressionColor" class="progressionRangeColor" value="0">   
+          </foreignobject>
+
+        </svg>
+      </div>
+
+      <br/>
+      <br/>
+
+      <h4 id="casos-confirmados">KNN para difusão hierárquica - Áreas em perigo.</h4>
+      <div>
+        <svg id="map-covid-danger">        
+          <foreignobject class="node" x="700" y="5" width="300" height="150">                
+              <label id="titleProgressionDanger" class="title">Dia: 25/Fevereiro</label><br/>
+              <button id="progression-back-danger"><<</button>     <button id="progression-front-danger" style="margin-left: 10px;">>></button> <br>
+              <input type="range" id="realProgressionDanger" name="realProgressionDanger" class="progressionRangeDanger" value="0">   
+          </foreignobject>
+
+        </svg>
+      </div>
+
+      <br/>
+      <br/>
+
+      <h4 id="casos-confirmados">KNN para difusão hierárquica - ConvexHull.</h4>
+      <div>
+        <svg id="map-covid-hull">        
+          <foreignobject class="node" x="700" y="5" width="300" height="150">                
+              <label id="titleProgressionHull" class="title">Dia: 25/Fevereiro</label><br/>
+              <button id="progression-back-hull"><<</button>     <button id="progression-front-hull" style="margin-left: 10px;">>></button> <br>
+              <input type="range" id="realProgressionHull" name="realProgressionHull" class="progressionRangeHull" value="0">   
           </foreignobject>
 
         </svg>
@@ -475,317 +493,6 @@
 
   </div>
 
-  <div class="universal-wrapper" id="proximas-atividades">
-      <h1>Próximas atividades</h1>
-      <p>As próximas tarefas envolverão análises e predições relacionadas com dados de faixa etária e de densidade populacional dos municípios do Estado de São Paulo.</p>
-
-  </div>
-
-  <div class="universal-wrapper" id="pessoas-envolvidas">
-
-      
-      <h1>Pesquisadores envolvidos</h1>  
-
-      
-
-
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/rogerio.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Dr. Rogério Eduardo Garcia</a></h5>
-            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:rogerio.garcia@unesp.com" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Rogerio_Garcia" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=F6DXOMQAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0003-1248-528X" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>             
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/danilo.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Dr. Danilo Medeiros Eler</a></h5>
-            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:danilo.eler@unesp.com" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Danilo_Eler" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=p5mxNX8AAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="http://orcid.org/0000-0002-9493-145X" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="https://github.com/daniloeler" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i>
-                    </a>
-                  </li>
-                
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/ronaldo.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Dr. Ronaldo Celso Messias Correia</a></h5>
-            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:ronaldo.correia@unesp.br" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Ronaldo_Correia" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <!-- <li>
-                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li> -->
-                
-                  <li>
-                    <a href="http://orcid.org/0000-0002-8044-7333" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>
-              
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/carlos.gif" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Dr. Carlos Magno Castelo Branco Fortaleza</a></h5>
-            <h6 class="card-subtitle">Faculdade de Medicina (Câmpus de Botucatu)</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:carlos.fortaleza@unesp.br" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <!-- <li>
-                    <a href="https://www.researchgate.net/profile/Raul_Guimaraes" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li> -->
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=hbSM8agAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0003-4120-1258" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>             
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/raul.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Titular Raul Borges Guimarães</a></h5>
-            <h6 class="card-subtitle">Departamento de Geografia - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:raul.guimaraes@unesp.com" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Raul_Guimaraes" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=vGZaRYEAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0002-9925-5374" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>             
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/avatar_hue102bab58b683d05ea725ccd34a293b1_11390_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">MSc. Wilson Estécio Marcílio Júnior</a></h5>
-            <h6 class="card-subtitle">Doutorando em Ciência da Computação</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:wilson.marcilio@unesp.com" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Wilson_Estecio_Marcilio_Junior" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0002-8580-2779" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://github.com/wilsonjr" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i>
-                    </a>
-                  </li>       
-            </ul>
-
-          </div>
-      </div>
-
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/rafael.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Rafael Bezerra de Menezes Rodrigues</a></h5>
-            <h6 class="card-subtitle">Mestrando em Ciência da Computação</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:rafael.rodrigues@unesp.br" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                 <!--  <li>
-                    <a href="https://www.researchgate.net/profile/Wilson_Estecio_Marcilio_Junior" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0002-8580-2779" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li> -->
-              
-                  <li>
-                    <a href="https://github.com/RafaelBMR" target="_blank" rel="noopener">
-                      <i class="fab fa-github"></i>
-                    </a>
-                  </li>       
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="article-widget content-widget-hr">
-      <h3>Dados</h3>
-      <ul>
-        
-        <li>* <a href="https://github.com/wcota/covid19br"> COVID19BR</a></li>
-        <li>* <a href="https://www.seade.gov.br/coronavirus/"> SEADE</a></li>
-        
-      </ul>
-    </div>
   </div>
 
 
@@ -827,105 +534,10 @@
     </div>
   </div>
 
-  <div class="universal-wrapper" id="pessoas-envolvidas2">
-
-      
-      <h1>Pesquisadores envolvidos</h1>  
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/raul.jpg" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Titular Raul Borges Guimarães</a></h5>
-            <h6 class="card-subtitle">Departamento de Geografia - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:raul.guimaraes@unesp.com" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://www.researchgate.net/profile/Raul_Guimaraes" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li>
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=vGZaRYEAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="https://orcid.org/0000-0002-9925-5374" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>             
-            </ul>
-
-          </div>
-      </div>
-
-      <div class="media author-card content-widget-hr">
-          
-            
-          <img class="portrait mr-3" src="/authors/admin/edmur.gif" alt="Avatar">
-          
-
-          <div class="media-body">
-            <h5 class="card-title"><a href="#">Prof. Dr. Edmur Azevedo Pugliesi</a></h5>
-            <h6 class="card-subtitle">Departamento de Cartografia - FCT/UNESP</h6>
-            <ul class="network-icon" aria-hidden="true">
-                  <li>
-                    <a href="mailto:edmur.pugliesi@unesp.br" >
-                      <i class="fas fa-envelope"></i>
-                    </a>
-                  </li>
-              
-                  <!-- <li>
-                    <a href="https://www.researchgate.net/profile/Raul_Guimaraes" target="_blank" rel="noopener">
-                      <i class="ai ai-researchgate"></i>
-                    </a>
-                  </li> -->
-              
-                  <li>
-                    <a href="https://scholar.google.com.br/citations?user=Sn6QLkkAAAAJ" target="_blank" rel="noopener">
-                      <i class="ai ai-google-scholar"></i>
-                    </a>
-                  </li>
-                
-                  <li>
-                    <a href="http://orcid.org/0000-0003-3426-6619" target="_blank" rel="noopener">
-                      <i class="ai ai-orcid"></i>
-                    </a>
-                  </li>             
-            </ul>
-
-          </div>
-      </div>
-     
-    </div>
   </div>
 
 
-  <div class="universal-wrapper" id="detalhes-projetos">
-     <h1>O que estamos fazendo?</h1>  
-
-    <p>
-  Três pesquisas estão em desenvolvimento, frente a atual situação da disseminação do novo coronavírus: uma das pesquisas foca na análise e mineração de dados de redes sociais e a outra na análise de dados de rumores. Com as redes sociais (Twitter, mais precisamente), tem-se como foco a análise da publicação de notas, que pode ajudar a encontrar possíveis novos focos de disseminação de COVID-19. O mapeamento dos dados oficiais é um trabalho que envolve a checagem das bases de informação e elaboração de representações cartográficas tecnicamente mais adequadas. Dessa maneira, tweets são analisados diariamente de acordo com sua relevância para ajudar na busca por novos focos de COVID-19, assim como os mapas temáticos permitem uma visualização da distribuição espacial dos dados oficiais. Considerando a informação de casos confirmados de coronavírus no Estado de São Paulo, a localização dos tweets ajuda na análise de possíveis focos de disseminação do novo coronavírus.
-  </p>
-
-  <p>
-    O aplicativo para coleta de dados de rumores será lançado em breve!
-  </p>
-
-
-  </div>
-
+  
 
       <script type="text/javascript">
 
@@ -971,6 +583,12 @@
 
         let progressionDayMaxColor = 0;
         let progressionDayColor = 0;
+
+        let progressionDayMaxHull = 0;
+        let progressionDayHull = 0;
+
+        let progressionDayMaxDanger = 0;
+        let progressionDayDanger = 0;
 
         let twitterDayMax = 0;
         let twitterDay = 0;
@@ -1061,7 +679,15 @@
         let showingTooltip = false;
 
         let neighboring_cities = null, previous_neighboring_cities = [];
+        let neighboring_cities_danger = null, previous_neighboring_danger_cities = [];
 
+        let configMapRealHull = null;
+        let projectionMapRealHull = null;
+        let geoJsonHull = null;
+
+        let configMapRealDanger = null;
+        let projectionMapRealDanger = null;
+        let geoJsonDanger = null;
 
         let configMapReal = null;
         let projectionMapReal = null;
@@ -1082,6 +708,287 @@
 
         // loadData();
         loadData().then(showData);
+
+        function drawBaseMapRealDanger(container, countries, projection, geoJson, subset, update) {
+            let backup = null;
+
+            if( subset != null ) {
+                backup = casosByCity;
+                casosByCity = subset;
+            } else {
+
+                backup = casosByCity;
+
+                // casosByCity = backup.filter(d => d.date.getTime() == lastDate.getTime());
+                casosByCity = backup.filter(d => d.date.getTime() == casosByCity[0].date.getTime())
+            }
+
+            current = casosByCity;
+            let max_casos = d3.max(casosByCity, d => d.casos);
+
+
+            let path = d3.geoPath()
+                .projection(projection);
+
+            if( !update ) {
+                container.selectAll('path')
+                    .data(countries)
+                    .enter().append('path')
+                    .attr('d', d => { return path(d); })
+                    .on('click', d => {
+
+                      // if( showingTooltip ) {
+                      //   tooltip.transition()
+                      //       .duration(500)
+                      //       .style('opacity', 0);
+                      // } else {
+                          let value = 0;
+    
+                          let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+    
+                          for (var i = 0; i < current.length; i++) {
+                              let cityName = current[i]['cidade'].replace(/[^\x00-\x7F]/g, "");
+                              if( cityName.trim() == name.trim() ) {
+                                  value = current[i]['casos'];
+                                  break;
+                              }
+                          }
+                          tooltip.html("<p>"+d.properties.name+"</p>"+
+                                      "<p>"+value+" caso(s) confirmados.</p>")
+                              .style('left', (d3.event.pageX)+'px')
+                              .style('top', (d3.event.pageY - 28)+'px');
+
+                          let s = document.getElementById('tooltip').style;
+                          s.opacity = 1;
+                          function fade() {
+                            (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                          }
+                          fade();
+                      // }
+                      // showingTooltip = !showingTooltip;
+                    })
+                    // .on('mouseout', d => {
+                        
+                    // });
+
+
+            } 
+            
+            let filtered_current = current.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") in knn_cities);
+            // container.selectAll('path').remove();
+            let citiesWithCases = filtered_current.map(d => d.cidade.replace(/[^\x00-\x7F]/g, ""));
+
+            
+            neighboring_cities_danger = [];
+
+            for( let i = 0; i < filtered_current.length; ++i ) {
+                let name_current = filtered_current[i].cidade.replace(/[^\x00-\x7F]/g, "");
+                let values = getKNN(name_current);
+
+                for( let j = 0; j < values.length; ++j ) {
+                  let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
+                  if( (citiesWithCases.indexOf(name_knn) == -1) )
+                    neighboring_cities_danger.push(name_knn);
+                }
+            } 
+
+            // console.log('previous_neighboring_cities');
+            // console.log(previous_neighboring_danger_cities);
+            // console.log('neighboring_cities_danger');
+            // console.log(neighboring_cities_danger);
+            // console.log();
+
+            container.selectAll('path')
+              .transition()
+              .duration(0)
+                .style('stroke', '#ccc')
+                .style('stroke-width', 1)
+                .style('fill', d => {
+                    let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+                    if( neighboring_cities_danger.indexOf(name) != -1 )
+                        return '#ffbb00';
+                    else if( previous_neighboring_danger_cities != null && previous_neighboring_danger_cities.indexOf(name) != -1 ) {
+                       // let ocurrences = previous_neighboring_danger_cities.reduce((a, b) => a + (b  == name ? 1 : 0), 0);
+                       // console.log('number of ocurrences: ', ocurrences);
+                       return '#ccc';
+                    } else 
+                        return '#fff';
+
+                    // let value = 0;
+                    // if( value == 0 )
+                    //     return '#fff';
+
+                    // return d3.interpolateReds(value/max_casos);
+                })
+                .style('fill-opacity', d => {
+                    let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+
+                    if( neighboring_cities_danger.indexOf(name) != -1 ){ 
+                        let occurences = neighboring_cities_danger.reduce((a, b) => a + (b  == name ? 1 : 0), 0);
+                         
+                        return occurences*0.1;
+                    } else if( previous_neighboring_danger_cities != null && previous_neighboring_danger_cities.indexOf(name) != -1 )
+                        return 0.5;
+                    else 
+                        return 1;
+                });
+
+            let scaleArea = d3.scaleLog()
+                .domain([1, d3.max(backup, d => +d.casos)])
+                .range([5, 20]);
+
+            let scaleArea2 = d3.scaleLog()
+                .domain([1, Math.pow(Math.round(scaleArea.invert(25/2)), 2)])
+                .range([5, 20])
+
+            let scaleLegend = Math.pow(Math.round(scaleArea.invert(25/2)), 2) > d3.max(backup, d => +d.casos) ?
+                              scaleArea : scaleArea2;
+
+
+            let g = null, g_knn = null;
+            if( !update ) {
+                g = container.append('g')
+                    .attr('class', 'real_cases');     
+
+                g_knn = container.append('g')
+                  .attr('class', 'knn_cases');
+
+                let g_legend = container.append('g')
+                    .attr('transform', 'translate(0,20)');   
+
+                let max = 4;
+                let step = (d3.max(backup, d => +d.casos) - d3.min(backup, d => +d.casos))/max;
+
+
+                let numbers = [...new Set(backup.map(d =>  +d.casos))].sort(function compare(a, b) {
+                    if (a < b) return -1;
+                    if (a > b) return 1;
+                    return 0;
+                });
+              
+                let numbers_legend = [1,  Math.round(scaleArea.invert((20+5)/2)), Math.pow(Math.round(scaleArea.invert(25/2)), 2)];
+
+                g_legend.append('circle')
+                    .attr('cx', d => 15)
+                    .attr('cy', d => 50)
+                    .attr('r', scaleLegend(numbers_legend[0]))
+                    .style('fill', '#eb4034')
+                    .style('fill-opacity', 0.2)
+                    .style('stroke', '#eb4034')
+                    .style('stroke-opacity', 0.8);  
+
+                g_legend.append('text')
+                        .attr('x', d => 15)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text('1');
+                
+                let r_before = scaleLegend(numbers_legend[0]);
+                let x_before = 15;
+
+                for( let  i = 1; i < numbers_legend.length; i++ ) {
+
+                    let r = scaleLegend(numbers_legend[i]);
+
+                    g_legend.append('circle')
+                        .attr('cx', d => x_before + r_before + 20 + r)
+                        .attr('cy', d => 50)
+                        .attr('r', r)
+                        .style('fill', '#eb4034')
+                        .style('fill-opacity', 0.2)
+                        .style('stroke', '#eb4034')
+                        .style('stroke-opacity', 0.8);  
+
+                    g_legend.append('text')
+                        .attr('x', d => x_before + r_before + 20 + r)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text(numbers_legend[i]);
+
+                    r_before = r;
+                    x_before = x_before + r_before + 20 + r;
+
+                }
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 20)
+                  .style('font-size', 16)
+                  .style('font-family', 'Helvetica')
+                  .attr('text-anchor', 'start')
+                  .text('CASOS CONFIRMADOS*');
+
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 120)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('*Dimensionamento dos círculos:'); 
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 130)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('Escala logarítmica.');  
+
+
+                let g_description = container.append('g')
+                    .attr('transform', 'translate(10,650)');   
+
+                addUnespDescription(g_description);
+
+            } else {
+                g = container.select('.real_cases');
+                container.select('.knn_cases').selectAll("*").remove();
+                g_knn = container.select('.knn_cases');
+            }
+
+            
+            
+            let circle = g.selectAll('circle')
+                .data(filtered_current, d => d.cidade);
+
+            circle.exit().remove();
+
+            circle.enter().append('circle')
+                .attr('cx', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[0])// 
+                .attr('cy', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[1])//
+                .on('click', d => {
+                    tooltip.html("<p>"+d.cidade+"</p>"+
+                                "<p>"+d.casos+" caso(s) confirmados.</p>")
+                        .style('left', (d3.event.pageX)+'px')
+                        .style('top', (d3.event.pageY - 28)+'px');
+
+                    let s = document.getElementById('tooltip').style;
+                    s.opacity = 1;
+                    function fade() {
+                      (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                    }
+                    fade();
+                 })
+                .style('fill', '#eb4034')
+                .style('fill-opacity', 0.2)
+                .style('stroke', '#eb4034')
+                .style('stroke-opacity', 0.8)
+              .merge(circle)
+              .transition()
+              .duration(500)
+                  .attr('r', d => scaleArea(+d.casos));
+
+
+            
+                
+            if( backup != null ) {
+                casosByCity = backup;
+            }
+        }
 
         function drawBaseMapRealColor(container, countries, projection, geoJson, subset, update) {
             let backup = null;
@@ -1594,16 +1501,11 @@
                   .style('stroke', '#000')
                   .style('stroke-width', 1);
 
-
-                let points = [];
-                let points_level2 = [];
-
                 for( let j = 0; j < values.length; ++j ) {
                   let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
 
                   let end = knn_cities[name_knn].centroid_xy;
 
-                  points.push(end);
 
                   g_knn.append('line')
                     .attr('x1', start[0])
@@ -1623,9 +1525,275 @@
                     .style('stroke', '#000')
                     .style('stroke-width', 1);
 
+                }
+
+              }
+
+            
+                
+            if( backup != null ) {
+                casosByCity = backup;
+            }
+        }
+
+        function drawBaseMapHull(container, countries, projection, geoJson, subset, update) {
+            let backup = null;
+
+            if( subset != null ) {
+                backup = casosByCity;
+                casosByCity = subset;
+            } else {
+
+                backup = casosByCity;
+
+                // casosByCity = backup.filter(d => d.date.getTime() == lastDate.getTime());
+                casosByCity = backup.filter(d => d.date.getTime() == casosByCity[0].date.getTime())
+            }
+
+            current = casosByCity;
+            let max_casos = d3.max(casosByCity, d => d.casos);
+
+
+            let path = d3.geoPath()
+                .projection(projection);
+
+            if( !update ) {
+                container.selectAll('path')
+                    .data(countries)
+                    .enter().append('path')
+                    .attr('d', d => { return path(d); })
+                    .on('click', d => {
+
+                      // if( showingTooltip ) {
+                      //   tooltip.transition()
+                      //       .duration(500)
+                      //       .style('opacity', 0);
+                      // } else {
+                          let value = 0;
+    
+                          let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
+    
+                          for (var i = 0; i < current.length; i++) {
+                              let cityName = current[i]['cidade'].replace(/[^\x00-\x7F]/g, "");
+                              if( cityName.trim() == name.trim() ) {
+                                  value = current[i]['casos'];
+                                  break;
+                              }
+                          }
+                          tooltip.html("<p>"+d.properties.name+"</p>"+
+                                      "<p>"+value+" caso(s) confirmados.</p>")
+                              .style('left', (d3.event.pageX)+'px')
+                              .style('top', (d3.event.pageY - 28)+'px');
+
+                          let s = document.getElementById('tooltip').style;
+                          s.opacity = 1;
+                          function fade() {
+                            (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                          }
+                          fade();
+                      // }
+                      // showingTooltip = !showingTooltip;
+                    })
+                    // .on('mouseout', d => {
+                        
+                    // });
+
+
+            } 
+            
+            let filtered_current = current.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") in knn_cities);
+
+            container.selectAll('path')
+              .transition()
+              .duration(update ? 1000 : 0)
+                .style('stroke', '#ccc')
+                .style('stroke-width', 1)
+                .style('fill', d => {
+
+                    let value = 0;
+                    if( value == 0 )
+                        return '#fff';
+
+                    // return d3.interpolateReds(value/max_casos);
+                });
+
+            let scaleArea = d3.scaleLog()
+                .domain([1, d3.max(backup, d => +d.casos)])
+                .range([5, 20]);
+
+            let scaleArea2 = d3.scaleLog()
+                .domain([1, Math.pow(Math.round(scaleArea.invert(25/2)), 2)])
+                .range([5, 20])
+
+            let scaleLegend = Math.pow(Math.round(scaleArea.invert(25/2)), 2) > d3.max(backup, d => +d.casos) ?
+                              scaleArea : scaleArea2;
+
+
+            let g = null, g_knn = null;
+            if( !update ) {
+                g = container.append('g')
+                    .attr('class', 'real_cases');     
+
+                g_knn = container.append('g')
+                  .attr('class', 'knn_cases');
+
+                let g_legend = container.append('g')
+                    .attr('transform', 'translate(0,20)');   
+
+                let max = 4;
+                let step = (d3.max(backup, d => +d.casos) - d3.min(backup, d => +d.casos))/max;
+
+
+                let numbers = [...new Set(backup.map(d =>  +d.casos))].sort(function compare(a, b) {
+                    if (a < b) return -1;
+                    if (a > b) return 1;
+                    return 0;
+                });
+              
+                let numbers_legend = [1,  Math.round(scaleArea.invert((20+5)/2)), Math.pow(Math.round(scaleArea.invert(25/2)), 2)];
+
+                g_legend.append('circle')
+                    .attr('cx', d => 15)
+                    .attr('cy', d => 50)
+                    .attr('r', scaleLegend(numbers_legend[0]))
+                    .style('fill', '#eb4034')
+                    .style('fill-opacity', 0.2)
+                    .style('stroke', '#eb4034')
+                    .style('stroke-opacity', 0.8);  
+
+                g_legend.append('text')
+                        .attr('x', d => 15)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text('1');
+                
+                let r_before = scaleLegend(numbers_legend[0]);
+                let x_before = 15;
+
+                for( let  i = 1; i < numbers_legend.length; i++ ) {
+
+                    let r = scaleLegend(numbers_legend[i]);
+
+                    g_legend.append('circle')
+                        .attr('cx', d => x_before + r_before + 20 + r)
+                        .attr('cy', d => 50)
+                        .attr('r', r)
+                        .style('fill', '#eb4034')
+                        .style('fill-opacity', 0.2)
+                        .style('stroke', '#eb4034')
+                        .style('stroke-opacity', 0.8);  
+
+                    g_legend.append('text')
+                        .attr('x', d => x_before + r_before + 20 + r)
+                        .attr('y', d => 50 + scaleLegend(numbers_legend[numbers_legend.length-1]) + 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', 16)
+                        .style('font-family', 'Helvetica')
+                        .text(numbers_legend[i]);
+
+                    r_before = r;
+                    x_before = x_before + r_before + 20 + r;
+
+                }
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 20)
+                  .style('font-size', 16)
+                  .style('font-family', 'Helvetica')
+                  .attr('text-anchor', 'start')
+                  .text('CASOS CONFIRMADOS*');
+
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 120)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('*Dimensionamento dos círculos:'); 
+
+                g_legend.append('text')
+                  .attr('x', d => 10)
+                  .attr('y', d => 130)
+                  .attr('text-anchor', 'start')
+                  .style('font-size', 10)
+                  .style('font-family', 'Helvetica')
+                  .text('Escala logarítmica.');  
+
+
+                let g_description = container.append('g')
+                    .attr('transform', 'translate(10,650)');   
+
+                addUnespDescription(g_description);
+
+            } else {
+                g = container.select('.real_cases');
+                container.select('.knn_cases').selectAll("*").remove();
+                g_knn = container.select('.knn_cases');
+            }
+
+            
+            
+            let circle = g.selectAll('circle')
+                .data(filtered_current, d => d.cidade);
+
+            circle.exit().remove();
+
+            circle.enter().append('circle')
+                .attr('cx', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[0])// 
+                .attr('cy', d => knn_cities[d.cidade.replace(/[^\x00-\x7F]/g, "")].centroid_xy[1])//
+                .on('click', d => {
+                    tooltip.html("<p>"+d.cidade+"</p>"+
+                                "<p>"+d.casos+" caso(s) confirmados.</p>")
+                        .style('left', (d3.event.pageX)+'px')
+                        .style('top', (d3.event.pageY - 28)+'px');
+
+                    let s = document.getElementById('tooltip').style;
+                    s.opacity = 1;
+                    function fade() {
+                      (s.opacity-=.05) < 0 ? s.opacity = 0 : setTimeout(fade,400)
+                    }
+                    fade();
+                 })
+                .style('fill', '#eb4034')
+                .style('fill-opacity', 0.2)
+                .style('stroke', '#eb4034')
+                .style('stroke-opacity', 0.8)
+              .merge(circle)
+              .transition()
+              .duration(500)
+                  .attr('r', d => scaleArea(+d.casos));
+
+
+
+              for( let i = 0; i < filtered_current.length; ++i ) {
+                let name_current = filtered_current[i].cidade.replace(/[^\x00-\x7F]/g, "");
+
+                let start = knn_cities[name_current].centroid_xy;
+                let values = getKNN(name_current);
+
+
+                g_knn.append('circle')
+                  .attr('cx', start[0])
+                  .attr('cy', start[1])
+                  .attr('r', 5)
+                  .style('fill', 'none')
+                  .style('stroke', '#000')
+                  .style('stroke-width', 1);
+
+
+                let points = [];
+                let points_level2 = [];
+
+                for( let j = 0; j < values.length; ++j ) {
+                  let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
+
+                  let end = knn_cities[name_knn].centroid_xy;
+                  points.push(end);
 
                   let second_level = getKNN(name_knn);
-
                   for( let k = 0; k < kSecondLevel; ++k ) {
                     let name = second_level[k].replace(/[^\x00-\x7F]/g, "");
 
@@ -2948,6 +3116,28 @@
            drawBaseMapRealColor(config.container, geoJSON.features, projection, geoJSON, null);
         }
 
+        function drawMapRealHull(geoJSON) {
+            let config = getMapConfig('#map-covid-hull');
+            let projection = getMapProjection(config, geoJSON);
+
+            configMapRealHull = config;
+            projectionMapRealHull = projection;
+            geoJsonHull = geoJSON;
+           drawBaseMapHull(config.container, geoJSON.features, projection, geoJSON, null);
+        }
+
+
+
+        function drawMapRealDanger(geoJSON) {
+            let config = getMapConfig('#map-covid-danger');
+            let projection = getMapProjection(config, geoJSON);
+
+            configMapRealDanger = config;
+            projectionMapRealDanger = projection;
+            geoJsonDanger = geoJSON;
+            drawBaseMapRealDanger(config.container, geoJSON.features, projection, geoJSON, null);
+        }
+
         function drawMapGoogleTrends(container, countries, projection, geoJson, color, symptom) {
 
             let path = d3.geoPath()
@@ -3846,7 +4036,7 @@
             progressionDayMax = distinctDates.length-1;
             progressionDay = 0//distinctDates.length-1;
             // document.getElementById('progression-front').disabled = true;
-            document.getElementById('progression-back-color').disabled = true;   
+            document.getElementById('progression-back').disabled = true;   
 
             document.getElementById('realProgressionColor').max = distinctDates.length-1;
             document.getElementById('realProgressionColor').value = 0;// distinctDates.length-1;
@@ -3855,6 +4045,19 @@
             // document.getElementById('progression-front').disabled = true;
             document.getElementById('progression-back-color').disabled = true;          
 
+            document.getElementById('realProgressionHull').max = distinctDates.length-1;
+            document.getElementById('realProgressionHull').value = 0;// distinctDates.length-1;
+            progressionDayMaxHull = distinctDates.length-1;
+            progressionDayHull = 0//distinctDates.length-1;
+            // document.getElementById('progression-front').disabled = true;
+            document.getElementById('progression-back-hull').disabled = true;  
+
+            document.getElementById('realProgressionDanger').max = distinctDates.length-1;
+            document.getElementById('realProgressionDanger').value = 0;// distinctDates.length-1;
+            progressionDayMaxDanger = distinctDates.length-1;
+            progressionDayDanger = 0//distinctDates.length-1;
+            // document.getElementById('progression-front').disabled = true;
+            document.getElementById('progression-back-danger').disabled = true;      
 
        
 
@@ -3870,6 +4073,8 @@
 
             drawMapReal(store.geoJSON);
             drawMapRealColor(store.geoJSON);
+            drawMapRealHull(store.geoJSON);
+            drawMapRealDanger(store.geoJSON);
             drawStatisticalCharts(store);
 
             // // must be after drawStatisticalCHarts: it uses firstDayAnalysis
@@ -4495,6 +4700,62 @@
         });
 
 
+
+        function updateProgressionMapDanger(value) {
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapRealDanger(configMapRealDanger.container, geoJsonDanger.features, projectionMapRealDanger, geoJsonDanger, subset, true);
+
+
+            document.getElementById('titleProgressionDanger').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        }
+
+        document.getElementById('progression-front-danger').addEventListener('click', () => {
+          if( progressionDayDanger < progressionDayMaxDanger ) {
+
+            
+            for( let i = 0; i < neighboring_cities_danger.length; ++i ) {
+                previous_neighboring_danger_cities.push(neighboring_cities_danger[i]);
+            }
+            
+
+            updateProgressionMapDanger(++progressionDayDanger);
+            document.getElementById('progression-back-danger').disabled = false;
+            if( progressionDayDanger == progressionDayMaxDanger )
+                document.getElementById('progression-front-danger').disabled = true;
+          }
+        });
+
+        document.getElementById('progression-back-danger').addEventListener('click', () => {
+          if( progressionDayDanger > 0 ) {
+
+            for( let i = 0; i < neighboring_cities_danger.length; ++i )
+              previous_neighboring_danger_cities.pop();
+
+
+            updateProgressionMapDanger(--progressionDayDanger);
+            document.getElementById('progression-front-danger').disabled = false;
+            if( progressionDayDanger == 0 )
+                document.getElementById('progression-back-danger').disabled = true;
+          } 
+        });
+
+
         function updateProgressionMapColor(value) {
             let countDifferent = 0;
             let targetDate = casosByCity[0].data;
@@ -4525,7 +4786,6 @@
             for( let i = 0; i < neighboring_cities.length; ++i )
               previous_neighboring_cities.push(neighboring_cities[i]);
 
-
             updateProgressionMapColor(++progressionDayColor);
             document.getElementById('progression-back-color').disabled = false;
             if( progressionDayColor == progressionDayMaxColor )
@@ -4543,6 +4803,50 @@
             document.getElementById('progression-front-color').disabled = false;
             if( progressionDayColor == 0 )
                 document.getElementById('progression-back-color').disabled = true;
+          } 
+        });
+
+        function updateProgressionMapHull(value) {
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
+
+
+            document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        }
+
+        document.getElementById('progression-front-hull').addEventListener('click', () => {
+          if( progressionDayHull < progressionDayMaxHull ) {
+
+            updateProgressionMapHull(++progressionDayHull);
+            document.getElementById('progression-back-hull').disabled = false;
+            if( progressionDayHull == progressionDayMaxHull )
+                document.getElementById('progression-front-hull').disabled = true;
+          }
+        });
+
+        document.getElementById('progression-back-hull').addEventListener('click', () => {
+          if( progressionDayHull > 0 ) {
+
+            updateProgressionMapHull(--progressionDayHull);
+            document.getElementById('progression-front-hull').disabled = false;
+            if( progressionDayHull == 0 )
+                document.getElementById('progression-back-hull').disabled = true;
           } 
         });
 
@@ -4772,7 +5076,85 @@
             drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
 
 
-            document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+            document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        });
+
+
+        document.getElementById('realProgressionColor').addEventListener('input', function() {
+            let value = this.value;
+            progressionDayDanger = value;
+            if( progressionDayDanger == 0 ) {
+                document.getElementById('progression-back-danger').disabled = true; 
+                document.getElementById('progression-front-danger').disabled = false; 
+            } else if( progressionDayDanger == progressionDayMaxDanger ) {
+                document.getElementById('progression-back-danger').disabled = false; 
+                document.getElementById('progression-front-danger').disabled = true; 
+            } else {
+                document.getElementById('progression-back-danger').disabled = false; 
+                document.getElementById('progression-front-danger').disabled = false; 
+            }
+
+
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapRealDanger(configMapRealDanger.container, geoJsonDanger.features, projectionMapRealDanger, geoJsonDanger, subset, true);
+
+
+            document.getElementById('titleProgressionDanger').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        });
+
+
+        document.getElementById('realProgressionHull').addEventListener('input', function() {
+            let value = this.value;
+            progressionDayHull = value;
+            if( progressionDayHull == 0 ) {
+                document.getElementById('progression-back-hull').disabled = true; 
+                document.getElementById('progression-front-hull').disabled = false; 
+            } else if( progressionDayHull == progressionDayMaxHull ) {
+                document.getElementById('progression-back-hull').disabled = false; 
+                document.getElementById('progression-front-hull').disabled = true; 
+            } else {
+                document.getElementById('progression-back-hull').disabled = false; 
+                document.getElementById('progression-front-hull').disabled = false; 
+            }
+
+
+            let countDifferent = 0;
+            let targetDate = casosByCity[0].data;
+
+            for (var i = 0; i < casosByCity.length; i++) {
+
+                if( value == countDifferent ) {
+                    targetDate = casosByCity[i].data;
+                    break;
+                }
+
+                if( targetDate != casosByCity[i].data ) {
+                    countDifferent += 1;
+                    targetDate = casosByCity[i].data;
+                }
+            }
+
+            let subset = casosByCity.filter(d => d.data == targetDate);
+            drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
+
+
+            document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
         });
 
         document.getElementById('dateTwitter').addEventListener('input', function() {
