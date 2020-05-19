@@ -64,6 +64,24 @@
     
 
     
+    <script type="text/javascript" src="js/disjoint-sets.js"></script>
+    <script type="text/javascript" src="js/javascript.util.min.js"></script>
+    <script type="text/javascript" src="js/jsts.min.js"></script>
+
+    <script src="https://rawgit.com/w8r/GreinerHormann/master/dist/greiner-hormann.min.js"></script>
+    
+    <meta property="twitter:card" content="summary">
+    
+    <meta property="og:site_name" content="RADAR COVID-19">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="RADAR COVID-19 - UNESP atuando no mapeamento de Casos de Coronavírus no interior paulista.">
+    <meta property="og:description" content="UNESP atuando no mapeamento de Casos de Coronavírus no interior paulista."><meta property="og:image" content="/img/radar-icon.png">
+    <meta property="twitter:image" content="/img/radar-icon.png"><meta property="og:locale" content="en-us">
+    
+      
+    
+
+    
 
 
 
@@ -78,6 +96,16 @@
 
 
     <title>Radar COVID-19</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162664785-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-162664785-1');
+    </script>
 
 
     <script type="text/javascript" src="js/d3.js"></script>
@@ -212,14 +240,13 @@
   </aside>
 
 
-    
   <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
     <div class="container">
 
       
       
       
-        <a class="navbar-brand" href="/coronavirus">Radar COVID-19</a>
+        <a class="navbar-brand" href="/">Radar COVID-19</a>
       
 
       
@@ -236,47 +263,27 @@
         
         <ul class="navbar-nav d-md-inline-flex">
           
-
-          
-
-          
-          
-          
-            
-          
-
-          
-          
-          
-          
-          
-          
-            
-            
-            
-              
-            
-            
-          
-
           <li class="nav-item">
             <a class="nav-link " href="https://www.fct.unesp.br/"><span>FCT - UNESP</span></a>
           </li>
 
 
-          <!-- <li class="nav-item">
-            <a class="nav-link " href="/#featured"><span>Publications</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link  active" href="/courses/"><span>Teaching</span></a>
-          </li> -->
+            <a class="nav-link active" href="/data-mining/"><span>Análise de Rumores</span></a>
+          </li>
 
-          
-          
+          <li class="nav-item">
+            <a class="nav-link active" href="/inspecao-hierarquica/"><span>Análise da Disseminação Hierárquica</span></a>
+          </li>
 
-        
+          <li>
+            <a class="nav-link active" href="/difusao-espacial/"><span>Difusão Espacial</span></a>
+          </li>
 
-          
+          <li>
+            <a class="nav-link active" href="/mapeamento-cartografico/"><span>Mapeamento Cartográfico</span></a>
+          </li>
+
         </ul>
       </div>
 
@@ -294,7 +301,7 @@
       </ul> -->
 
     </div>
-  </nav>
+  </nav>  
 
 
   <!-- COLOCAR NO MAPA O SIMBOLO DA UNESP -->
@@ -306,44 +313,34 @@
   <!--   <div style="text-align: center; width:100%;">
       
     </div> -->
+    <h3 style="text-align: center; width:100%;">Análise da Disseminação Hierárquica de COVID-19 no Estado de São Paulo.</h3><br/>
     <img src="radar-icon.jpg" width="300" height="300" style="display: block;
     margin-left: auto;
     margin-right: auto;" />
-    <p>O RADAR COVID-19 é uma iniciativa de pesquisadores da Faculdade de Ciências e Tecnologia, Campus de Presidente Prudente da Universidade Estadual Paulista "Júlio de Mesquita Filho" (FCT-UNESP), referente à disseminação do novo coronavírus (COVID-19), em especial no interior paulista. Soma-se a essa iniciativa o trabalho de mapeamento que está sendo desenvolvido a partir dos registros oficiais de COVID-19. Detalhes acerca dos projetos podem ser encontrados <a href="#detalhes-projetos">aqui</a>.<p>
 
-  <ul>
-    <li><a href="#analise-espacial">Estado de São Paulo:</a></li>
+    Nesse estudo, apresentamos um modelo para análise visual do padrão hierárquico de disseminação de COVID-19.
     <ul>
-      <li><a href="#casos-confirmados">Mapeamento de Casos Confirmados</a></li>
-      <li><a href="#mapeamento-twitter">Mapeamento de rumores no Twitter</a></li>
-      <li><a href="#mapeamento-google">Mapeamento de tendência do Google</a></li>
-      <li><a href="#proximas-atividades">Próximas atividades</a></li>
-      <li><a href="#pessoas-envolvidas"> Pesquisadores envolvidos</a></li>
+      <ul>
+        <li><a href="#analise-visual">Mapa interativo do modelo de disseminação hierárquico</a><br/></a></li>
+        <li><a href="#video-explicacao">Vídeo de explicação do modelo hierárquico de disseminação</a><br/></li>
+        <li><a href="#pessoas-envolvidas"> Pesquisadores envolvidos</a></li>
+      </ul>
+      
     </ul>
-    <!-- <li><a href="#analise-rumores">Análise de Rumores</a></li> -->
-    <li><a href="#analise-temporal">Casos confirmados</a></li>
-    <ul>
-      <li><a href="#brasil-tempo">no Brasil por Município ao longo do tempo</a></li>
-      <li><a href="#brasil-proporcao">no Brasil por Município e proporcional à população</a></li>
-      <li><a href="#estruturas-espaciais">no Estado de São Paulo por Município, com eixos rodoviários e estruturas espaciais elementares</a></li>
-      <li><a href="#pessoas-envolvidas2"> Pesquisadores envolvidos</a></li>
-    </ul>
-  </ul>
+
     
   </div>
 
 
 
-  <div class="universal-wrapper" id="analise-espacial">
+  <div class="universal-wrapper">
 
-    
-    <h3>Análise de Casos Confirmados, Redes Sociais e Dados de Busca relacionados ao COVID-19 no Estado de São Paulo.</h3>  
     
     <br/>
 
     <div class="mainView">
 
-      <h4 id="casos-confirmados">KNN para difusão hierárquica - Arestas.</h4>
+      <h4 id="analise-visual">Mapa interativo para análise visual da disseminação hiérarquica de COVID-19.</h4>
       <div>
         <svg id="map-covid">        
           <foreignobject class="node" x="700" y="5" width="300" height="150">                
@@ -358,7 +355,14 @@
       <br/>
       <br/>
 
+      <h4>Análise de risco </h4>
+      <div>
+        <svg id="cityRisk"></svg>
+      </div>
+      <button id="decreaseDay" name="decreaseDay"> << </button>
+      <button id="increaseDay" name="increaseDay" disabled="true"> >> </button>
 
+      <!--
       <h4 id="casos-confirmados-color">KNN para difusão hierárquica - Cores.</h4>
        <div>
         <svg id="map-covid-color">        
@@ -485,54 +489,264 @@
 
 
 
+      -->
+
+
+    </div>
+  </div>
+
+  <div class="universal-wrapper" id="video-explicacao">
+      
+
+      <div class="mainView">
+        <h4>Explicação do modelo de interpretação hierárquica da disseminação do COVID-19.</h4>
+        <div>
+          <iframe width="100%" height="650px" src="https://youtube.com/embed/fQIu5Pma6io">
+          </iframe>
+        </div>
+      </div>
+
+      
+
+  </div>
+
+    <div class="universal-wrapper" id="pessoas-envolvidas">
+
+      
+      <h1>Pesquisadores envolvidos</h1>  
+
       
 
 
-    </div>
 
-
-  </div>
-
-  </div>
-
-
-  <!-- <div class="universal-wrapper" id="analise-rumores">
-    <h1>Análise de rumores</h1>  
-    <p>Página será lançada em breve.</p>
-  </div> -->
-
-  <div class="universal-wrapper" >
-    <h3 id="analise-temporal">Análise temporal dos casos confirmados de COVID-19</h3>  
-    <!-- <p> Utilize os botões abaixo do mapa para visualizar a disseminação.</p> -->
-    <h5 id="brasil-tempo">Mapa 4: Série temporal dinâmica dos casos confirmados de COVID-19.</h5>
-      <div>
+      <div class="media author-card content-widget-hr">
           
-          <img src="data/mapas/mapas.gif" id="image-mapa" width="600px" height="500px" style="display: block;
-            margin-left: auto;
-            margin-right: auto;"/><br/>
-          <!-- <input type="button" id="dia-anterior" value="Dia anterior" />
-          <input type="button" id="proximo-dia" value="Próximo dia" />  -->  
-      </div>
-
-    <h5 id="brasil-proporcao">Mapa 5 e 6: Total e proporção de confirmados de COVID-19 por município.</h5>
-      <div class="row">
-      <div class="column">
-        <img src="data/mapas/corona_totais.jpg" />
-      </div>
-      <div class="column">
-        <img src="data/mapas/corona_proporcao.jpg" />
-      </div>
-    </div>
-
-
-    <h5 id="estruturas-espaciais">Mapa 7: Casos confirmados com o coronavírus - COVID-19 - nos municípios do estado de São Paulo - 06/04/202 - eixos rodoviários e estruturas espaciais elementares</h5>
-    <div>
+            
+          <img class="portrait mr-3" src="/authors/admin/rogerio.jpg" alt="Avatar">
           
-          <img src="data/mapas/estruturas_espaciais.jpg" id="estruturas-espaciais"  style="display: block;
-            margin-left: auto;
-            margin-right: auto;"/><br/>
+
+          <div class="media-body">
+            <h5 class="card-title"><a href="#">Prof. Dr. Rogério Eduardo Garcia</a></h5>
+            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
+            <ul class="network-icon" aria-hidden="true">
+                  <li>
+                    <a href="mailto:rogerio.garcia@unesp.com" >
+                      <i class="fas fa-envelope"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://www.researchgate.net/profile/Rogerio_Garcia" target="_blank" rel="noopener">
+                      <i class="ai ai-researchgate"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://scholar.google.com.br/citations?user=F6DXOMQAAAAJ" target="_blank" rel="noopener">
+                      <i class="ai ai-google-scholar"></i>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://orcid.org/0000-0003-1248-528X" target="_blank" rel="noopener">
+                      <i class="ai ai-orcid"></i>
+                    </a>
+                  </li>             
+            </ul>
+
+          </div>
+      </div>
+
+      <div class="media author-card content-widget-hr">
+          
+            
+          <img class="portrait mr-3" src="/authors/admin/danilo.jpg" alt="Avatar">
+          
+
+          <div class="media-body">
+            <h5 class="card-title"><a href="#">Prof. Dr. Danilo Medeiros Eler</a></h5>
+            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
+            <ul class="network-icon" aria-hidden="true">
+                  <li>
+                    <a href="mailto:danilo.eler@unesp.com" >
+                      <i class="fas fa-envelope"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://www.researchgate.net/profile/Danilo_Eler" target="_blank" rel="noopener">
+                      <i class="ai ai-researchgate"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://scholar.google.com.br/citations?user=p5mxNX8AAAAJ" target="_blank" rel="noopener">
+                      <i class="ai ai-google-scholar"></i>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="http://orcid.org/0000-0002-9493-145X" target="_blank" rel="noopener">
+                      <i class="ai ai-orcid"></i>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://github.com/daniloeler" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </li>
+                
+            </ul>
+
+          </div>
+      </div>
+
+      <div class="media author-card content-widget-hr">
+          
+            
+          <img class="portrait mr-3" src="/authors/admin/ronaldo.jpg" alt="Avatar">
+          
+
+          <div class="media-body">
+            <h5 class="card-title"><a href="#">Prof. Dr. Ronaldo Celso Messias Correia</a></h5>
+            <h6 class="card-subtitle">Departamento de Matemática e Computação - FCT/UNESP</h6>
+            <ul class="network-icon" aria-hidden="true">
+                  <li>
+                    <a href="mailto:ronaldo.correia@unesp.br" >
+                      <i class="fas fa-envelope"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://www.researchgate.net/profile/Ronaldo_Correia" target="_blank" rel="noopener">
+                      <i class="ai ai-researchgate"></i>
+                    </a>
+                  </li>
+              
+                  <!-- <li>
+                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
+                      <i class="ai ai-google-scholar"></i>
+                    </a>
+                  </li> -->
+                
+                  <li>
+                    <a href="http://orcid.org/0000-0002-8044-7333" target="_blank" rel="noopener">
+                      <i class="ai ai-orcid"></i>
+                    </a>
+                  </li>
+              
+            </ul>
+
+          </div>
+      </div>
+
+      <div class="media author-card content-widget-hr">
+          
+            
+          <img class="portrait mr-3" src="/authors/admin/avatar_hue102bab58b683d05ea725ccd34a293b1_11390_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+          
+
+          <div class="media-body">
+            <h5 class="card-title"><a href="#">MSc. Wilson Estécio Marcílio Júnior</a></h5>
+            <h6 class="card-subtitle">Doutorando em Ciência da Computação</h6>
+            <ul class="network-icon" aria-hidden="true">
+                  <li>
+                    <a href="mailto:wilson.marcilio@unesp.com" >
+                      <i class="fas fa-envelope"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://www.researchgate.net/profile/Wilson_Estecio_Marcilio_Junior" target="_blank" rel="noopener">
+                      <i class="ai ai-researchgate"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
+                      <i class="ai ai-google-scholar"></i>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://orcid.org/0000-0002-8580-2779" target="_blank" rel="noopener">
+                      <i class="ai ai-orcid"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://github.com/wilsonjr" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </li>       
+            </ul>
+
+          </div>
+      </div>
+
+
+      <div class="media author-card content-widget-hr">
+          
+            
+          <img class="portrait mr-3" src="/authors/admin/rafael.jpg" alt="Avatar">
+          
+
+          <div class="media-body">
+            <h5 class="card-title"><a href="#">Rafael Bezerra de Menezes Rodrigues</a></h5>
+            <h6 class="card-subtitle">Mestrando em Ciência da Computação</h6>
+            <ul class="network-icon" aria-hidden="true">
+                  <li>
+                    <a href="mailto:rafael.rodrigues@unesp.br" >
+                      <i class="fas fa-envelope"></i>
+                    </a>
+                  </li>
+              
+                 <!--  <li>
+                    <a href="https://www.researchgate.net/profile/Wilson_Estecio_Marcilio_Junior" target="_blank" rel="noopener">
+                      <i class="ai ai-researchgate"></i>
+                    </a>
+                  </li>
+              
+                  <li>
+                    <a href="https://scholar.google.com/citations?user=-KvJBfcAAAAJ" target="_blank" rel="noopener">
+                      <i class="ai ai-google-scholar"></i>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://orcid.org/0000-0002-8580-2779" target="_blank" rel="noopener">
+                      <i class="ai ai-orcid"></i>
+                    </a>
+                  </li> -->
+              
+                  <li>
+                    <a href="https://github.com/RafaelBMR" target="_blank" rel="noopener">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </li>       
+            </ul>
+
+          </div>
+      </div>
+
+      <div class="article-widget content-widget-hr">
+      <h3>Dados</h3>
+      <ul>
+        
+        <li><a href="https://github.com/wcota/covid19br"> COVID19BR</a></li>
+        <li><a href="https://www.seade.gov.br/coronavirus/"> SEADE</a></li>
+        
+      </ul>
     </div>
   </div>
+
+
+  
+
+  </div>
+
+
 
   </div>
 
@@ -609,10 +823,17 @@
         let max_casos =null;
         let max_tweets = null;
 
+        let reversed_knn = null;
+        let risk_data = null;
+
 
         let store = {};
 
         let currentDate = 0;
+
+        let window_analysis = 10;
+        let dayAnalysis = null;
+        let cityAnalysis = null;
 
         let months = {
             '0': 'January',
@@ -700,11 +921,19 @@
         let kFirstLevel = 10;
         let kSecondLevel = 5;
 
+        let currentAnalysisLine = 0;
+        let currentAnalysisColumn = 0;
 
-        let ks = prompt("K1 e K2 separados por espaço (K2 <= K1)");
-        kFirstLevel = +ks.split(" ")[0];
-        kSecondLevel = Math.min(kFirstLevel, +ks.split(" ")[0]);
+        let MAX_ANALYSIS_LINE = 4;
+        let MAX_ANALYSIS_COLUMN = 1;
 
+
+        // let ks = prompt("K1 e K2 separados por espaço (K2 <= K1)");
+        kFirstLevel = 10;// +ks.split(" ")[0];
+        kSecondLevel = 5;//Math.min(kFirstLevel, +ks.split(" ")[0]);
+        let d = prompt('Dias de análise');
+
+        window_analysis = +d;
 
         // loadData();
         loadData().then(showData);
@@ -1311,6 +1540,15 @@
                           fade();
                       // }
                       // showingTooltip = !showingTooltip;
+
+                          cityAnalysis = d.properties.name;
+                          dayAnalysis = new Date(lastDayAnalysis.getTime());
+
+                        
+                          addRiskMeasures(d.properties.name.replace(/[^\x00-\x7F]/g, ""), d.properties.name, dayAnalysis, window_analysis);
+
+                        
+                        
                     })
                     // .on('mouseout', d => {
                         
@@ -1534,6 +1772,18 @@
             if( backup != null ) {
                 casosByCity = backup;
             }
+        }
+
+        function hasIntersection(citiesA, citiesB) {
+          let cities = new Set();
+
+          for( let i = 0; i < citiesA.length; ++i )
+            cities.add(citiesA[i]);
+
+          for( let i = 0; i < citiesB.length; ++i )
+            cities.add(citiesB[i]);
+
+          return cities.length < citiesA.length+citiesB.length;
         }
 
         function drawBaseMapHull(container, countries, projection, geoJson, subset, update) {
@@ -1766,63 +2016,252 @@
               .duration(500)
                   .attr('r', d => scaleArea(+d.casos));
 
+            let set_first = disjointSet();
+            let set_second = disjointSet();
+
+            let cities_first_level = [];
+            let cities_second_level = [];
+
+            for( let i = 0; i < filtered_current.length; ++i ) {
+              let name_current = filtered_current[i].cidade.replace(/[^\x00-\x7F]/g, "");
+              let start = knn_cities[name_current].centroid_xy;
+              
+
+              let values = getKNN(name_current);
+
+              g_knn.append('circle')
+                .attr('cx', start[0])
+                .attr('cy', start[1])
+                .attr('r', 5)
+                .style('fill', 'none')
+                .style('stroke', '#000')
+                .style('stroke-width', 1);
 
 
-              for( let i = 0; i < filtered_current.length; ++i ) {
-                let name_current = filtered_current[i].cidade.replace(/[^\x00-\x7F]/g, "");
+              let points = [];
+              let points_level2 = [];
 
-                let start = knn_cities[name_current].centroid_xy;
-                let values = getKNN(name_current);
+              let citiesA = [], coordsA = [];
+              
+              let citiesB = [], coordsB = [];
+              for( let j = 0; j < values.length; ++j ) {
+                let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
+                let end = knn_cities[name_knn].centroid_xy;
 
+                citiesA.push(name_current);
+                coordsA.push(end);
+                
 
-                g_knn.append('circle')
-                  .attr('cx', start[0])
-                  .attr('cy', start[1])
-                  .attr('r', 5)
-                  .style('fill', 'none')
-                  .style('stroke', '#000')
-                  .style('stroke-width', 1);
-
-
-                let points = [];
-                let points_level2 = [];
-
-                for( let j = 0; j < values.length; ++j ) {
-                  let name_knn = values[j].replace(/[^\x00-\x7F]/g, "");
-
-                  let end = knn_cities[name_knn].centroid_xy;
-                  points.push(end);
-
-                  let second_level = getKNN(name_knn);
-                  for( let k = 0; k < kSecondLevel; ++k ) {
-                    let name = second_level[k].replace(/[^\x00-\x7F]/g, "");
-
-                    points_level2.push(knn_cities[name].centroid_xy);
-                  }
-
+                points.push(end);
+                
+                let second_level = getKNN(name_knn);
+                for( let k = 0; k < kSecondLevel; ++k ) {
+                  let name = second_level[k].replace(/[^\x00-\x7F]/g, "");
+                  citiesB.push(name);
+                  coordsB.push(knn_cities[name].centroid_xy);
+                  points_level2.push(knn_cities[name].centroid_xy);
                 }
-
-                g_knn.append('path')
-                  .attr('class', 'hull')
-                  .datum(d3.polygonHull(points_level2))
-                    .attr('d', d => "M" + d.join("L") + "Z")
-                    .style('fill','#4287f5')
-                    .style('fill-opacity', 0.2)
-                    .style('stroke','#4287f5')
-                    .style('stroke-width','0.4px')
-                    .style('stroke-linejoin', 'round');
-
-                g_knn.append('path')
-                  .attr('class', 'hull')
-                  .datum(d3.polygonHull(points))
-                    .attr('d', d => "M" + d.join("L") + "Z")
-                    .style('fill','#9205eb')
-                    .style('fill-opacity', 0.2)
-                    .style('stroke','#9205eb')
-                    .style('stroke-width','0.4px')
-                    .style('stroke-linejoin', 'round');
+                
               }
 
+              let objA = {
+                names: citiesA,
+                coords: coordsA
+              };
+              cities_first_level.push(objA);
+              set_first.add(objA);
+
+              let objB = {
+                  names: citiesB,
+                  coords: coordsB
+                };
+                cities_second_level.push(objB);
+                set_second.add(objB);
+              
+
+
+
+              // g_knn.append('path')
+              //   .attr('class', 'hull')
+              //   .datum(d3.polygonHull(points_level2))
+              //     .attr('d', d => "M" + d.join("L") + "Z")
+              //     .style('fill','#4287f5')
+              //     .style('fill-opacity', 0.2)
+              //     .style('stroke','#4287f5')
+              //     .style('stroke-width','0.4px')
+              //     .style('stroke-linejoin', 'round');
+
+              // g_knn.append('path')
+              //   .attr('class', 'hull')
+              //   .datum(d3.polygonHull(points))
+              //     .attr('d', d => "M" + d.join("L") + "Z")
+              //     .style('fill','#9205eb')
+              //     .style('fill-opacity', 0.2)
+              //     .style('stroke','#9205eb')
+              //     .style('stroke-width','0.4px')
+              //     .style('stroke-linejoin', 'round');
+            }
+
+            let geometryFactory = new jsts.geom.GeometryFactory();
+
+            console.log('cities_first_level');
+            for( let i = 0; i < cities_first_level.length; ++i ) {
+              for( let j = 0; j < cities_first_level.length; ++j ) {
+                if( i == j ) 
+                  continue;
+                // let inter = greinerHormann.intersection(cities_first_level[i].coords, cities_first_level[j].coords);
+                // if( inter ) {
+                //     // console.log('1. union names');
+                //     // console.log(cities_first_level[i].names);
+                //     // console.log(cities_first_level[j].names);
+                //     set_first.union(cities_first_level[i], cities_first_level[j]);
+                // }
+
+                let coordsA = d3.polygonHull(cities_first_level[i].coords);
+                let coordinatesA = [];
+                for( let k = 0; k < coordsA.length; ++k ){
+                  let p = coordsA[k];
+                  coordinatesA.push(new jsts.geom.Coordinate(p[0], p[1]));
+                }
+                coordinatesA.push(coordinatesA[0]);
+                var shellA = geometryFactory.createLinearRing(coordinatesA)
+                var polyA = geometryFactory.createPolygon(shellA);
+
+                let coordsB = d3.polygonHull(cities_first_level[j].coords);
+                let coordinatesB = [];
+                for( let k = 0; k < coordsB.length; ++k ){
+                  let p = coordsB[k];
+                  coordinatesB.push(new jsts.geom.Coordinate(p[0], p[1]));
+                }
+                coordinatesB.push(coordinatesB[0]);
+                var shellB = geometryFactory.createLinearRing(coordinatesB);
+                var polyB = geometryFactory.createPolygon(shellB);
+
+
+                if( polyA.intersects(polyB) ) {
+                  set_first.union(cities_first_level[i], cities_first_level[j]);
+                }
+
+              }
+            }
+
+            console.log('cities_second_level');
+            for( let i = 0; i < cities_second_level.length; ++i ) {
+              for( let j = 0; j < cities_second_level.length; ++j ) {
+                if( i == j ) 
+                  continue;
+                // let inter = greinerHormann.intersection(cities_second_level[i].coords, cities_second_level[j].coords);
+                console.log('d3.polygonHull');
+                let coordsA = d3.polygonHull(cities_second_level[i].coords);
+                let coordinatesA = [];
+                for( let k = 0; k < coordsA.length; ++k ){
+                  let p = coordsA[k];
+                  coordinatesA.push(new jsts.geom.Coordinate(p[0], p[1]));
+                }
+                coordinatesA.push(coordinatesA[0]);
+                var shellA = geometryFactory.createLinearRing(coordinatesA)
+                var polyA = geometryFactory.createPolygon(shellA);
+
+                let coordsB = d3.polygonHull(cities_second_level[j].coords);
+                let coordinatesB = [];
+                for( let k = 0; k < coordsB.length; ++k ){
+                  let p = coordsB[k];
+                  coordinatesB.push(new jsts.geom.Coordinate(p[0], p[1]));
+                }
+                coordinatesB.push(coordinatesB[0]);
+                var shellB = geometryFactory.createLinearRing(coordinatesB);
+                var polyB = geometryFactory.createPolygon(shellB);
+
+
+                if( polyA.intersects(polyB) ) {
+                  set_second.union(cities_second_level[i], cities_second_level[j]);
+                }
+
+
+                // extent.forEach(function(vertex) {
+                //  var p = projection.invert(vertex)
+                //  coordinates.push(new jsts.geom.Coordinate(p[0], p[1]))
+                // })
+
+                // // close polygon
+                // coordinates.push(coordinates[0])
+
+                // var shell = geometryFactory.createLinearRing(coordinates)
+                // var searchPolygon = geometryFactory.createPolygon(shell)
+
+                // rTree.query(searchPolygon.getEnvelopeInternal()).forEach(function(d) {
+                //   d.scanned = true
+                //   if(d.polygon.intersects(searchPolygon)) d.selected = true
+                // })
+
+
+                // if( inter ) {
+                //     // console.log('2. union names');
+                //     // console.log(cities_second_level[i].names);
+                //     // console.log(cities_second_level[j].names);
+                //     set_second.union(cities_second_level[i], cities_second_level[j]);
+                // }
+
+              }
+            }
+
+            // console.log('set_first.extract()');
+             let first = set_first.extract();
+            // console.log(first);
+            // console.log('set_second.extract()');
+
+            let second = set_second.extract(); 
+            // console.log(second);
+
+           
+            for( let i = 0; i < first.length; ++i ) {
+              let points = [];
+              for( let j = 0; j < first[i].length; ++j ) {
+                for( let k = 0; k < first[i][j].coords.length; ++k )
+                  points.push(first[i][j].coords[k]);
+              }
+
+
+              g_knn.append('path')
+                .attr('class', 'hull')
+                .datum(d3.polygonHull(points))
+                  .attr('d', d => "M" + d.join("L") + "Z")
+                  .style('fill','#4287f5')
+                  .style('fill-opacity', 0.2)
+                  .style('stroke','#4287f5')
+                  .style('stroke-width','0.4px');
+
+
+            }
+
+           for( let i = 0; i < second.length; ++i ) {
+            let points = [];
+            console.log(second);
+            for( let j = 0; j < second[i].length; ++j ) {
+              for( let k = 0; k < second[i][j].coords.length; ++k )
+                points.push(second[i][j].coords[k]);
+            }
+
+            g_knn.append('path')
+              .attr('class', 'hull')
+              .datum(d3.polygonHull(points))
+                .attr('d', d => "M" + d.join("L") + "Z")
+                .style('fill','#9205eb')
+                .style('fill-opacity', 0.2)
+                .style('stroke','#9205eb')
+                .style('stroke-width','0.4px');
+
+
+            }
+
+
+
+            
+
+
+
+
+              
             
                 
             if( backup != null ) {
@@ -2827,6 +3266,1201 @@
               .attr('cy', d => -histogramScale(d.casos))
               .attr('r', 4)
               .style('fill', '#f55a42');
+        }
+
+        function getStd(values, mean) {
+          let std = 0;
+
+          for( let i = 0; i < values.length; ++i ) {
+            std += Math.pow((values[i] - mean), 2);
+          }
+
+          return Math.sqrt(std/values.length);
+
+
+        }
+
+        function getMean(values) {
+          let sum = 0.0;
+
+          for( let i = 0; i < values.length; ++i )
+            sum += values[i];
+
+          return sum/values.length;
+        }
+
+        function getNewCases(values) {
+          let new_cases = [+values[0].casos];
+
+          for( let i = 1; i < values.length; ++i ) {
+            new_cases.push((+values[i].casos) - (+values[i-1].casos));
+
+            
+          }
+
+          return new_cases;
+        }
+
+        function getSlope(values, days) {
+          let y2 = +values[values.length-1].casos;
+          let y1 = 0;
+          if( values.length == days )
+              y1 = values[0].casos;
+          else if( values.length > days )
+              y1 = values[values.length-days].casos;
+
+          return [(y2-y1) > 0 ? (y2-y1)/days : -1*((y2-y1)/days), +y1, +y2];
+        }
+
+        function formString(date) {
+          return date.getDate()+"_"+date.getMonth()+"_"+date.getFullYear();
+        }
+
+        function getUnion(knn_cases) {
+
+          let values_new_cases = {};
+          let values_cases = {};
+          let dates = new Set();
+
+          for( let i = 0; i < knn_cases.length; ++i ) {
+            for( let j = 0; j < knn_cases[i].acc.length; ++j ) {
+
+              let key = formString(knn_cases[i].acc[j].date);
+              dates.add(key);
+
+              if( !(key in values_cases) ) {
+                values_cases[key] = 0;
+              }
+
+              values_cases[key] += knn_cases[i].acc[j].value;
+            }
+
+            for( let j = 0; j < knn_cases[i].new_c.length; ++j ) {
+              let key = formString(knn_cases[i].new_c[j].date);
+              if( !(key in values_new_cases) ) {
+                values_new_cases[key] = 0;
+              }
+
+              values_new_cases[key] += knn_cases[i].new_c[j].value;
+            }
+
+          }
+          
+
+
+          let acc = [];
+          Object.keys(values_cases).forEach(function(key) {
+            let splitted = key.split("_");
+
+            acc.push({
+              date: new Date(+splitted[2], +splitted[1], +splitted[0]),
+              value: values_cases[key]
+            });
+          });
+          
+          let new_c = [];
+          Object.keys(values_new_cases).forEach(function(key) {
+            let splitted = key.split("_");
+
+            new_c.push({
+              date: new Date(+splitted[2], +splitted[1], +splitted[0]),
+              value: values_new_cases[key]
+            });
+          });
+
+          
+          return [acc.sort((a, b) => new Date(a.date) - new Date(b.date)), new_c.sort((a, b) => new Date(a.date) - new Date(b.date))];
+        }
+
+        function addAnalysisCity(all_knn_cases, all_data, name) {
+          let acc2 = null;
+          let new_c2 = null;
+          if( all_data.length > 0 ) {
+            acc2 = [{date: all_data[0].date, value: +all_data[0].casos}];
+            new_c2 = [{date: all_data[0].date, value: +all_data[0].casos}];
+
+            for( let j = 1; j < all_data.length; ++j ) {
+              acc2.push({date: all_data[j].date, value: +all_data[j].casos});
+              new_c2.push({date: all_data[j].date, value: (+all_data[j].casos) - (+all_data[j-1].casos)});
+            }  
+          } 
+
+          if( all_data.length > 0 ) {
+            let casos = +(all_data[all_data.length-1].casos);
+
+            let temp_new_cases = getNewCases(all_data);
+            let mean = getMean(temp_new_cases);
+            let std = getStd(temp_new_cases, mean);
+            let spread = std/mean;
+            let slope_data = getSlope(all_data, window_analysis);
+
+            all_knn_cases.push({
+                name: name,
+                value: casos,
+                evolution: all_data,
+                new_cases: temp_new_cases,
+                mean: mean,
+                std: std,
+                spread: spread,
+                slope: slope_data[0],
+                slope_y1: slope_data[1],
+                slope_y2: slope_data[2],
+                acc: acc2,
+                new_c: new_c2
+            });
+          }
+
+          return all_knn_cases;
+        }
+
+        function addRiskMeasures(city, description, day, window_analysis) {
+          let chart = risk_data[0];
+
+          chart.select('.principal').selectAll("*").remove();
+          chart.select('.slopeArea').selectAll("*").remove();
+          chart.select('.aggregatedArea').selectAll('*').remove();
+          
+
+          let windowvis = chart.select('.windowvis');
+          let temp = new Date();
+
+          temp.setTime(day.getTime() - (24*60*60*1000)*window_analysis);
+          windowvis.select('.window-rect')
+            .transition()
+            .attr('x', general_xScaleEvolucao(temp));
+
+          let evolution_city = casosByCity.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") == city);
+
+          let evolution_city_limited = casosByCity.filter(d => {
+              if( d.date.getTime() > day.getTime() )
+                return false;
+              let time = day.getTime() - d.date.getTime();
+              let days = time / (1000 * 3600 * 24);
+              
+              return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == city;
+          });
+
+          if( evolution_city.length > 0 ) {
+
+
+            let knn_cases = [], all_knn_cases = [];
+            let cities = reversed_knn[city];
+            for( let i = 0; i < cities.length; ++i ) {
+
+              
+
+              let temp = casosByCity.filter(d => {
+                  if( d.date.getTime() > day.getTime() )
+                    return false;
+                  let time = day.getTime() - d.date.getTime();
+                  let days = time / (1000 * 3600 * 24);
+                  
+                  return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == cities[i].replace(/[^\x00-\x7F]/g, "")
+
+              });
+              
+              let all_data = casosByCity.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") == cities[i].replace(/[^\x00-\x7F]/g, ""));
+              let max_cases = 0;
+              if( all_data.length > 0 ) {
+
+                max_cases = +all_data[all_data.length-1].casos;
+              }
+
+
+              let temp_all = casosByCity.filter(d => {
+                if( d.date.getTime() > day.getTime() )
+                    return false;
+                let time = day.getTime() - d.date.getTime();
+                let days = time / (1000 * 3600 * 24);
+
+
+                return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == cities[i].replace(/[^\x00-\x7F]/g, "")
+              });
+
+
+
+              let acc = null;
+              let new_c = null;
+              if( temp.length > 0 ) {
+                acc = [{date: temp[0].date, value: +temp[0].casos}];
+                new_c = [{date: temp[0].date, value: +temp[0].casos}];
+
+                for( let j = 1; j < temp.length; ++j ) {
+                  acc.push({date: temp[j].date, value: +temp[j].casos});
+                  new_c.push({date: temp[j].date, value: (+temp[j].casos) - (+temp[j-1].casos)});
+                }  
+              } 
+
+
+              
+
+              if( temp.length > 0 ) {
+                let casos = +(temp[temp.length-1].casos);
+
+                let temp_new_cases = getNewCases(temp);
+                let mean = getMean(temp_new_cases);
+                let std = getStd(temp_new_cases, mean);
+                let spread = std/mean;
+                let slope_data = getSlope(temp, window_analysis);
+
+                knn_cases.push({
+                    name: cities[i],
+                    value: casos,
+                    evolution: temp,
+                    new_cases: temp_new_cases,
+                    mean: mean,
+                    std: std,
+                    spread: spread,
+                    slope: slope_data[0],
+                    slope_y1: slope_data[1],
+                    slope_y2: slope_data[2],
+                    acc: acc,
+                    new_c: new_c,
+                    max_cases: max_cases,
+                });
+              }
+
+              let acc2 = null;
+              let new_c2 = null;
+              if( all_data.length > 0 ) {
+                acc2 = [{date: all_data[0].date, value: +all_data[0].casos}];
+                new_c2 = [{date: all_data[0].date, value: +all_data[0].casos}];
+
+                for( let j = 1; j < all_data.length; ++j ) {
+                  acc2.push({date: all_data[j].date, value: +all_data[j].casos});
+                  new_c2.push({date: all_data[j].date, value: (+all_data[j].casos) - (+all_data[j-1].casos)});
+                }  
+              } 
+
+              if( all_data.length > 0 ) {
+                let casos = +(all_data[all_data.length-1].casos);
+
+                let temp_new_cases = getNewCases(all_data);
+                let mean = getMean(temp_new_cases);
+                let std = getStd(temp_new_cases, mean);
+                let spread = std/mean;
+                let slope_data = getSlope(all_data, window_analysis);
+
+                all_knn_cases.push({
+                    name: cities[i],
+                    value: casos,
+                    evolution: all_data,
+                    new_cases: temp_new_cases,
+                    mean: mean,
+                    std: std,
+                    spread: spread,
+                    slope: slope_data[0],
+                    slope_y1: slope_data[1],
+                    slope_y2: slope_data[2],
+                    acc: acc2,
+                    new_c: new_c2,
+                    max_cases: max_cases,
+                });
+              }
+              
+            }
+
+            console.log(description);
+            console.log('knn_cases');
+            console.log(knn_cases);
+
+            if( knn_cases.length == 0 && evolution_city_limited.length == 0 ) {
+              document.getElementById('decreaseDay').disabled = true;
+              return;
+            }
+
+
+            all_knn_cases = addAnalysisCity(all_knn_cases, evolution_city_limited, description);
+
+            let union = getUnion(knn_cases);
+            let all_union = getUnion(all_knn_cases);
+
+            knn_cases = knn_cases.sort((a, b) => b.slope-a.slope);
+
+            let acc_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
+            let new_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
+
+            for( let i = 1; i < evolution_city.length; ++i ) {
+              acc_cases.push({date: evolution_city[i].date, value: +evolution_city[i].casos});
+              new_cases.push({date: evolution_city[i].date, value: (+evolution_city[i].casos) - (+evolution_city[i-1].casos)});
+            }
+
+            let first_date = risk_data[1];
+            let last_date = risk_data[2];
+            let height_graph = 80;
+            let width_graph = 150;
+            let max_cases = d3.max(acc_cases, d => d.value);
+
+            let small_multiple = chart.select('.principal').append('g')
+              .attr('class', 'small_multiple')
+              .attr('transform', 'translate('+((25 + 30))+', '+(45)+')');
+
+            
+
+            let yScaleEvolucao = d3.scaleLinear()
+                .domain([0, max_cases])
+                .range([height_graph, 0]);
+
+            let yAxisEvolucao = d3.axisLeft()
+                .scale(yScaleEvolucao)
+                .ticks(5);
+
+            // small_multiple.append('g')
+            //     .style('stroke-width', 0.8)
+            //     .attr('transform', 'translate(0,'+yScaleEvolucao(max_cases)+')')
+            //     .call(yAxisEvolucao)
+            //   .selectAll('text')
+            //     .attr('font-size', 8)
+            //     .attr('font-family', 'Helvetica');
+
+            console.log('LAST_DATE');
+            console.log(last_date);
+            console.log(day);
+            console.log(lastDayAnalysis);
+            let xScaleEvolucao = d3.scaleTime()
+                .domain([first_date, last_date])
+                .range([0, width_graph]);
+
+            let xAxisEvolucao = d3.axisBottom()
+                .tickFormat(d3.timeFormat("%d-%m"))            
+                .scale(xScaleEvolucao)
+                .ticks(5);
+
+            small_multiple.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,'+yScaleEvolucao(0)+')')
+                .call(xAxisEvolucao)
+              .selectAll("text")
+                .attr('font-size', 8)
+                .attr('font-family', 'Helvetica')
+                // .style("text-anchor", "end")
+                // .attr("dx", "-.8em")
+                // .attr("dy", ".15em")
+                // .attr("transform", "rotate(-20)");
+
+            let line = d3.line()
+                .x((d, i) => xScaleEvolucao(d.date))
+                .y(d => yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            let area = d3.area()
+                .x((d, i) => xScaleEvolucao(d.date))
+                .y0(height_graph)
+                .y1((d, i) => yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            small_multiple.append('path')
+                .attr('class', 'line_real')
+                .attr('d', line(acc_cases))
+                .attr('stroke', '#ffab52')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            small_multiple.append('path')
+                .attr('d', area(acc_cases))
+                .attr('stroke', 'none')
+                .attr('fill', '#ffab52')
+                .attr('fill-opacity', 0.3);
+
+
+            small_multiple.append('path')
+                .attr('class', 'line_real')
+                .attr('d', line(new_cases))
+                .attr('stroke', '#000000')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            small_multiple.append('path')
+                .attr('d', area(new_cases))
+                .attr('stroke', 'none')
+                .attr('fill', "#000000")
+                .attr('fill-opacity', 0.3)
+
+            small_multiple.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '12px')
+              .style('text-anchor', 'start')
+              .text(description);
+
+            small_multiple.append('text')
+              .attr('x', 0)
+              .attr('y', 15)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '8px')
+              .style('text-anchor', 'start')
+              .attr('color', 'grey')
+              .attr('font-weight', 'bold')
+              .text('Casos: '+acc_cases[acc_cases.length-1].value);
+
+
+            let thisSlope = getSlope(casosByCity.filter(d => {
+                  if( d.date.getTime() > day.getTime() )
+                    return false;
+                  let time = day.getTime() - d.date.getTime();
+                  let days = time / (1000 * 3600 * 24);
+                  return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == city;
+
+              }), window_analysis);
+
+
+            let spSlope = getSlope(casosByCity.filter(d => {
+                  if( d.date.getTime() > day.getTime() )
+                    return false;
+                  let time = day.getTime() - d.date.getTime();
+                  let days = time / (1000 * 3600 * 24);
+                  return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == "São Paulo".replace(/[^\x00-\x7F]/g, "");
+
+              }), window_analysis);
+
+
+            let innerRadiusScale = d3.scaleLinear()
+              .domain([0, spSlope[0]])
+              .range([8, 18]);
+
+            let multiplier = 1.35;
+
+            let outerRadius = Math.min(height_graph*multiplier, width_graph*multiplier) * .5 - 10,
+                innerRadius = 18;//innerRadiusScale(thisSlope);// outerRadius * .6;
+            
+            let n = knn_cases.length;
+            let data0 = [];
+            let data1 = [];
+
+            for( let i = 0; i < n; ++i ) {
+              data0.push(1);
+              data1.push(1);
+            }
+
+            let slopeScale = d3.scaleSqrt()
+                .domain([0, Math.max(thisSlope[0], d3.max(knn_cases, d => d.slope))])
+                .range([0, 1]);
+
+            let color = d3.scaleOrdinal(d3.schemeCategory20);
+
+            let arc = d3.arc();
+            let pie = d3.pie().sort(null);
+
+
+            let pie_multiple = small_multiple.append('g')
+              .attr('transform', 'translate('+(width_graph+25 +40)+', -15)');
+
+            let data_ready = arcs(data0, data1);
+
+
+            pie_multiple.selectAll('.arc')
+              .data(data_ready)
+              .enter().append('g')
+                .attr('class', 'arc')
+                .attr('transform', 'translate('+width_graph*multiplier/2+','+height_graph*multiplier/2+')')
+              .append('path')
+                .attr('fill', (d, i) => d3.interpolateReds(slopeScale(knn_cases[i].slope)))
+                .style('stroke', 'black')
+                .attr('d', arc)
+                .on('mouseover', (d, i) => {
+
+                  let city_object = knn_cases[i];
+                  chart.select('.slopeArea').selectAll("*").remove();
+                  let slopeArea = chart.select('.slopeArea')
+                    .append('g')
+                      .attr('transform', 'translate(-5, 15)');
+
+                  let acc = city_object.acc;
+                  let new_c = city_object.new_c;
+
+                  console.log('city_object');
+                  console.log(city_object);
+
+                   let neighbors_xScaleEvolucao = d3.scaleTime()
+                      .domain([first_date, last_date])
+                      .range([0, width_graph*2]);
+
+                  let neighbors_xAxisEvolucao = d3.axisBottom()
+                      .tickFormat(d3.timeFormat("%d-%m"))            
+                      .scale(neighbors_xScaleEvolucao)
+                      .ticks(5);
+
+
+                  let neighbors_yScaleEvolucao = d3.scaleLinear()
+                    .domain([0, d3.max(all_union[0], d => d.value)])
+                    .range([height_graph*2, 0]);
+
+                  let neighbors_line = d3.line()
+                      .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                      .y(d => neighbors_yScaleEvolucao(d.value))
+                      .curve(d3.curveCardinal.tension(0.5));
+
+                  let neighbors_area = d3.area()
+                      .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                      .y0(height_graph*2)
+                      .y1((d, i) => neighbors_yScaleEvolucao(d.value))
+                      .curve(d3.curveCardinal.tension(0.5));
+
+
+                  slopeArea.append('g')
+                      .style('stroke-width', 0.8)
+                      .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                      .call(neighbors_xAxisEvolucao)
+                    .selectAll("text")
+                      .attr('font-size', 8)
+                      .attr('font-family', 'Helvetica');
+
+                  
+
+                  slopeArea.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(acc))
+                      .attr('stroke', '#ff4f4f')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeArea.append('path')
+                      .attr('d', neighbors_area(acc))
+                      .attr('stroke', 'none')
+                      .attr('fill', '#ff4f4f')
+                      .attr('fill-opacity', 0.3);
+
+                  slopeArea.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_c))
+                      .attr('stroke', '#000000')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeArea.append('path')
+                      .attr('d', neighbors_area(new_c))
+                      .attr('stroke', 'none')
+                      .attr('fill', "#000000")
+                      .attr('fill-opacity', 0.3);
+
+                  // let max_y = -1;
+
+                  // for( let j = 0; j < knn_cases.length; ++j ) {
+                  //   max_y = Math.max(max_y, knn_cases[j].slope_y1);
+                  //   max_y = Math.max(max_y, knn_cases[j].slope_y2);
+                  // }
+
+                  // max_y = Math.max(max_y, thisSlope[1]);
+                  // max_y = Math.max(max_y, thisSlope[2]); 
+                  // let scaleSlopeY = d3.scaleSqrt()
+                  //   .domain([0, max_y])
+                  //   .range([70, 40]);
+
+                  // slopeArea.append('line')
+                  //   .attr('x1', 0)
+                  //   .attr('x2', 100)
+                  //   .attr('y1', scaleSlopeY(0))//scaleSlopeY(city_object.slope_y1))
+                  //   .attr('y2', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2))
+                  //   .style('fill', 'none')
+                  //   .style('stroke-width', 3)
+                  //   .style('stroke', '#8f8f8f');
+
+                  // slopeArea.append('circle')
+                  //   .attr('cx', 0)
+                  //   .attr('cy', scaleSlopeY(0))
+                  //   .attr('r', 6)
+                  //   .style('stroke', '#8f8f8f')
+                  //   .style('fill', '#d1d1d1');
+
+                  // slopeArea.append('text')
+                  //   .attr('x', -8)
+                  //   .attr('y', scaleSlopeY(0) + 4)
+                  //   .attr('font-family', 'Helvetica')
+                  //   .attr('font-size', '12px')
+                  //   .attr('text-anchor', 'end')
+                  //   .text(city_object.slope_y1);
+
+
+                  // slopeArea.append('circle')
+                  //   .attr('cx', 100)
+                  //   .attr('cy', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2) )
+                  //   .style('r', 6)
+                  //   .style('stroke', '#8f8f8f')
+                  //   .style('fill', '#d1d1d1');
+
+                  // slopeArea.append('text')
+                  //   .attr('x', 108)
+                  //   .attr('y', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2) + 4)
+                  //   .attr('font-family', 'Helvetica')
+                  //   .attr('font-size', '12px')
+                  //   .attr('text-anchor', 'start')
+                  //   .text(city_object.slope_y2);
+
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '12px')
+                    .style('text-anchor', 'start')
+                    .text(city_object.name);
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 15)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '8px')
+                    .style('text-anchor', 'start')
+                    .attr('color', 'grey')
+                    .attr('font-weight', 'bold')
+                    .text('Casos: '+city_object.value);
+
+                });
+
+            var labelArc = d3.arc()
+              .innerRadius(innerRadius)         // This is the size of the donut hole
+              .outerRadius(outerRadius)
+
+            // Another arc that won't be drawn. Just for labels positioning
+            var labelOuterArc = d3.arc()
+              .innerRadius(innerRadius * 1.4)         // This is the size of the donut hole
+              .outerRadius(outerRadius* 1.4)
+            let radius = Math.min(height_graph*multiplier, width_graph*multiplier) /2;
+
+            pie_multiple
+              .selectAll('allPolylines')
+              .data(data_ready)
+              .enter().append('g')
+                .attr('class', 'arc')
+                .attr('transform', 'translate('+width_graph*multiplier/2+','+height_graph*multiplier/2+')')
+              .append('polyline')
+                .attr("stroke", "black")
+                .style("fill", "none")
+                .attr("stroke-width", 1)
+                .attr('points', function(d) {
+                  var posA = labelArc.centroid(d) // line insertion in the slice
+                  var posB = labelOuterArc.centroid(d) // line break: we use the other arc generator that has been built only for that
+                  var posC = labelOuterArc.centroid(d); // Label position = almost the same as posB
+                  var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2 // we need the angle to see if the X position will be at the extreme right or extreme left
+                  posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1); // multiply by 1 or -1 to put it on the right or on the left
+                  return [posA, posB, posC]
+                });
+
+            pie_multiple
+              .append('g')
+                .attr('class', 'arc')
+                .attr('transform', 'translate('+width_graph*multiplier/2+','+height_graph*multiplier/2+')')
+              .append('circle')
+                .attr('cx', 0)
+                .attr('cy', 0)
+                .attr('r', innerRadius)
+                .style('stroke', 'black')
+                .style('fill', d3.interpolateReds(slopeScale(thisSlope[0])))
+                .on('mouseover', (d, i) => {
+
+                  
+                  let city_object = {
+                    name: description,
+                    value: thisSlope[2],
+                    slope_y1: thisSlope[1],
+                    slope_y2: thisSlope[2],
+
+                  };
+                  
+                  chart.select('.slopeArea').selectAll("*").remove();
+                  let slopeArea = chart.select('.slopeArea')
+                    .append('g')
+                      .attr('transform', 'translate(-5, 15)');
+
+                  let acc = null;
+                  let new_c = null;
+                  if( evolution_city_limited.length > 0 ) {
+                    acc = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+                    new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+
+                    for( let j = 1; j < evolution_city_limited.length; ++j ) {
+                      acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
+                      new_c.push({date: evolution_city_limited[j].date, value: (+evolution_city_limited[j].casos) - (+evolution_city_limited[j-1].casos)});
+                    }  
+                  } 
+
+
+                  console.log('city_object');
+                  console.log(city_object);
+
+                   let neighbors_xScaleEvolucao = d3.scaleTime()
+                      .domain([first_date, last_date])
+                      .range([0, width_graph*2]);
+
+                  let neighbors_xAxisEvolucao = d3.axisBottom()
+                      .tickFormat(d3.timeFormat("%d-%m"))            
+                      .scale(neighbors_xScaleEvolucao)
+                      .ticks(5);
+
+                  // console.log('MAX UNION: ', d3.max(all_union[0], d => d.value));
+                  // console.log('MAX EVOLUTION: ',d3.max(evolution_city, d => +d.casos));
+
+
+                  let neighbors_yScaleEvolucao = d3.scaleLinear()
+                    .domain([0, d3.max(all_union[0], d => d.value)])
+                    .range([height_graph*2, 0]);
+
+                  let neighbors_line = d3.line()
+                      .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                      .y(d => neighbors_yScaleEvolucao(d.value))
+                      .curve(d3.curveCardinal.tension(0.5));
+
+                  let neighbors_area = d3.area()
+                      .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                      .y0(height_graph*2)
+                      .y1((d, i) => neighbors_yScaleEvolucao(d.value))
+                      .curve(d3.curveCardinal.tension(0.5));
+
+
+                  slopeArea.append('g')
+                      .style('stroke-width', 0.8)
+                      .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                      .call(neighbors_xAxisEvolucao)
+                    .selectAll("text")
+                      .attr('font-size', 8)
+                      .attr('font-family', 'Helvetica');
+
+                  
+
+                  slopeArea.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(acc))
+                      .attr('stroke', '#ff4f4f')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeArea.append('path')
+                      .attr('d', neighbors_area(acc))
+                      .attr('stroke', 'none')
+                      .attr('fill', '#ff4f4f')
+                      .attr('fill-opacity', 0.3);
+
+                  slopeArea.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_c))
+                      .attr('stroke', '#000000')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeArea.append('path')
+                      .attr('d', neighbors_area(new_c))
+                      .attr('stroke', 'none')
+                      .attr('fill', "#000000")
+                      .attr('fill-opacity', 0.3);
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '12px')
+                    .style('text-anchor', 'start')
+                    .text(city_object.name);
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 15)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '8px')
+                    .style('text-anchor', 'start')
+                    .attr('color', 'grey')
+                    .attr('font-weight', 'bold')
+                    .text('Casos: '+city_object.value);
+                  
+
+                });
+
+            pie_multiple
+              .selectAll('allLabels')
+              .data(data_ready)
+              .enter().append('g')
+                .attr('class', 'arc')
+                .attr('transform', 'translate('+width_graph*multiplier/2+','+height_graph*multiplier/2+')')
+              .append('text')
+                .text((d, i) => knn_cases[i].name)
+                .attr('font-family', 'Helvetica')
+                .attr('font-size', '8px')
+                .attr('transform', function(d) {
+                    var pos = labelOuterArc.centroid(d);
+                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+                    pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
+                    return 'translate(' + pos + ')';
+                })
+                .style('text-anchor', function(d) {
+                    var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
+                    return (midangle < Math.PI ? 'start' : 'end')
+                });
+
+            function arcs(data0, data1) {
+              var arcs0 = pie(data0),
+                  arcs1 = pie(data1),
+                  i = -1,
+                  arc;
+              while (++i < n) {
+                arc = arcs0[i];
+                arc.innerRadius = innerRadius;
+                arc.outerRadius = outerRadius;
+                arc.next = arcs1[i];
+              }
+              return arcs0;
+            }
+
+            chart.select('.aggregatedArea').selectAll("*").remove();
+            let aggregatedArea = chart.select('.aggregatedArea')
+              .append('g')
+                .attr('transform', 'translate(55, 15)');
+
+            let aggregated_xScaleEvolucao = d3.scaleTime()
+                .domain([first_date, last_date])
+                .range([0, width_graph*2]);
+
+            let aggregated_xAxisEvolucao = d3.axisBottom()
+                .tickFormat(d3.timeFormat("%d-%m"))            
+                .scale(aggregated_xScaleEvolucao)
+                .ticks(5);
+            
+
+            let aggregated_yScaleEvolucao = d3.scaleLinear()
+              .domain([0, d3.max(all_union[0], d => d.value)])
+              .range([height_graph*2, 0]);
+
+            let aggregated_line = d3.line()
+                .x((d, i) => aggregated_xScaleEvolucao(d.date))
+                .y(d => aggregated_yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            let aggregated_area = d3.area()
+                .x((d, i) => aggregated_xScaleEvolucao(d.date))
+                .y0(height_graph*2)
+                .y1((d, i) => aggregated_yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            aggregatedArea.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,'+aggregated_yScaleEvolucao(0)+')')
+                .call(aggregated_xAxisEvolucao)
+              .selectAll("text")
+                .attr('font-size', 8)
+                .attr('font-family', 'Helvetica');
+
+            aggregatedArea.append('path')
+                .attr('class', 'line_real')
+                .attr('d', aggregated_line(union[0]))
+                .attr('stroke', '#ff4f4f')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            aggregatedArea.append('path')
+                .attr('d', aggregated_area(union[0]))
+                .attr('stroke', 'none')
+                .attr('fill', '#ff4f4f')
+                .attr('fill-opacity', 0.3);
+
+            aggregatedArea.append('path')
+                .attr('class', 'line_real')
+                .attr('d', aggregated_line(union[1]))
+                .attr('stroke', '#000000')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            aggregatedArea.append('path')
+                .attr('d', aggregated_area(union[1]))
+                .attr('stroke', 'none')
+                .attr('fill', "#000000")
+                .attr('fill-opacity', 0.3);
+
+            aggregatedArea.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '12px')
+              .style('text-anchor', 'start')
+              .text('Casos agregados para a região (- '+description+')');
+
+            aggregatedArea.append('text')
+              .attr('x', 0)
+              .attr('y', 15)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '8px')
+              .style('text-anchor', 'start')
+              .attr('color', 'grey')
+              .attr('font-weight', 'bold')
+              .text('Casos: '+union[0][union[0].length-1].value);  
+
+
+
+
+
+
+
+
+
+            /***********
+          
+              DRAW THE CITY
+
+            *********/
+
+            let city_object = {
+              name: description,
+              value: thisSlope[2],
+              slope_y1: thisSlope[1],
+              slope_y2: thisSlope[2],
+
+            };
+            
+            let slopeArea = chart.select('.slopeArea')
+              .append('g')
+                .attr('transform', 'translate(-5, 15)');
+
+            let acc = null;
+            let new_c = null;
+            if( evolution_city_limited.length > 0 ) {
+              acc = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+              new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+
+              for( let j = 1; j < evolution_city_limited.length; ++j ) {
+                acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
+                new_c.push({date: evolution_city_limited[j].date, value: (+evolution_city_limited[j].casos) - (+evolution_city_limited[j-1].casos)});
+              }  
+            } 
+
+
+            console.log('city_object');
+            console.log(city_object);
+
+             let neighbors_xScaleEvolucao = d3.scaleTime()
+                .domain([first_date, last_date])
+                .range([0, width_graph*2]);
+
+            let neighbors_xAxisEvolucao = d3.axisBottom()
+                .tickFormat(d3.timeFormat("%d-%m"))            
+                .scale(neighbors_xScaleEvolucao)
+                .ticks(5);
+
+            // console.log('MAX UNION: ', d3.max(all_union[0], d => d.value));
+            // console.log('MAX EVOLUTION: ',d3.max(evolution_city, d => +d.casos));
+
+
+            let neighbors_yScaleEvolucao = d3.scaleLinear()
+              .domain([0, d3.max(all_union[0], d => d.value)])
+              .range([height_graph*2, 0]);
+
+            let neighbors_line = d3.line()
+                .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                .y(d => neighbors_yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            let neighbors_area = d3.area()
+                .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                .y0(height_graph*2)
+                .y1((d, i) => neighbors_yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+
+            slopeArea.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                .call(neighbors_xAxisEvolucao)
+              .selectAll("text")
+                .attr('font-size', 8)
+                .attr('font-family', 'Helvetica');
+
+            
+
+            slopeArea.append('path')
+                .attr('class', 'line_real')
+                .attr('d', neighbors_line(acc))
+                .attr('stroke', '#ff4f4f')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            slopeArea.append('path')
+                .attr('d', neighbors_area(acc))
+                .attr('stroke', 'none')
+                .attr('fill', '#ff4f4f')
+                .attr('fill-opacity', 0.3);
+
+            slopeArea.append('path')
+                .attr('class', 'line_real')
+                .attr('d', neighbors_line(new_c))
+                .attr('stroke', '#000000')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            slopeArea.append('path')
+                .attr('d', neighbors_area(new_c))
+                .attr('stroke', 'none')
+                .attr('fill', "#000000")
+                .attr('fill-opacity', 0.3);
+
+            slopeArea.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '12px')
+              .style('text-anchor', 'start')
+              .text(city_object.name);
+
+            slopeArea.append('text')
+              .attr('x', 0)
+              .attr('y', 15)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '8px')
+              .style('text-anchor', 'start')
+              .attr('color', 'grey')
+              .attr('font-weight', 'bold')
+              .text('Casos: '+city_object.value);
+
+
+
+
+
+
+          }
+          
+        }
+
+        function wrap(text, width) {
+          text.each(function() {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, // ems
+                y = text.attr("y"),
+                dy = parseFloat(text.attr("dy")),
+                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+            while (word = words.pop()) {
+              line.push(word);
+              tspan.text(line.join(" "));
+              if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+              }
+            }
+          });
+        }
+
+
+        function prepareRiskAnalysis(store) {
+            let geoJson = store.geoJSON;
+            let evolucao = store.evolucao;
+
+            for (var i = 0; i < evolucao.length; i++) {
+                evolucao[i].evolucao = +evolucao[i].evolucao;
+                evolucao[i].casos_dia = +evolucao[i].casos_dia;
+
+                let date_string = evolucao[i].data.split('/');
+                let day = +date_string[0];
+
+                let month = map_month[date_string[1]];
+
+                let date = new Date(2020, month-1, day);
+
+                evolucao[i].date = date;
+            }
+
+            firstDayAnalysis = evolucao[0].date;
+            lastDayAnalysis = evolucao[evolucao.length-1].date;
+
+            var margin = {
+              top: 5,
+              right: 10,
+              bottom: 5,
+              left: 10
+            },
+            twidth = 900 - margin.left - margin.right,
+            theight = 500 - margin.top - margin.bottom;
+
+
+            // let legends = d3.select("#statisticalCharts")
+            //       .attr("width", twidth + margin.left + margin.right)
+            //   .attr("height", theight + margin.top + margin.bottom)
+            //   .append("g")
+            //   .attr("transform", "translate(" + margin.left + "," + (margin.top - 30) + ")");
+
+            let chart = d3.select("#cityRisk")
+                .attr("width", '100%')
+                .attr("height", '100%')
+                .attr('viewBox','0 0 '+Math.min(width,height) +' '+500 )
+                .attr('preserveAspectRatio','xMinYMin')
+              .append("g")
+                .attr("transform",  "translate(" + margin.left + "," + (margin.top) + ")");
+
+            let principal = chart.append('g')
+              .attr('class', 'principal')
+              .attr('transform', 'translate(0,0)');
+
+            title_g = chart.append('g')
+                .attr('transform', 'translate(0,0)');
+
+            chart.append('g')
+              .attr('class', 'slopeArea')
+              .attr('transform', 'translate(380,200)');
+
+            chart.append('g')
+              .attr('class', 'aggregatedArea')
+              .attr('transform', 'translate(0, 200)');
+
+            let windowvis = chart.append('g')
+              .attr('class', 'windowvis')
+              .attr('transform', 'translate(5,'+(theight-20)+' )');
+
+            general_xScaleEvolucao = d3.scaleTime()
+                .domain([firstDayAnalysis, lastDayAnalysis])
+                .range([0, twidth-160]);
+
+            let xAxisEvolucao = d3.axisBottom()
+                .tickFormat(d3.timeFormat("%d-%m"))            
+                .scale(general_xScaleEvolucao)
+                .ticks(10);
+
+            windowvis.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,0)')
+                .call(xAxisEvolucao)
+              .selectAll("text")
+                .attr('font-size', 8)
+                .attr('font-family', 'Helvetica');
+
+            dayAnalysis = new Date(lastDayAnalysis.getTime());
+            
+            let temp = new Date();
+            temp.setTime(lastDayAnalysis.getTime() - (24*60*60*1000)*window_analysis);
+
+            windowvis.append('rect')
+              .attr('class', 'window-rect')
+              .attr('x', general_xScaleEvolucao(temp))
+              .attr('width', general_xScaleEvolucao(lastDayAnalysis)-general_xScaleEvolucao(temp))
+              .attr('y', -11)
+              .attr('height', 10)
+              .style('fill', '#34abeb')
+              .style('stroke', '#0099eb');
+
+
+
+            // let legend = chart.append('g')
+            //     .attr('class', 'legend')
+            //     .attr('transform', 'translate(550,0)')
+            //   .append('text')
+            //     .attr('y', 0)
+            //     .attr('dy', 15)
+            //     .attr('transform', 'translate(0,'+(margin.top*5)+')')
+            //     .attr('font-family', 'Helvetica')
+            //     .attr('font-size', '10px')
+            //     .attr('text-align', 'justify')
+            //     .text('* O risco de contaminação é obtido considerando a curva de crescimento da vizinhança e da própria cidade. Cidades com risco maior de contaminação possuem vizinhança com curva crescente de contaminação, além de poderem apresentar esse mesmo padrão. Para calcular a taxa de risco, os 10 últimos dias foram utilizados.')
+            //     .call(wrap, 160);
+
+
+            title_g.append('text')
+              .attr('x', (twidth)/2 - 80)
+              .attr('y', 20)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '16px')
+              .style('text-anchor', 'middle')
+              .text('Análise Visual do Risco de Contaminação*')
+
+            return [chart, firstDayAnalysis, lastDayAnalysis];
         }
 
         function drawStatisticalCharts(store) {
@@ -3999,33 +5633,33 @@
         function showData() {
 
             let tweets = store.tweets;
-            cityById = groupByCity(tweets);
+            // cityById = groupByCity(tweets);
 
-            let last_date = new Date(2020, 1, 27);
-            for( let i = 0; i < tweets.length; ++i ) {
-              let temp = tweets[i].date.split(" ")[0].split("-");
-              let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+            // let last_date = new Date(2020, 1, 27);
+            // for( let i = 0; i < tweets.length; ++i ) {
+            //   let temp = tweets[i].date.split(" ")[0].split("-");
+            //   let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
 
-              tweets[i].date_object = date;
-              tweets[i].lat = +tweets[i].lat;
-              tweets[i].long = +tweets[i].long;
-              tweets[i].id = i;
+            //   tweets[i].date_object = date;
+            //   tweets[i].lat = +tweets[i].lat;
+            //   tweets[i].long = +tweets[i].long;
+            //   tweets[i].id = i;
 
-              if( last_date < tweets[i].date_object ) {
-                  last_date = tweets[i].date_object;
-              }
-            }          
-            let subsetTwitter = tweets.filter(d => d.date_object.getDay() == last_date.getDay() &&
-                                                   d.date_object.getMonth() == last_date.getMonth() &&
-                                                   d.date_object.getYear() == last_date.getYear());
+            //   if( last_date < tweets[i].date_object ) {
+            //       last_date = tweets[i].date_object;
+            //   }
+            // }          
+            // let subsetTwitter = tweets.filter(d => d.date_object.getDay() == last_date.getDay() &&
+            //                                        d.date_object.getMonth() == last_date.getMonth() &&
+            //                                        d.date_object.getYear() == last_date.getYear());
 
 
-            let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
-            document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
-            document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
-            twitterDayMax = distinctDatesTwitter.length-1;
-            twitterDay = distinctDatesTwitter.length-1;
-            document.getElementById('twitter-front').disabled = true;          
+            // let distinctDatesTwitter = [...new Set(tweets.map(d => d.date.split(" ")[0]))];
+            // document.getElementById('dateTwitter').max = distinctDatesTwitter.length-1;
+            // document.getElementById('dateTwitter').value = distinctDatesTwitter.length-1;
+            // twitterDayMax = distinctDatesTwitter.length-1;
+            // twitterDay = distinctDatesTwitter.length-1;
+            // document.getElementById('twitter-front').disabled = true;          
 
 
 
@@ -4038,44 +5672,45 @@
             // document.getElementById('progression-front').disabled = true;
             document.getElementById('progression-back').disabled = true;   
 
-            document.getElementById('realProgressionColor').max = distinctDates.length-1;
-            document.getElementById('realProgressionColor').value = 0;// distinctDates.length-1;
-            progressionDayMaxColor = distinctDates.length-1;
-            progressionDayColor = 0//distinctDates.length-1;
-            // document.getElementById('progression-front').disabled = true;
-            document.getElementById('progression-back-color').disabled = true;          
+            // document.getElementById('realProgressionColor').max = distinctDates.length-1;
+            // document.getElementById('realProgressionColor').value = 0;// distinctDates.length-1;
+            // progressionDayMaxColor = distinctDates.length-1;
+            // progressionDayColor = 0//distinctDates.length-1;
+            // // document.getElementById('progression-front').disabled = true;
+            // document.getElementById('progression-back-color').disabled = true;          
 
-            document.getElementById('realProgressionHull').max = distinctDates.length-1;
-            document.getElementById('realProgressionHull').value = 0;// distinctDates.length-1;
-            progressionDayMaxHull = distinctDates.length-1;
-            progressionDayHull = 0//distinctDates.length-1;
-            // document.getElementById('progression-front').disabled = true;
-            document.getElementById('progression-back-hull').disabled = true;  
+            // document.getElementById('realProgressionHull').max = distinctDates.length-1;
+            // document.getElementById('realProgressionHull').value = 0;// distinctDates.length-1;
+            // progressionDayMaxHull = distinctDates.length-1;
+            // progressionDayHull = 0//distinctDates.length-1;
+            // // document.getElementById('progression-front').disabled = true;
+            // document.getElementById('progression-back-hull').disabled = true;  
 
-            document.getElementById('realProgressionDanger').max = distinctDates.length-1;
-            document.getElementById('realProgressionDanger').value = 0;// distinctDates.length-1;
-            progressionDayMaxDanger = distinctDates.length-1;
-            progressionDayDanger = 0//distinctDates.length-1;
-            // document.getElementById('progression-front').disabled = true;
-            document.getElementById('progression-back-danger').disabled = true;      
+            // document.getElementById('realProgressionDanger').max = distinctDates.length-1;
+            // document.getElementById('realProgressionDanger').value = 0;// distinctDates.length-1;
+            // progressionDayMaxDanger = distinctDates.length-1;
+            // progressionDayDanger = 0//distinctDates.length-1;
+            // // document.getElementById('progression-front').disabled = true;
+            // document.getElementById('progression-back-danger').disabled = true;      
 
        
 
-            let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
-            document.getElementById('dateGoogleTrends').max = maxValue;
-            document.getElementById('dateGoogleTrends').value = maxValue;
-            googleDayMax = maxValue;
-            googleDay = maxValue;
-            document.getElementById('google-front').disabled = true;
+            // let maxValue = [...new Set(googleTrendsMap.map(d => d.ate))].length-1;
+            // document.getElementById('dateGoogleTrends').max = maxValue;
+            // document.getElementById('dateGoogleTrends').value = maxValue;
+            // googleDayMax = maxValue;
+            // googleDay = maxValue;
+            // document.getElementById('google-front').disabled = true;
 
-
-            
+            console.log('knn_cities');
+            console.log(knn_cities);
 
             drawMapReal(store.geoJSON);
-            drawMapRealColor(store.geoJSON);
-            drawMapRealHull(store.geoJSON);
-            drawMapRealDanger(store.geoJSON);
-            drawStatisticalCharts(store);
+            risk_data = prepareRiskAnalysis(store);
+            // drawMapRealColor(store.geoJSON);
+            // drawMapRealHull(store.geoJSON);
+            // drawMapRealDanger(store.geoJSON);
+            // drawStatisticalCharts(store);
 
             // // must be after drawStatisticalCHarts: it uses firstDayAnalysis
             // allTweets = tweets;
@@ -4267,24 +5902,24 @@
         } 
 
 
-        document.getElementById('nextDate').addEventListener('click', function() {
-          if( (currentDate < dates.length-1) ) {
-            currentDate++;
+        // document.getElementById('nextDate').addEventListener('click', function() {
+        //   if( (currentDate < dates.length-1) ) {
+        //     currentDate++;
 
-            let temp = [];
-            for( let i = 0; i <= currentDate; ++i ) {
-                temp = temp.concat(accumulated_days[i].tweets);
-            }
-            let agglomerated_tweets = groupAccumulateCitiesDate(temp);
+        //     let temp = [];
+        //     for( let i = 0; i <= currentDate; ++i ) {
+        //         temp = temp.concat(accumulated_days[i].tweets);
+        //     }
+        //     let agglomerated_tweets = groupAccumulateCitiesDate(temp);
 
 
-            // drawMapAnalysis(accumulated_tweets_city.filter(d => d.data == dates[currentDate]), 
-            //                 accumulated_cases.filter(d => d.data == dates[currentDate]), 
-            //                 max_casos, max_tweets);
+        //     // drawMapAnalysis(accumulated_tweets_city.filter(d => d.data == dates[currentDate]), 
+        //     //                 accumulated_cases.filter(d => d.data == dates[currentDate]), 
+        //     //                 max_casos, max_tweets);
 
-            drawMapAnalysis(agglomerated_tweets, accumulated_days[currentDate].acc_cases, max_casos, max_tweets);
-          }
-        }); 
+        //     drawMapAnalysis(agglomerated_tweets, accumulated_days[currentDate].acc_cases, max_casos, max_tweets);
+        //   }
+        // }); 
 
         function groupByCity(data) {
             let result = data.reduce((result, d) => {
@@ -4347,7 +5982,7 @@
         }
 
         function compute_knn(cities, k) {
-
+          let reverse_knn = {};
           let temp_cities = Object.keys(cities).map(key => cities[key]);
           Object.keys(cities).forEach(function(key) {
               let value = cities[key];
@@ -4363,8 +5998,14 @@
 
               for( let i = 1; i <= k; ++i) {
                 value.knn.push(temp_cities[i].name);
+                if( !(temp_cities[i].name.replace(/[^\x00-\x7F]/g, "") in reverse_knn) ) {
+                    reverse_knn[temp_cities[i].name.replace(/[^\x00-\x7F]/g, "")] = []
+                }
+                reverse_knn[temp_cities[i].name.replace(/[^\x00-\x7F]/g, "")].push(cities[key].name);
               }
           });
+
+          return reverse_knn;
         }
 
 
@@ -4372,9 +6013,9 @@
             return Promise.all([
                 d3.json('geo/sp.geo.json'),
                 d3.csv('data/cases-sp-cities.csv'),
-                d3.csv('data/evolucao_casos.csv'),
-                d3.csv('data/geoMap.csv'),
-                d3.csv('data/all_tweets.csv')
+                d3.csv('data/evolucao_casos.csv') //,
+                // d3.csv('data/geoMap.csv'),
+                // d3.csv('data/all_tweets.csv')
             ]).then(datasets => {
 
                 store.geoJSON = datasets[0];
@@ -4398,21 +6039,22 @@
                   }
                 }
 
-                console.log(kFirstLevel, kSecondLevel);
-                compute_knn(knn_cities, kFirstLevel);
+                reversed_knn = compute_knn(knn_cities, kFirstLevel);
 
                 casosByCity = datasets[1];
                 store.evolucao = datasets[2];
-                googleTrendsMap = datasets[3];
+                console.log('reversed_knn');
+                console.log(reversed_knn);
+                // googleTrendsMap = datasets[3];
 
-                store.tweets = datasets[4].filter(d => {
+                // store.tweets = datasets[4].filter(d => {
 
-                    let temp = d.date.split(" ")[0].split("-");
-                    let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
-                    // tweets[i].data = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+                //     let temp = d.date.split(" ")[0].split("-");
+                //     let date = new Date(+temp[0], +temp[1] - 1, +temp[2]);
+                //     // tweets[i].data = new Date(+temp[0], +temp[1] - 1, +temp[2]);
 
-                    return date >= new Date(2020, 1, 27);
-                });
+                //     return date >= new Date(2020, 1, 27);
+                // });
 
                 // cityid,cidade,lat,long,diasfrom,date,
 
@@ -4568,39 +6210,39 @@
                     casosByCity[i].date = date;
                 }
 
-                let googleTrendsMapLastDate = new Date(2020, 0, 1);
+                // let googleTrendsMapLastDate = new Date(2020, 0, 1);
 
 
-                for( let i = 0; i < googleTrendsMap.length; ++i ) {
-                      let date_string = googleTrendsMap[i].ate.split('/');
-                      let day = +date_string[0];
+                // for( let i = 0; i < googleTrendsMap.length; ++i ) {
+                //       let date_string = googleTrendsMap[i].ate.split('/');
+                //       let day = +date_string[0];
 
-                      let month = map_month[date_string[1]];
+                //       let month = map_month[date_string[1]];
 
-                      let date = new Date(2020, month-1, day);
-                      if( date > googleTrendsMapLastDate ) {
-                          googleTrendsMapLastDate = date;
-                          temp = googleTrendsMap[i].ate;
-                      }
+                //       let date = new Date(2020, month-1, day);
+                //       if( date > googleTrendsMapLastDate ) {
+                //           googleTrendsMapLastDate = date;
+                //           temp = googleTrendsMap[i].ate;
+                //       }
 
-                      googleTrendsMap[i]['tosse'] = +googleTrendsMap[i]['tosse'];
-                      googleTrendsMap[i]['febre'] = +googleTrendsMap[i]['febre'];
-                      googleTrendsMap[i]['tosse seca'] = +googleTrendsMap[i]['tosse seca'];
-                      googleTrendsMap[i]['febre alta'] = +googleTrendsMap[i]['febre alta'];
-                      googleTrendsMap[i]['falta de ar'] = +googleTrendsMap[i]['falta de ar'];
-                      googleTrendsMap[i]['lat'] = +googleTrendsMap[i]['lat'];
-                      googleTrendsMap[i]['long'] = +googleTrendsMap[i]['long'];
+                //       googleTrendsMap[i]['tosse'] = +googleTrendsMap[i]['tosse'];
+                //       googleTrendsMap[i]['febre'] = +googleTrendsMap[i]['febre'];
+                //       googleTrendsMap[i]['tosse seca'] = +googleTrendsMap[i]['tosse seca'];
+                //       googleTrendsMap[i]['febre alta'] = +googleTrendsMap[i]['febre alta'];
+                //       googleTrendsMap[i]['falta de ar'] = +googleTrendsMap[i]['falta de ar'];
+                //       googleTrendsMap[i]['lat'] = +googleTrendsMap[i]['lat'];
+                //       googleTrendsMap[i]['long'] = +googleTrendsMap[i]['long'];
 
-                      googleTrendsMap[i]['id'] = i;
+                //       googleTrendsMap[i]['id'] = i;
 
-                      googleTrendsMap[i].date = date;
-                  }
+                //       googleTrendsMap[i].date = date;
+                //   }
 
-                  colors = d3.scaleOrdinal(d3.schemeCategory10)
-                    .domain(googleTrendsMap.columns.slice(2, 7));
+                //   colors = d3.scaleOrdinal(d3.schemeCategory10)
+                //     .domain(googleTrendsMap.columns.slice(2, 7));
 
-                  subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == temp);
-                  document.getElementById('progressionGoogleTrends').innerHTML = "Dia: "+temp.split('/')[0]+'/'+map_month_pt[temp.split('/')[1]]+'.';
+                //   subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == temp);
+                //   document.getElementById('progressionGoogleTrends').innerHTML = "Dia: "+temp.split('/')[0]+'/'+map_month_pt[temp.split('/')[1]]+'.';
                 
 
                 return store;
@@ -4655,6 +6297,31 @@
 
             return projection;
         }
+
+
+        document.getElementById('decreaseDay').addEventListener('click', () => {
+
+            if( dayAnalysis.getTime() === firstDayAnalysis.getTime() ) {
+                document.getElementById('decreaseDay').disabled = true;
+            } else {
+                document.getElementById('increaseDay').disabled = false;
+                dayAnalysis.setTime(dayAnalysis.getTime() - (24*60*60*1000)*1);
+                addRiskMeasures(cityAnalysis.replace(/[^\x00-\x7F]/g, ""), cityAnalysis, dayAnalysis, window_analysis);
+            }
+        });
+
+        document.getElementById('increaseDay').addEventListener('click', () => {
+
+            if( dayAnalysis.getTime() === lastDayAnalysis.getTime() ) {
+                document.getElementById('increaseDay').disabled = true;
+            } else {
+                document.getElementById('decreaseDay').disabled = false;
+                dayAnalysis.setTime(dayAnalysis.getTime() + (24*60*60*1000)*1);
+                addRiskMeasures(cityAnalysis.replace(/[^\x00-\x7F]/g, ""), cityAnalysis, dayAnalysis, window_analysis);
+            }
+        });
+
+
 
         function updateProgressionMap(value) {
             let countDifferent = 0;
@@ -4725,282 +6392,282 @@
             document.getElementById('titleProgressionDanger').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
         }
 
-        document.getElementById('progression-front-danger').addEventListener('click', () => {
-          if( progressionDayDanger < progressionDayMaxDanger ) {
+        // document.getElementById('progression-front-danger').addEventListener('click', () => {
+        //   if( progressionDayDanger < progressionDayMaxDanger ) {
 
             
-            for( let i = 0; i < neighboring_cities_danger.length; ++i ) {
-                previous_neighboring_danger_cities.push(neighboring_cities_danger[i]);
-            }
+        //     for( let i = 0; i < neighboring_cities_danger.length; ++i ) {
+        //         previous_neighboring_danger_cities.push(neighboring_cities_danger[i]);
+        //     }
             
 
-            updateProgressionMapDanger(++progressionDayDanger);
-            document.getElementById('progression-back-danger').disabled = false;
-            if( progressionDayDanger == progressionDayMaxDanger )
-                document.getElementById('progression-front-danger').disabled = true;
-          }
-        });
+        //     updateProgressionMapDanger(++progressionDayDanger);
+        //     document.getElementById('progression-back-danger').disabled = false;
+        //     if( progressionDayDanger == progressionDayMaxDanger )
+        //         document.getElementById('progression-front-danger').disabled = true;
+        //   }
+        // });
 
-        document.getElementById('progression-back-danger').addEventListener('click', () => {
-          if( progressionDayDanger > 0 ) {
+        // document.getElementById('progression-back-danger').addEventListener('click', () => {
+        //   if( progressionDayDanger > 0 ) {
 
-            for( let i = 0; i < neighboring_cities_danger.length; ++i )
-              previous_neighboring_danger_cities.pop();
-
-
-            updateProgressionMapDanger(--progressionDayDanger);
-            document.getElementById('progression-front-danger').disabled = false;
-            if( progressionDayDanger == 0 )
-                document.getElementById('progression-back-danger').disabled = true;
-          } 
-        });
+        //     for( let i = 0; i < neighboring_cities_danger.length; ++i )
+        //       previous_neighboring_danger_cities.pop();
 
 
-        function updateProgressionMapColor(value) {
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
-
-            for (var i = 0; i < casosByCity.length; i++) {
-
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
-
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
-
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
+        //     updateProgressionMapDanger(--progressionDayDanger);
+        //     document.getElementById('progression-front-danger').disabled = false;
+        //     if( progressionDayDanger == 0 )
+        //         document.getElementById('progression-back-danger').disabled = true;
+        //   } 
+        // });
 
 
-            document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        }
+        // function updateProgressionMapColor(value) {
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
 
-        document.getElementById('progression-front-color').addEventListener('click', () => {
-          if( progressionDayColor < progressionDayMaxColor ) {
+        //     for (var i = 0; i < casosByCity.length; i++) {
 
-            for( let i = 0; i < neighboring_cities.length; ++i )
-              previous_neighboring_cities.push(neighboring_cities[i]);
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
 
-            updateProgressionMapColor(++progressionDayColor);
-            document.getElementById('progression-back-color').disabled = false;
-            if( progressionDayColor == progressionDayMaxColor )
-                document.getElementById('progression-front-color').disabled = true;
-          }
-        });
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
 
-        document.getElementById('progression-back-color').addEventListener('click', () => {
-          if( progressionDayColor > 0 ) {
-
-            for( let i = 0; i < neighboring_cities.length; ++i )
-              previous_neighboring_cities.pop();
-
-            updateProgressionMapColor(--progressionDayColor);
-            document.getElementById('progression-front-color').disabled = false;
-            if( progressionDayColor == 0 )
-                document.getElementById('progression-back-color').disabled = true;
-          } 
-        });
-
-        function updateProgressionMapHull(value) {
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
-
-            for (var i = 0; i < casosByCity.length; i++) {
-
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
-
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
-
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
 
 
-            document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        }
+        //     document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // }
 
-        document.getElementById('progression-front-hull').addEventListener('click', () => {
-          if( progressionDayHull < progressionDayMaxHull ) {
+        // document.getElementById('progression-front-color').addEventListener('click', () => {
+        //   if( progressionDayColor < progressionDayMaxColor ) {
 
-            updateProgressionMapHull(++progressionDayHull);
-            document.getElementById('progression-back-hull').disabled = false;
-            if( progressionDayHull == progressionDayMaxHull )
-                document.getElementById('progression-front-hull').disabled = true;
-          }
-        });
+        //     for( let i = 0; i < neighboring_cities.length; ++i )
+        //       previous_neighboring_cities.push(neighboring_cities[i]);
 
-        document.getElementById('progression-back-hull').addEventListener('click', () => {
-          if( progressionDayHull > 0 ) {
+        //     updateProgressionMapColor(++progressionDayColor);
+        //     document.getElementById('progression-back-color').disabled = false;
+        //     if( progressionDayColor == progressionDayMaxColor )
+        //         document.getElementById('progression-front-color').disabled = true;
+        //   }
+        // });
 
-            updateProgressionMapHull(--progressionDayHull);
-            document.getElementById('progression-front-hull').disabled = false;
-            if( progressionDayHull == 0 )
-                document.getElementById('progression-back-hull').disabled = true;
-          } 
-        });
+        // document.getElementById('progression-back-color').addEventListener('click', () => {
+        //   if( progressionDayColor > 0 ) {
 
+        //     for( let i = 0; i < neighboring_cities.length; ++i )
+        //       previous_neighboring_cities.pop();
 
-        function isEqual(a, b) {
+        //     updateProgressionMapColor(--progressionDayColor);
+        //     document.getElementById('progression-front-color').disabled = false;
+        //     if( progressionDayColor == 0 )
+        //         document.getElementById('progression-back-color').disabled = true;
+        //   } 
+        // });
 
-          a = a.split(" ")[0];
-          b = b.split(" ")[0];
+        // function updateProgressionMapHull(value) {
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
 
-          a = a.split("-");
-          b = b.split("-");
+        //     for (var i = 0; i < casosByCity.length; i++) {
 
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
 
-          return a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
-        }
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
 
-        function updateTwitterMap(days, operation) {
-            let one_day = 1000*60*60*24;
-            let object = null;
-            let date = 0;
-
-            for( let i = 0; i < allTweets.length; ++i ) {
-
-                let value = Math.round(allTweets[i].date_object-(new Date(2020, 2, 27)))/one_day;
-
-                //if( value == days ) {
-
-                if( allTweets[i].diasfrom == days ) {
-                    date = allTweets[i].date_object;
-                    object = allTweets[i];
-                    break;
-                }
-            }
-
-            let subsetTwitter = allTweets.filter(d => isEqual(d.date, object.date));
-
-            drawSubsetTweets(subsetTwitter, store, true, operation);
-            document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+map_month_pt[number_to_month[+object.date.split(" ")[0].split("-")[1] - 1]];
-        }
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
 
 
-        document.getElementById('twitter-front').addEventListener('click', () => {
-          if( twitterDay < twitterDayMax ) {
-            if( !aggregate )
-              ++twitterDay;
-            updateTwitterMap(aggregate ? twitterDay+1 : twitterDay, 1);
+        //     document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // }
+
+        // document.getElementById('progression-front-hull').addEventListener('click', () => {
+        //   if( progressionDayHull < progressionDayMaxHull ) {
+
+        //     updateProgressionMapHull(++progressionDayHull);
+        //     document.getElementById('progression-back-hull').disabled = false;
+        //     if( progressionDayHull == progressionDayMaxHull )
+        //         document.getElementById('progression-front-hull').disabled = true;
+        //   }
+        // });
+
+        // document.getElementById('progression-back-hull').addEventListener('click', () => {
+        //   if( progressionDayHull > 0 ) {
+
+        //     updateProgressionMapHull(--progressionDayHull);
+        //     document.getElementById('progression-front-hull').disabled = false;
+        //     if( progressionDayHull == 0 )
+        //         document.getElementById('progression-back-hull').disabled = true;
+        //   } 
+        // });
+
+
+        // function isEqual(a, b) {
+
+        //   a = a.split(" ")[0];
+        //   b = b.split(" ")[0];
+
+        //   a = a.split("-");
+        //   b = b.split("-");
+
+
+        //   return a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
+        // }
+
+        // function updateTwitterMap(days, operation) {
+        //     let one_day = 1000*60*60*24;
+        //     let object = null;
+        //     let date = 0;
+
+        //     for( let i = 0; i < allTweets.length; ++i ) {
+
+        //         let value = Math.round(allTweets[i].date_object-(new Date(2020, 2, 27)))/one_day;
+
+        //         //if( value == days ) {
+
+        //         if( allTweets[i].diasfrom == days ) {
+        //             date = allTweets[i].date_object;
+        //             object = allTweets[i];
+        //             break;
+        //         }
+        //     }
+
+        //     let subsetTwitter = allTweets.filter(d => isEqual(d.date, object.date));
+
+        //     drawSubsetTweets(subsetTwitter, store, true, operation);
+        //     document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+map_month_pt[number_to_month[+object.date.split(" ")[0].split("-")[1] - 1]];
+        // }
+
+
+        // document.getElementById('twitter-front').addEventListener('click', () => {
+        //   if( twitterDay < twitterDayMax ) {
+        //     if( !aggregate )
+        //       ++twitterDay;
+        //     updateTwitterMap(aggregate ? twitterDay+1 : twitterDay, 1);
             
-             if( aggregate )
-              ++twitterDay;
+        //      if( aggregate )
+        //       ++twitterDay;
 
 
-            document.getElementById('twitter-back').disabled = false;
-            if( twitterDay == twitterDayMax )
-                document.getElementById('twitter-front').disabled = true;
+        //     document.getElementById('twitter-back').disabled = false;
+        //     if( twitterDay == twitterDayMax )
+        //         document.getElementById('twitter-front').disabled = true;
 
            
-          }
-        });
+        //   }
+        // });
 
-        document.getElementById('twitter-back').addEventListener('click', () => {
-          if( twitterDay > 0 ) {
-            if( !aggregate )
-              --twitterDay;
-            updateTwitterMap(twitterDay, -1);
-            if( aggregate )
-              --twitterDay;
-            document.getElementById('twitter-front').disabled = false;
-            if( twitterDay == 0 )
-                document.getElementById('twitter-back').disabled = true;
+        // document.getElementById('twitter-back').addEventListener('click', () => {
+        //   if( twitterDay > 0 ) {
+        //     if( !aggregate )
+        //       --twitterDay;
+        //     updateTwitterMap(twitterDay, -1);
+        //     if( aggregate )
+        //       --twitterDay;
+        //     document.getElementById('twitter-front').disabled = false;
+        //     if( twitterDay == 0 )
+        //         document.getElementById('twitter-back').disabled = true;
 
             
-          } 
-        });
+        //   } 
+        // });
 
 
-        function updateGoogleMap(value) {
-          let countDifferent = 0;
-          let targetDate = googleTrendsMap[0].ate;
+        // function updateGoogleMap(value) {
+        //   let countDifferent = 0;
+        //   let targetDate = googleTrendsMap[0].ate;
 
-          for (var i = 0; i < googleTrendsMap.length; i++) {
+        //   for (var i = 0; i < googleTrendsMap.length; i++) {
 
-              if( value == countDifferent ) {
-                  targetDate = googleTrendsMap[i].ate;
-                  break;
-              }
+        //       if( value == countDifferent ) {
+        //           targetDate = googleTrendsMap[i].ate;
+        //           break;
+        //       }
 
-              if( targetDate != googleTrendsMap[i].ate ) {
-                  countDifferent += 1;
-                  targetDate = googleTrendsMap[i].ate;
-              }
-          }
+        //       if( targetDate != googleTrendsMap[i].ate ) {
+        //           countDifferent += 1;
+        //           targetDate = googleTrendsMap[i].ate;
+        //       }
+        //   }
 
-          subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+        //   subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
 
-          drawGoogleTrends(colorTrends, termTrends);
-          document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        }
-
-
-        document.getElementById('google-front').addEventListener('click', () => {
-          if( googleDay < googleDayMax ) {
-            updateGoogleMap(++googleDay);
-            document.getElementById('google-back').disabled = false;
-            if( googleDay == googleDayMax )
-                document.getElementById('google-front').disabled = true;
-          }
-        });
-
-        document.getElementById('google-back').addEventListener('click', () => {
-          if( googleDay > 0 ) {
-            updateGoogleMap(--googleDay);
-            document.getElementById('google-front').disabled = false;
-            if( googleDay == 0 )
-                document.getElementById('google-back').disabled = true;
-          } 
-        });
+        //   drawGoogleTrends(colorTrends, termTrends);
+        //   document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // }
 
 
+        // document.getElementById('google-front').addEventListener('click', () => {
+        //   if( googleDay < googleDayMax ) {
+        //     updateGoogleMap(++googleDay);
+        //     document.getElementById('google-back').disabled = false;
+        //     if( googleDay == googleDayMax )
+        //         document.getElementById('google-front').disabled = true;
+        //   }
+        // });
 
-        document.getElementById('dateGoogleTrends').addEventListener('input', function() {
-            let value = this.value;
-            googleDay = value;
-            if( googleDay == 0 ) {
-                document.getElementById('google-back').disabled = true; 
-                document.getElementById('google-front').disabled = false; 
-            } else if( googleDay == googleDayMax ) {
-                document.getElementById('google-back').disabled = false; 
-                document.getElementById('google-front').disabled = true; 
-            } else {
-                document.getElementById('google-back').disabled = false; 
-                document.getElementById('google-front').disabled = false; 
-            }
+        // document.getElementById('google-back').addEventListener('click', () => {
+        //   if( googleDay > 0 ) {
+        //     updateGoogleMap(--googleDay);
+        //     document.getElementById('google-front').disabled = false;
+        //     if( googleDay == 0 )
+        //         document.getElementById('google-back').disabled = true;
+        //   } 
+        // });
 
-            let countDifferent = 0;
-            let targetDate = googleTrendsMap[0].ate;
 
-            for (var i = 0; i < googleTrendsMap.length; i++) {
 
-                if( value == countDifferent ) {
-                    targetDate = googleTrendsMap[i].ate;
-                    break;
-                }
+        // document.getElementById('dateGoogleTrends').addEventListener('input', function() {
+        //     let value = this.value;
+        //     googleDay = value;
+        //     if( googleDay == 0 ) {
+        //         document.getElementById('google-back').disabled = true; 
+        //         document.getElementById('google-front').disabled = false; 
+        //     } else if( googleDay == googleDayMax ) {
+        //         document.getElementById('google-back').disabled = false; 
+        //         document.getElementById('google-front').disabled = true; 
+        //     } else {
+        //         document.getElementById('google-back').disabled = false; 
+        //         document.getElementById('google-front').disabled = false; 
+        //     }
 
-                if( targetDate != googleTrendsMap[i].ate ) {
-                    countDifferent += 1;
-                    targetDate = googleTrendsMap[i].ate;
-                }
-            }
+        //     let countDifferent = 0;
+        //     let targetDate = googleTrendsMap[0].ate;
 
-            subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+        //     for (var i = 0; i < googleTrendsMap.length; i++) {
 
-            drawGoogleTrends(colorTrends, termTrends);
-            document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        });
+        //         if( value == countDifferent ) {
+        //             targetDate = googleTrendsMap[i].ate;
+        //             break;
+        //         }
+
+        //         if( targetDate != googleTrendsMap[i].ate ) {
+        //             countDifferent += 1;
+        //             targetDate = googleTrendsMap[i].ate;
+        //         }
+        //     }
+
+        //     subsetGoogleTrendsMap = googleTrendsMap.filter(d => d.ate == targetDate);
+
+        //     drawGoogleTrends(colorTrends, termTrends);
+        //     document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // });
 
         document.getElementById('realProgression').addEventListener('input', function() {
             let value = this.value;
@@ -5041,157 +6708,157 @@
         });
 
 
-        document.getElementById('realProgressionColor').addEventListener('input', function() {
-            let value = this.value;
-            progressionDayColor = value;
-            if( progressionDayColor == 0 ) {
-                document.getElementById('progression-back-color').disabled = true; 
-                document.getElementById('progression-front-color').disabled = false; 
-            } else if( progressionDayColor == progressionDayMaxColor ) {
-                document.getElementById('progression-back-color').disabled = false; 
-                document.getElementById('progression-front-color').disabled = true; 
-            } else {
-                document.getElementById('progression-back-color').disabled = false; 
-                document.getElementById('progression-front-color').disabled = false; 
-            }
+        // document.getElementById('realProgressionColor').addEventListener('input', function() {
+        //     let value = this.value;
+        //     progressionDayColor = value;
+        //     if( progressionDayColor == 0 ) {
+        //         document.getElementById('progression-back-color').disabled = true; 
+        //         document.getElementById('progression-front-color').disabled = false; 
+        //     } else if( progressionDayColor == progressionDayMaxColor ) {
+        //         document.getElementById('progression-back-color').disabled = false; 
+        //         document.getElementById('progression-front-color').disabled = true; 
+        //     } else {
+        //         document.getElementById('progression-back-color').disabled = false; 
+        //         document.getElementById('progression-front-color').disabled = false; 
+        //     }
 
 
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
 
-            for (var i = 0; i < casosByCity.length; i++) {
+        //     for (var i = 0; i < casosByCity.length; i++) {
 
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
 
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
 
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
-
-
-            document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        });
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapRealColor(configMapRealColor.container, geoJsonColor.features, projectionMapRealColor, geoJsonColor, subset, true);
 
 
-        document.getElementById('realProgressionColor').addEventListener('input', function() {
-            let value = this.value;
-            progressionDayDanger = value;
-            if( progressionDayDanger == 0 ) {
-                document.getElementById('progression-back-danger').disabled = true; 
-                document.getElementById('progression-front-danger').disabled = false; 
-            } else if( progressionDayDanger == progressionDayMaxDanger ) {
-                document.getElementById('progression-back-danger').disabled = false; 
-                document.getElementById('progression-front-danger').disabled = true; 
-            } else {
-                document.getElementById('progression-back-danger').disabled = false; 
-                document.getElementById('progression-front-danger').disabled = false; 
-            }
+        //     document.getElementById('titleProgressionColor').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // });
 
 
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
-
-            for (var i = 0; i < casosByCity.length; i++) {
-
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
-
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
-
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapRealDanger(configMapRealDanger.container, geoJsonDanger.features, projectionMapRealDanger, geoJsonDanger, subset, true);
+        // document.getElementById('realProgressionColor').addEventListener('input', function() {
+        //     let value = this.value;
+        //     progressionDayDanger = value;
+        //     if( progressionDayDanger == 0 ) {
+        //         document.getElementById('progression-back-danger').disabled = true; 
+        //         document.getElementById('progression-front-danger').disabled = false; 
+        //     } else if( progressionDayDanger == progressionDayMaxDanger ) {
+        //         document.getElementById('progression-back-danger').disabled = false; 
+        //         document.getElementById('progression-front-danger').disabled = true; 
+        //     } else {
+        //         document.getElementById('progression-back-danger').disabled = false; 
+        //         document.getElementById('progression-front-danger').disabled = false; 
+        //     }
 
 
-            document.getElementById('titleProgressionDanger').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        });
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
+
+        //     for (var i = 0; i < casosByCity.length; i++) {
+
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
+
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
+
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapRealDanger(configMapRealDanger.container, geoJsonDanger.features, projectionMapRealDanger, geoJsonDanger, subset, true);
 
 
-        document.getElementById('realProgressionHull').addEventListener('input', function() {
-            let value = this.value;
-            progressionDayHull = value;
-            if( progressionDayHull == 0 ) {
-                document.getElementById('progression-back-hull').disabled = true; 
-                document.getElementById('progression-front-hull').disabled = false; 
-            } else if( progressionDayHull == progressionDayMaxHull ) {
-                document.getElementById('progression-back-hull').disabled = false; 
-                document.getElementById('progression-front-hull').disabled = true; 
-            } else {
-                document.getElementById('progression-back-hull').disabled = false; 
-                document.getElementById('progression-front-hull').disabled = false; 
-            }
+        //     document.getElementById('titleProgressionDanger').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // });
 
 
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
-
-            for (var i = 0; i < casosByCity.length; i++) {
-
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
-
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
-
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
+        // document.getElementById('realProgressionHull').addEventListener('input', function() {
+        //     let value = this.value;
+        //     progressionDayHull = value;
+        //     if( progressionDayHull == 0 ) {
+        //         document.getElementById('progression-back-hull').disabled = true; 
+        //         document.getElementById('progression-front-hull').disabled = false; 
+        //     } else if( progressionDayHull == progressionDayMaxHull ) {
+        //         document.getElementById('progression-back-hull').disabled = false; 
+        //         document.getElementById('progression-front-hull').disabled = true; 
+        //     } else {
+        //         document.getElementById('progression-back-hull').disabled = false; 
+        //         document.getElementById('progression-front-hull').disabled = false; 
+        //     }
 
 
-            document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        });
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
 
-        document.getElementById('dateTwitter').addEventListener('input', function() {
-            let days = this.value;
-            twitterDay = days;
-            if( twitterDay == 0 ) {
-                document.getElementById('twitter-back').disabled = true; 
-                document.getElementById('twitter-front').disabled = false; 
-            } else if( twitterDay == twitterDayMax ) {
-                document.getElementById('twitter-back').disabled = false; 
-                document.getElementById('twitter-front').disabled = true; 
-            } else {
-                document.getElementById('twitter-back').disabled = false; 
-                document.getElementById('twitter-front').disabled = false; 
-            }
+        //     for (var i = 0; i < casosByCity.length; i++) {
+
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
+
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
+
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapHull(configMapRealHull.container, geoJsonHull.features, projectionMapRealHull, geoJsonHull, subset, true);
 
 
-            let one_day = 1000*60*60*24;
-            let object = null;
-            for( let i = 0; i < allTweets.length; ++i ) {
+        //     document.getElementById('titleProgressionHull').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // });
 
-                let value = Math.round(allTweets[i].date_object-(new Date(2020, 1, 27)))/one_day;
+        // document.getElementById('dateTwitter').addEventListener('input', function() {
+        //     let days = this.value;
+        //     twitterDay = days;
+        //     if( twitterDay == 0 ) {
+        //         document.getElementById('twitter-back').disabled = true; 
+        //         document.getElementById('twitter-front').disabled = false; 
+        //     } else if( twitterDay == twitterDayMax ) {
+        //         document.getElementById('twitter-back').disabled = false; 
+        //         document.getElementById('twitter-front').disabled = true; 
+        //     } else {
+        //         document.getElementById('twitter-back').disabled = false; 
+        //         document.getElementById('twitter-front').disabled = false; 
+        //     }
 
-                if( value == days ) {
-                    date = allTweets[i].date_object;
-                    object = allTweets[i];
-                    break;
-                }
-            }
 
-            let subsetTwitter = allTweets.filter(d => d.date_object.getDay() == date.getDay() &&
-                                                 d.date_object.getMonth() == date.getMonth() &&
-                                                 d.date_object.getYear() == date.getYear());
-            drawSubsetTweets(subsetTwitter, store, true);
-            document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+
-            map_month_pt[number_to_month[+object.date.split(" ")[0].split("-")[1] - 1]];
-        });
+        //     let one_day = 1000*60*60*24;
+        //     let object = null;
+        //     for( let i = 0; i < allTweets.length; ++i ) {
+
+        //         let value = Math.round(allTweets[i].date_object-(new Date(2020, 1, 27)))/one_day;
+
+        //         if( value == days ) {
+        //             date = allTweets[i].date_object;
+        //             object = allTweets[i];
+        //             break;
+        //         }
+        //     }
+
+        //     let subsetTwitter = allTweets.filter(d => d.date_object.getDay() == date.getDay() &&
+        //                                          d.date_object.getMonth() == date.getMonth() &&
+        //                                          d.date_object.getYear() == date.getYear());
+        //     drawSubsetTweets(subsetTwitter, store, true);
+        //     document.getElementById('progressionTwitter').innerHTML = 'Dia: '+object.date.split(" ")[0].split("-")[2]+"/"+
+        //     map_month_pt[number_to_month[+object.date.split(" ")[0].split("-")[1] - 1]];
+        // });
 
 
 
