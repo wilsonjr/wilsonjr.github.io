@@ -3464,6 +3464,20 @@
           return all_knn_cases;
         }
 
+
+        function getCasesBefore(array, date) {
+          for( let i = 0; i < array.length; ++i )
+            if( array[i].date.getTime() === date.getTime() )
+              return array[i].casos;
+
+
+          return 0;
+
+
+        }
+
+
+
         function addRiskMeasures(city, description, day, window_analysis) {
           let chart = risk_data[0];
 
@@ -3533,8 +3547,12 @@
               let acc = null;
               let new_c = null;
               if( temp.length > 0 ) {
+
+                let dateBefore = new Date();
+                dateBefore.setTime(day.getTime() - (24*60*60*1000)*(window_analysis+1));
+
                 acc = [{date: temp[0].date, value: +temp[0].casos}];
-                new_c = [{date: temp[0].date, value: +temp[0].casos}];
+                new_c = [{date: temp[0].date, value: +temp[0].casos - (+getCasesBefore(all_data, dateBefore))}];
 
                 for( let j = 1; j < temp.length; ++j ) {
                   acc.push({date: temp[j].date, value: +temp[j].casos});
@@ -4026,8 +4044,13 @@
                   let acc = null;
                   let new_c = null;
                   if( evolution_city_limited.length > 0 ) {
+
+                    let dateBefore = new Date();
+                    dateBefore.setTime(day.getTime() - (24*60*60*1000)*(window_analysis+1));
+
+
                     acc = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
-                    new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+                    new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos - (+getCasesBefore(evolution_city, dateBefore))}];
 
                     for( let j = 1; j < evolution_city_limited.length; ++j ) {
                       acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
@@ -4271,8 +4294,12 @@
             let acc = null;
             let new_c = null;
             if( evolution_city_limited.length > 0 ) {
+
+              let dateBefore = new Date();
+              dateBefore.setTime(day.getTime() - (24*60*60*1000)*(window_analysis+1));  
+
               acc = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
-              new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos}];
+              new_c = [{date: evolution_city_limited[0].date, value: +evolution_city_limited[0].casos - (+getCasesBefore(evolution_city, dateBefore))}];
 
               for( let j = 1; j < evolution_city_limited.length; ++j ) {
                 acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
@@ -4306,6 +4333,22 @@
                 .x((d, i) => neighbors_xScaleEvolucao(d.date))
                 .y0(height_graph*2)
                 .y1((d, i) => neighbors_yScaleEvolucao(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+
+            let neighbors_yScaleEvolucao_new = d3.scaleLinear()
+              .domain([0, d3.max(all_union[1], d => d.value)])
+              .range([height_graph*2, 0]);
+
+            let neighbors_line_new = d3.line()
+                .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                .y(d => neighbors_yScaleEvolucao_new(d.value))
+                .curve(d3.curveCardinal.tension(0.5));
+
+            let neighbors_area_new = d3.area()
+                .x((d, i) => neighbors_xScaleEvolucao(d.date))
+                .y0(height_graph*2)
+                .y1((d, i) => neighbors_yScaleEvolucao_new(d.value))
                 .curve(d3.curveCardinal.tension(0.5));
 
 
