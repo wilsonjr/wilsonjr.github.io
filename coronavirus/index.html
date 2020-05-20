@@ -3982,7 +3982,17 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos: '+city_object.value);
+                    .text('Casos no período: '+(city_object.slope_y2-city_object.slope_y1));
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 25)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '8px')
+                    .style('text-anchor', 'start')
+                    .attr('color', 'grey')
+                    .attr('font-weight', 'bold')
+                    .text('Casos acumulados: '+city_object.value);
 
                 });
 
@@ -4143,7 +4153,18 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos: '+city_object.value);
+                    .text('Casos no período: '+(city_object.slope_y2-city_object.slope_y1));
+                  
+
+                  slopeArea.append('text')
+                    .attr('x', 0)
+                    .attr('y', 25)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '8px')
+                    .style('text-anchor', 'start')
+                    .attr('color', 'grey')
+                    .attr('font-weight', 'bold')
+                    .text('Casos acumulados: '+city_object.value);
                   
 
                 });
@@ -4263,7 +4284,17 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos: '+(union[0].length > 0 ? union[0][union[0].length-1].value : 0));  
+              .text('Casos no período: '+(union[0].length > 0 ? union[0][union[0].length-1].value-union[0][0].value : 0));
+
+            aggregatedArea.append('text')
+              .attr('x', 0)
+              .attr('y', 25)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '8px')
+              .style('text-anchor', 'start')
+              .attr('color', 'grey')
+              .attr('font-weight', 'bold')
+              .text('Casos acumulados: '+(union[0].length > 0 ? union[0][union[0].length-1].value : 0));  
 
 
 
@@ -4407,7 +4438,17 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos: '+city_object.value);
+              .text('Casos no período: '+(city_object.slope_y2 - city_object.slope_y1));
+
+            slopeArea.append('text')
+              .attr('x', 0)
+              .attr('y', 25)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '8px')
+              .style('text-anchor', 'start')
+              .attr('color', 'grey')
+              .attr('font-weight', 'bold')
+              .text('Casos acumulados: '+city_object.value);
 
 
 
