@@ -372,7 +372,7 @@
             <button id="decreaseDay" name="decreaseDay"> << </button>
             <button id="increaseDay" name="increaseDay" disabled="true"> >> </button>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6" style="margin-top: 90px">
             <h4 id="analise-visual">Mapa para refência.</h4>
             <div>
               <svg id="map-covid">        
@@ -3505,7 +3505,7 @@
               return days <= window_analysis && d.cidade.replace(/[^\x00-\x7F]/g, "") == city;
           });
 
-          if( evolution_city.length > 0 ) {
+          // if( evolution_city.length > 0 ) {
 
 
             let knn_cases = [], all_knn_cases = [];
@@ -3664,19 +3664,24 @@
 
             knn_cases = knn_cases.sort((a, b) => b.slope-a.slope);
 
-            let acc_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
-            let new_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
+            let acc_cases = [];
+            let new_cases = [];
 
-            for( let i = 1; i < evolution_city.length; ++i ) {
-              acc_cases.push({date: evolution_city[i].date, value: +evolution_city[i].casos});
-              new_cases.push({date: evolution_city[i].date, value: (+evolution_city[i].casos) - (+evolution_city[i-1].casos)});
+            if( evolution_city.length > 0 ) {
+              acc_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
+              new_cases = [{date: evolution_city[0].date, value: +evolution_city[0].casos}];
+
+              for( let i = 1; i < evolution_city.length; ++i ) {
+                acc_cases.push({date: evolution_city[i].date, value: +evolution_city[i].casos});
+                new_cases.push({date: evolution_city[i].date, value: (+evolution_city[i].casos) - (+evolution_city[i-1].casos)});
+              }
             }
 
             let first_date = risk_data[1];
             let last_date = risk_data[2];
             let height_graph = 80;
             let width_graph = 150;
-            let max_cases = d3.max(acc_cases, d => d.value);
+            let max_cases = acc_cases.length > 0 ? d3.max(acc_cases, d => d.value) : 0;
 
             let small_multiple = chart.select('.principal').append('g')
               .attr('class', 'small_multiple')
@@ -3775,7 +3780,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos: '+acc_cases[acc_cases.length-1].value);
+              .text('Casos: '+(acc_cases.length == 0 ? 0 : acc_cases[acc_cases.length-1].value));
 
 
             let thisSlope = [0, 0, 0];
@@ -3842,10 +3847,20 @@
                   chart.select('.slopeArea').selectAll("*").remove();
                   let slopeArea = chart.select('.slopeArea')
                     .append('g')
-                      .attr('transform', 'translate(-5, 15)');
+                      .attr('transform', 'translate(-5, -30)');
+
+                  let slopeAreaWindow = slopeArea.append('g')
+                    .attr('transform', 'translate(0, '+(height_graph*2 + 50)+')');
 
                   let acc = city_object.acc;
                   let new_c = city_object.new_c;
+                  let new_acc = [];
+
+
+                  for( let j = 0; j < acc.length; ++j ) {
+                    new_acc.push({date: acc[j].date, value: acc[j].value});
+                    new_acc[j].value = acc[j].value - (acc[0].value-new_c[0].value);
+                  }
 
                   console.log('city_object');
                   console.log(city_object);
@@ -3884,6 +3899,14 @@
                       .attr('font-size', 8)
                       .attr('font-family', 'Helvetica');
 
+                  slopeAreaWindow.append('g')
+                      .style('stroke-width', 0.8)
+                      .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                      .call(neighbors_xAxisEvolucao)
+                    .selectAll("text")
+                      .attr('font-size', 8)
+                      .attr('font-family', 'Helvetica');
+
                   
 
                   slopeArea.append('path')
@@ -3912,59 +3935,33 @@
                       .attr('fill', "#000000")
                       .attr('fill-opacity', 0.3);
 
-                  // let max_y = -1;
+                  slopeAreaWindow.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_acc))
+                      .attr('stroke', '#ff4f4f')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
 
-                  // for( let j = 0; j < knn_cases.length; ++j ) {
-                  //   max_y = Math.max(max_y, knn_cases[j].slope_y1);
-                  //   max_y = Math.max(max_y, knn_cases[j].slope_y2);
-                  // }
+                  slopeAreaWindow.append('path')
+                      .attr('d', neighbors_area(new_acc))
+                      .attr('stroke', 'none')
+                      .attr('fill', '#ff4f4f')
+                      .attr('fill-opacity', 0.3);
 
-                  // max_y = Math.max(max_y, thisSlope[1]);
-                  // max_y = Math.max(max_y, thisSlope[2]); 
-                  // let scaleSlopeY = d3.scaleSqrt()
-                  //   .domain([0, max_y])
-                  //   .range([70, 40]);
+                  slopeAreaWindow.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_c))
+                      .attr('stroke', '#000000')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
 
-                  // slopeArea.append('line')
-                  //   .attr('x1', 0)
-                  //   .attr('x2', 100)
-                  //   .attr('y1', scaleSlopeY(0))//scaleSlopeY(city_object.slope_y1))
-                  //   .attr('y2', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2))
-                  //   .style('fill', 'none')
-                  //   .style('stroke-width', 3)
-                  //   .style('stroke', '#8f8f8f');
+                  slopeAreaWindow.append('path')
+                      .attr('d', neighbors_area(new_c))
+                      .attr('stroke', 'none')
+                      .attr('fill', "#000000")
+                      .attr('fill-opacity', 0.3);
 
-                  // slopeArea.append('circle')
-                  //   .attr('cx', 0)
-                  //   .attr('cy', scaleSlopeY(0))
-                  //   .attr('r', 6)
-                  //   .style('stroke', '#8f8f8f')
-                  //   .style('fill', '#d1d1d1');
-
-                  // slopeArea.append('text')
-                  //   .attr('x', -8)
-                  //   .attr('y', scaleSlopeY(0) + 4)
-                  //   .attr('font-family', 'Helvetica')
-                  //   .attr('font-size', '12px')
-                  //   .attr('text-anchor', 'end')
-                  //   .text(city_object.slope_y1);
-
-
-                  // slopeArea.append('circle')
-                  //   .attr('cx', 100)
-                  //   .attr('cy', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2) )
-                  //   .style('r', 6)
-                  //   .style('stroke', '#8f8f8f')
-                  //   .style('fill', '#d1d1d1');
-
-                  // slopeArea.append('text')
-                  //   .attr('x', 108)
-                  //   .attr('y', scaleSlopeY(city_object.slope_y2 == city_object.slope_y1 ? 0 : city_object.slope_y2) + 4)
-                  //   .attr('font-family', 'Helvetica')
-                  //   .attr('font-size', '12px')
-                  //   .attr('text-anchor', 'start')
-                  //   .text(city_object.slope_y2);
-
+                  
 
                   slopeArea.append('text')
                     .attr('x', 0)
@@ -3974,7 +3971,15 @@
                     .style('text-anchor', 'start')
                     .text(city_object.name);
 
-                  slopeArea.append('text')
+                  slopeAreaWindow.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '12px')
+                    .style('text-anchor', 'start')
+                    .text(city_object.name);
+
+                  slopeAreaWindow.append('text')
                     .attr('x', 0)
                     .attr('y', 15)
                     .attr('font-family', 'Helvetica')
@@ -3982,11 +3987,11 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos no período: '+(city_object.slope_y2-city_object.slope_y1));
+                    .text('Casos no período: '+(knn_cases[0].evolution >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
 
                   slopeArea.append('text')
                     .attr('x', 0)
-                    .attr('y', 25)
+                    .attr('y', 15)
                     .attr('font-family', 'Helvetica')
                     .attr('font-size', '8px')
                     .style('text-anchor', 'start')
@@ -4049,10 +4054,16 @@
                   chart.select('.slopeArea').selectAll("*").remove();
                   let slopeArea = chart.select('.slopeArea')
                     .append('g')
-                      .attr('transform', 'translate(-5, 15)');
+                      .attr('transform', 'translate(-5, -30)');
+
+                  let slopeAreaWindow = slopeArea.append('g')
+                    .attr('transform', 'translate(0, '+(height_graph*2 + 50)+')');
+
+
 
                   let acc = null;
                   let new_c = null;
+                  let new_acc = [];
                   if( evolution_city_limited.length > 0 ) {
 
                     let dateBefore = new Date();
@@ -4066,6 +4077,12 @@
                       acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
                       new_c.push({date: evolution_city_limited[j].date, value: (+evolution_city_limited[j].casos) - (+evolution_city_limited[j-1].casos)});
                     }  
+
+
+                    for( let j = 0; j < acc.length; ++j ) {
+                      new_acc.push({date: acc[j].date, value: acc[j].value});
+                      new_acc[j].value = acc[j].value - (acc[0].value-new_c[0].value);
+                    }
                   } 
 
 
@@ -4109,6 +4126,14 @@
                       .attr('font-size', 8)
                       .attr('font-family', 'Helvetica');
 
+                  slopeAreaWindow.append('g')
+                      .style('stroke-width', 0.8)
+                      .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                      .call(neighbors_xAxisEvolucao)
+                    .selectAll("text")
+                      .attr('font-size', 8)
+                      .attr('font-family', 'Helvetica');
+
                   
 
                   slopeArea.append('path')
@@ -4137,6 +4162,35 @@
                       .attr('fill', "#000000")
                       .attr('fill-opacity', 0.3);
 
+
+                  slopeAreaWindow.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_acc))
+                      .attr('stroke', '#ff4f4f')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeAreaWindow.append('path')
+                      .attr('d', neighbors_area(new_acc))
+                      .attr('stroke', 'none')
+                      .attr('fill', '#ff4f4f')
+                      .attr('fill-opacity', 0.3);
+
+                  slopeAreaWindow.append('path')
+                      .attr('class', 'line_real')
+                      .attr('d', neighbors_line(new_c))
+                      .attr('stroke', '#000000')
+                      .attr('stroke-width', 1.2)
+                      .attr('fill', 'none');
+
+                  slopeAreaWindow.append('path')
+                      .attr('d', neighbors_area(new_c))
+                      .attr('stroke', 'none')
+                      .attr('fill', "#000000")
+                      .attr('fill-opacity', 0.3);
+
+
+
                   slopeArea.append('text')
                     .attr('x', 0)
                     .attr('y', 0)
@@ -4145,7 +4199,15 @@
                     .style('text-anchor', 'start')
                     .text(city_object.name);
 
-                  slopeArea.append('text')
+                  slopeAreaWindow.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('font-family', 'Helvetica')
+                    .attr('font-size', '12px')
+                    .style('text-anchor', 'start')
+                    .text(city_object.name);
+
+                  slopeAreaWindow.append('text')
                     .attr('x', 0)
                     .attr('y', 15)
                     .attr('font-family', 'Helvetica')
@@ -4153,12 +4215,12 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos no período: '+(city_object.slope_y2-city_object.slope_y1));
+                    .text('Casos no período: '+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
                   
 
                   slopeArea.append('text')
                     .attr('x', 0)
-                    .attr('y', 25)
+                    .attr('y', 15)
                     .attr('font-family', 'Helvetica')
                     .attr('font-size', '8px')
                     .style('text-anchor', 'start')
@@ -4205,9 +4267,14 @@
             }
 
             chart.select('.aggregatedArea').selectAll("*").remove();
+
+
             let aggregatedArea = chart.select('.aggregatedArea')
               .append('g')
-                .attr('transform', 'translate(55, 15)');
+                .attr('transform', 'translate(55, -30)');
+
+            let aggregatedAreaWindow = aggregatedArea.append('g')
+              .attr('transform', 'translate(0, '+(height_graph*2 + 50)+')');
 
             let aggregated_xScaleEvolucao = d3.scaleTime()
                 .domain([first_date, last_date])
@@ -4242,6 +4309,21 @@
                 .attr('font-size', 8)
                 .attr('font-family', 'Helvetica');
 
+            aggregatedAreaWindow.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,'+aggregated_yScaleEvolucao(0)+')')
+                .call(aggregated_xAxisEvolucao)
+              .selectAll("text")
+                .attr('font-size', 8)
+                .attr('font-family', 'Helvetica');
+
+            let new_union = [];
+            for( let j = 0; j < union[0].length; ++j ) {
+              new_union.push({date: union[0][j].date, value: union[0][j].value});
+              new_union[j].value = union[0][j].value-(union[0][0].value-union[1][0].value);
+            }
+
+
             aggregatedArea.append('path')
                 .attr('class', 'line_real')
                 .attr('d', aggregated_line(union[0]))
@@ -4268,6 +4350,32 @@
                 .attr('fill', "#000000")
                 .attr('fill-opacity', 0.3);
 
+            aggregatedAreaWindow.append('path')
+                .attr('class', 'line_real')
+                .attr('d', aggregated_line(new_union))
+                .attr('stroke', '#ff4f4f')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            aggregatedAreaWindow.append('path')
+                .attr('d', aggregated_area(new_union))
+                .attr('stroke', 'none')
+                .attr('fill', '#ff4f4f')
+                .attr('fill-opacity', 0.3);
+
+            aggregatedAreaWindow.append('path')
+                .attr('class', 'line_real')
+                .attr('d', aggregated_line(union[1]))
+                .attr('stroke', '#000000')
+                .attr('stroke-width', 1.2)
+                .attr('fill', 'none');
+
+            aggregatedAreaWindow.append('path')
+                .attr('d', aggregated_area(union[1]))
+                .attr('stroke', 'none')
+                .attr('fill', "#000000")
+                .attr('fill-opacity', 0.3);    
+
             aggregatedArea.append('text')
               .attr('x', 0)
               .attr('y', 0)
@@ -4276,7 +4384,15 @@
               .style('text-anchor', 'start')
               .text('Casos agregados para a região (- '+description+')');
 
-            aggregatedArea.append('text')
+            aggregatedAreaWindow.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '12px')
+              .style('text-anchor', 'start')
+              .text('Casos agregados para a região (- '+description+')');
+
+            aggregatedAreaWindow.append('text')
               .attr('x', 0)
               .attr('y', 15)
               .attr('font-family', 'Helvetica')
@@ -4284,11 +4400,14 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos no período: '+(union[0].length > 0 ? union[0][union[0].length-1].value-union[0][0].value : 0));
+              .text('Casos no período: '+(union[0].length > 0 ? 
+                  union[0].length >= window_analysis ? (union[0][union[0].length-1].value-union[0][0].value) : union[0][union[0].length-1].value
+
+                  : 0));
 
             aggregatedArea.append('text')
               .attr('x', 0)
-              .attr('y', 25)
+              .attr('y', 15)
               .attr('font-family', 'Helvetica')
               .attr('font-size', '8px')
               .style('text-anchor', 'start')
@@ -4320,10 +4439,14 @@
             
             let slopeArea = chart.select('.slopeArea')
               .append('g')
-                .attr('transform', 'translate(-5, 15)');
+                .attr('transform', 'translate(-5, -30)');
+
+            let slopeAreaWindow = slopeArea.append('g')
+              .attr('transform', 'translate(0, '+(height_graph*2 + 50)+')');
 
             let acc = null;
             let new_c = null;
+            let new_acc = [];
             if( evolution_city_limited.length > 0 ) {
 
               let dateBefore = new Date();
@@ -4336,6 +4459,12 @@
                 acc.push({date: evolution_city_limited[j].date, value: +evolution_city_limited[j].casos});
                 new_c.push({date: evolution_city_limited[j].date, value: (+evolution_city_limited[j].casos) - (+evolution_city_limited[j-1].casos)});
               }  
+              
+              for( let j = 0; j < acc.length; ++j ) {
+                new_acc.push({date: acc[j].date, value: acc[j].value});
+                new_acc[j].value = acc[j].value-(acc[0].value-new_c[0].value);
+              }
+
             } 
 
              let neighbors_xScaleEvolucao = d3.scaleTime()
@@ -4390,6 +4519,14 @@
               .selectAll("text")
                 .attr('font-size', 8)
                 .attr('font-family', 'Helvetica');
+
+            slopeAreaWindow.append('g')
+                .style('stroke-width', 0.8)
+                .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
+                .call(neighbors_xAxisEvolucao)
+              .selectAll('text')
+                .attr('font-size', 0)
+                .attr('font-family', 'Helvetica');
             
 
             if( evolution_city_limited.length > 0 ) {
@@ -4418,6 +4555,32 @@
                   .attr('stroke', 'none')
                   .attr('fill', "#000000")
                   .attr('fill-opacity', 0.3);
+
+              slopeAreaWindow.append('path')
+                  .attr('class', 'line_real')
+                  .attr('d', neighbors_line(new_acc))
+                  .attr('stroke', '#ff4f4f')
+                  .attr('stroke-width', 1.2)
+                  .attr('fill', 'none');
+
+              slopeAreaWindow.append('path')
+                  .attr('d', neighbors_area(new_acc))
+                  .attr('stroke', 'none')
+                  .attr('fill', '#ff4f4f')
+                  .attr('fill-opacity', 0.3);
+
+              slopeAreaWindow.append('path')
+                  .attr('class', 'line_real')
+                  .attr('d', neighbors_line(new_c))
+                  .attr('stroke', '#000000')
+                  .attr('stroke-width', 1.2)
+                  .attr('fill', 'none');
+
+              slopeAreaWindow.append('path')
+                  .attr('d', neighbors_area(new_c))
+                  .attr('stroke', 'none')
+                  .attr('fill', "#000000")
+                  .attr('fill-opacity', 0.3);
             }
 
             
@@ -4430,7 +4593,15 @@
               .style('text-anchor', 'start')
               .text(city_object.name);
 
-            slopeArea.append('text')
+            slopeAreaWindow.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('font-family', 'Helvetica')
+              .attr('font-size', '12px')
+              .style('text-anchor', 'start')
+              .text(city_object.name);
+
+            slopeAreaWindow.append('text')
               .attr('x', 0)
               .attr('y', 15)
               .attr('font-family', 'Helvetica')
@@ -4438,11 +4609,11 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos no período: '+(city_object.slope_y2 - city_object.slope_y1));
+              .text('Casos no período: '+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2 - city_object.slope_y1) : city_object.value));
 
             slopeArea.append('text')
               .attr('x', 0)
-              .attr('y', 25)
+              .attr('y', 15)
               .attr('font-family', 'Helvetica')
               .attr('font-size', '8px')
               .style('text-anchor', 'start')
@@ -4457,7 +4628,8 @@
               document.getElementById('decreaseDay').disabled = true;
             }
 
-          }
+          // } else
+          //   alert('cidade com zero casos HAHAHAHAHAHA');
           
         }
 
@@ -4514,7 +4686,7 @@
               left: 10
             },
             twidth = 900 - margin.left - margin.right,
-            theight = 500 - margin.top - margin.bottom;
+            theight = 600 - margin.top - margin.bottom;
 
 
             // let legends = d3.select("#statisticalCharts")
@@ -4525,8 +4697,8 @@
 
             let chart = d3.select("#cityRisk")
                 .attr("width", '100%')
-                .attr("height", '80%')
-                .attr('viewBox','0 0 '+Math.min(width,height) +' '+500 )
+                .attr("height", '100%')
+                .attr('viewBox','0 0 '+Math.min(width,height) +' '+600 )
                 .attr('preserveAspectRatio','xMinYMin')
               .append("g")
                 .attr("transform",  "translate(" + margin.left + "," + (margin.top) + ")");
@@ -6191,8 +6363,8 @@
 
                 casosByCity = datasets[1];
                 store.evolucao = datasets[2];
-                console.log('reversed_knn');
-                console.log(reversed_knn);
+                console.log('store.evolucao');
+                console.log(store.evolucao);
                 // googleTrendsMap = datasets[3];
 
                 // store.tweets = datasets[4].filter(d => {
@@ -6884,43 +7056,43 @@
         //     document.getElementById('progressionGoogleTrends').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
         // });
 
-        document.getElementById('realProgression').addEventListener('input', function() {
-            let value = this.value;
-            progressionDay = value;
-            if( progressionDay == 0 ) {
-                document.getElementById('progression-back').disabled = true; 
-                document.getElementById('progression-front').disabled = false; 
-            } else if( progressionDay == progressionDayMax ) {
-                document.getElementById('progression-back').disabled = false; 
-                document.getElementById('progression-front').disabled = true; 
-            } else {
-                document.getElementById('progression-back').disabled = false; 
-                document.getElementById('progression-front').disabled = false; 
-            }
+        // document.getElementById('realProgression').addEventListener('input', function() {
+        //     let value = this.value;
+        //     progressionDay = value;
+        //     if( progressionDay == 0 ) {
+        //         document.getElementById('progression-back').disabled = true; 
+        //         document.getElementById('progression-front').disabled = false; 
+        //     } else if( progressionDay == progressionDayMax ) {
+        //         document.getElementById('progression-back').disabled = false; 
+        //         document.getElementById('progression-front').disabled = true; 
+        //     } else {
+        //         document.getElementById('progression-back').disabled = false; 
+        //         document.getElementById('progression-front').disabled = false; 
+        //     }
 
 
-            let countDifferent = 0;
-            let targetDate = casosByCity[0].data;
+        //     let countDifferent = 0;
+        //     let targetDate = casosByCity[0].data;
 
-            for (var i = 0; i < casosByCity.length; i++) {
+        //     for (var i = 0; i < casosByCity.length; i++) {
 
-                if( value == countDifferent ) {
-                    targetDate = casosByCity[i].data;
-                    break;
-                }
+        //         if( value == countDifferent ) {
+        //             targetDate = casosByCity[i].data;
+        //             break;
+        //         }
 
-                if( targetDate != casosByCity[i].data ) {
-                    countDifferent += 1;
-                    targetDate = casosByCity[i].data;
-                }
-            }
+        //         if( targetDate != casosByCity[i].data ) {
+        //             countDifferent += 1;
+        //             targetDate = casosByCity[i].data;
+        //         }
+        //     }
 
-            let subset = casosByCity.filter(d => d.data == targetDate);
-            drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, subset, true);
+        //     let subset = casosByCity.filter(d => d.data == targetDate);
+        //     drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, subset, true);
 
 
-            document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
-        });
+        //     document.getElementById('titleProgression').innerHTML = 'Dia: '+targetDate.split('/')[0]+'/'+map_month_pt[targetDate.split('/')[1]]+'.';
+        // });
 
 
         // document.getElementById('realProgressionColor').addEventListener('input', function() {
