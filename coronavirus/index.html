@@ -3476,7 +3476,19 @@
 
         }
 
+        function mergeCities(knn, knn_reverse) {
+          let set_cities = new Set();
 
+          for( let i = 0; i < knn.length; ++i ) 
+            set_cities.add(knn[i]);
+          for( let i = 0; i < knn_reverse.length; ++i )
+            set_cities.add(knn_reverse[i]);
+
+
+          return [...set_cities];
+
+
+        }
 
         function addRiskMeasures(city, description, day, window_analysis) {
           let chart = risk_data[0];
@@ -3509,7 +3521,11 @@
 
 
             let knn_cases = [], all_knn_cases = [];
-            let cities = reversed_knn[city];
+            // let cities = reversed_knn[city];
+            let cities = mergeCities(reversed_knn[city], knn_cities[city].knn);
+            // console.log('cities');
+            // console.log(cities);
+
             for( let i = 0; i < cities.length; ++i ) {
 
               
@@ -4710,6 +4726,10 @@
             title_g = chart.append('g')
                 .attr('transform', 'translate(0,0)');
 
+            let unesp_g = title_g.append('g')
+              .attr('transform', 'translate(550,70)');
+            addUnespDescription(unesp_g, true);
+
             chart.append('g')
               .attr('class', 'slopeArea')
               .attr('transform', 'translate(380,200)');
@@ -5128,47 +5148,93 @@
                     });
         }
 
-        function addUnespDescription(g) {
+        function addUnespDescription(g, minimize) {
+
+          if( minimize ) {
+            let offset = 7;
+            g.append('image')
+              .attr('x', 35)
+              .attr('y', -50 + offset)
+              .attr('xlink:href', 'unesp.svg')
+              .attr('width', 100)
+              .attr('height', 40)
+
+            g.append('text')
+              .attr('x', 80)
+              .attr('y', 0 + offset)
+              .attr('text-anchor', 'middle')
+              // .attr('class', 'title')
+              .style('font-size', '12px')
+              .style('font-family', 'Helvetica')
+              .text('UNIVERSIDADE ESTADUAL PAULISTA')
+            g.append('text')
+              .attr('x', 80)
+              .attr('y', 17 + offset)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '12px')
+              .style('font-family', 'Helvetica')
+              .text('"JÚLIO MESQUITA FILHO"')
+
+            g.append('text')
+              .attr('x', 80)
+              .attr('y', 37 + offset)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '11px')
+              .style('font-family', 'Helvetica')
+              .text('Dep. de Matemática e Computação - DMC');
+
+            g.append('text')
+              .attr('x', 80)
+              .attr('y', 48 + offset)
+              .attr('text-anchor', 'middle')
+              .style('font-size', '11px')
+              .style('font-family', 'Helvetica')
+              .text('Campus de Presidente Prudente');
 
 
-          g.append('image')
-            .attr('x', 0)
-            .attr('y', -70)
-            .attr('xlink:href', 'unesp.svg')
-            .attr('width', 120)
-            .attr('height', 50)
+          } else {
 
-          g.append('text')
-            .attr('x', 0)
-            .attr('y', 0)
-            .attr('text-anchor', 'start')
-            // .attr('class', 'title')
-            .style('font-size', '14px')
-            .style('font-family', 'Helvetica')
-            .text('UNIVERSIDADE ESTADUAL PAULISTA')
-          g.append('text')
-            .attr('x', 0)
-            .attr('y', 17)
-            .attr('text-anchor', 'start')
-            .style('font-size', '14px')
-            .style('font-family', 'Helvetica')
-            .text('"JÚLIO MESQUITA FILHO"')
 
-          g.append('text')
-            .attr('x', 0)
-            .attr('y', 40)
-            .attr('text-anchor', 'start')
-            .style('font-size', '13px')
-            .style('font-family', 'Helvetica')
-            .text('Departamento de Matemática e Computação - DMC')
+            g.append('image')
+              .attr('x', 0)
+              .attr('y', -70)
+              .attr('xlink:href', 'unesp.svg')
+              .attr('width', 120)
+              .attr('height', 50)
 
-          g.append('text')
-            .attr('x', 0)
-            .attr('y', 56)
-            .attr('text-anchor', 'start')
-            .style('font-size', '13px')
-            .style('font-family', 'Helvetica')
-            .text('Campus de Presidente Prudente')
+            g.append('text')
+              .attr('x', 0)
+              .attr('y', 0)
+              .attr('text-anchor', 'start')
+              // .attr('class', 'title')
+              .style('font-size', '14px')
+              .style('font-family', 'Helvetica')
+              .text('UNIVERSIDADE ESTADUAL PAULISTA')
+            g.append('text')
+              .attr('x', 0)
+              .attr('y', 17)
+              .attr('text-anchor', 'start')
+              .style('font-size', '14px')
+              .style('font-family', 'Helvetica')
+              .text('"JÚLIO MESQUITA FILHO"')
+
+            g.append('text')
+              .attr('x', 0)
+              .attr('y', 40)
+              .attr('text-anchor', 'start')
+              .style('font-size', '13px')
+              .style('font-family', 'Helvetica')
+              .text('Dep. de Matemática e Computação - DMC');
+
+            g.append('text')
+              .attr('x', 0)
+              .attr('y', 56)
+              .attr('text-anchor', 'start')
+              .style('font-size', '13px')
+              .style('font-family', 'Helvetica')
+              .text('Campus de Presidente Prudente');
+
+          }
 
         }
 
