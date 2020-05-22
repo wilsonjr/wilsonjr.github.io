@@ -1600,7 +1600,7 @@
             let filtered_current = current.filter(d => d.cidade.replace(/[^\x00-\x7F]/g, "") in knn_cities);
 
             let scaleColorRisk = d3.scaleSqrt()
-              .domain([0, names_knn == null ? 1 : Math.max(d3.max(names_knn, d => d.casos), influenced_city.casos)])
+              .domain([0, 90])
               .range([0, 1]);
             console.log('names_knn, ',(names_knn == null ? '=]' : Math.max(d3.max(names_knn, d => d.casos), influenced_city.casos)))
           console.log(names_knn);
@@ -1616,12 +1616,12 @@
                     if( names_knn != null ) {
                       let name = d.properties.name.replace(/[^\x00-\x7F]/g, "");
                       if( name == influenced_city.name.replace(/[^\x00-\x7F]/g, "") )
-                        value = influenced_city.casos;
+                        value = influenced_city.risk;
                       else {
 
                         for( let i = 0; i < names_knn.length; ++i ) {
                           if( name == names_knn[i].name.replace(/[^\x00-\x7F]/g, "") ) {
-                            value = names_knn[i].casos;
+                            value = names_knn[i].risk;
                             break;
                           }
                         }
@@ -3650,26 +3650,7 @@
             console.log('knn_cases');
             console.log(knn_cases);
 
-            if( knn_cases.length > 0 ) {
 
-              // array of 
-
-              let names_knn = [];
-
-              for( let j = 0; j < knn_cases.length; ++j ) {
-                names_knn.push({
-                  name: knn_cases[j].name, 
-                  casos: knn_cases[j].value
-                });
-              }
-
-              let influenced_city = {
-                name: description,
-                casos: evolution_city_limited.length == 0 ? 0 : d3.max(evolution_city_limited, d => +d.casos)
-              }
-
-              drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, null, true, names_knn, influenced_city);
-            }
 
             
 
@@ -3805,6 +3786,29 @@
               thisSlope = getSlope(evolution_city_limited, window_analysis);
             }
 
+            if( knn_cases.length > 0 ) {
+
+              // array of 
+
+              let names_knn = [];
+
+              for( let j = 0; j < knn_cases.length; ++j ) {
+                names_knn.push({
+                  name: knn_cases[j].name, 
+                  casos: knn_cases[j].value,
+                  risk: Math.atan(knn_cases[j].slope)*(180/Math.PI)
+                });
+              }
+
+              let influenced_city = {
+                name: description,
+                casos: evolution_city_limited.length == 0 ? 0 : d3.max(evolution_city_limited, d => +d.casos),
+                risk: Math.atan(thisSlope[0])*(180/Math.PI)
+              }
+
+              drawBaseMapReal(configMapReal.container, geoJson.features, projectionMapReal, geoJson, null, true, names_knn, influenced_city);
+            }
+
             // let spSlope = getSlope(casosByCity.filter(d => {
             //       if( d.date.getTime() > day.getTime() )
             //         return false;
@@ -3834,7 +3838,8 @@
             }
 
             let slopeScale = d3.scaleSqrt()
-                .domain([0, Math.max(thisSlope[0], d3.max(knn_cases, d => d.slope))])
+                // .domain([0, Math.max(thisSlope[0], d3.max(knn_cases, d => d.slope))])
+                .domain([0, 90])
                 .range([0, 1]);
 
             let color = d3.scaleOrdinal(d3.schemeCategory20);
@@ -3855,7 +3860,7 @@
                 .attr('class', 'arc')
                 .attr('transform', 'translate('+width_graph*multiplier/2+','+height_graph*multiplier/2+')')
               .append('path')
-                .attr('fill', (d, i) => d3.interpolateReds(slopeScale(knn_cases[i].slope)))
+                .attr('fill', (d, i) => d3.interpolateReds(slopeScale(Math.atan(knn_cases[i].slope)*(180/Math.PI))))//d3.interpolateReds(slopeScale(knn_cases[i].slope)))
                 .style('stroke', 'black')
                 .attr('d', arc)
                 .on('mouseover', (d, i) => {
@@ -4056,7 +4061,7 @@
                 .attr('cy', 0)
                 .attr('r', innerRadius)
                 .style('stroke', 'black')
-                .style('fill', thisSlope[0] <= 0.1 ? 'white' : d3.interpolateReds(slopeScale(thisSlope[0])))
+                .style('fill', thisSlope[0] <= 0.1 ? 'white' : d3.interpolateReds(slopeScale(Math.atan(thisSlope[0])*(180/Math.PI))))
                 .on('mouseover', (d, i) => {
 
                   
