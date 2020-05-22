@@ -933,6 +933,7 @@
         };
 
         let knn_cities = null;
+        let translate = false;
 
         let accumulated_days = null;
 
@@ -3726,8 +3727,8 @@
                 .range([0, width_graph]);
 
             let xAxisEvolucao = d3.axisBottom()
-                .tickFormat(d3.timeFormat("%d-%m"))            
-                .scale(xScaleEvolucao)
+                .tickFormat(translate ? d3.timeFormat("%m-%d") : d3.timeFormat("%d-%m"))            
+                .scale(xScaleEvolucao) 
                 .ticks(5);
 
             small_multiple.append('g')
@@ -3796,7 +3797,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos: '+(acc_cases.length == 0 ? 0 : acc_cases[acc_cases.length-1].value));
+              .text((translate ? 'Cases: ' : 'Casos: ')+(acc_cases.length == 0 ? 0 : acc_cases[acc_cases.length-1].value));
 
 
             let thisSlope = [0, 0, 0];
@@ -4003,7 +4004,7 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos no período: '+(knn_cases[0].evolution >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
+                    .text((translate ? 'Cases in the period: ': 'Casos no período: ')+(knn_cases[0].evolution >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
 
                   slopeArea.append('text')
                     .attr('x', 0)
@@ -4013,7 +4014,7 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos acumulados: '+city_object.value);
+                    .text((translate ? 'Accumulated cases: ' : 'Casos acumulados: ')+city_object.value);
 
                 });
 
@@ -4231,7 +4232,7 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos no período: '+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
+                    .text((translate ? 'Cases in the period: ' : 'Casos no período: ')+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
                   
 
                   slopeArea.append('text')
@@ -4242,7 +4243,7 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text('Casos acumulados: '+city_object.value);
+                    .text((translate ? 'Accumulated cases: ' : 'Casos acumulados: ')+city_object.value);
                   
 
                 });
@@ -4398,7 +4399,7 @@
               .attr('font-family', 'Helvetica')
               .attr('font-size', '12px')
               .style('text-anchor', 'start')
-              .text('Casos agregados para a região (- '+description+')');
+              .text((translate ? 'Accumulated cases for the region ' : 'Casos agregados para a região ')+'(- '+description+')');
 
             aggregatedAreaWindow.append('text')
               .attr('x', 0)
@@ -4406,7 +4407,7 @@
               .attr('font-family', 'Helvetica')
               .attr('font-size', '12px')
               .style('text-anchor', 'start')
-              .text('Casos agregados para a região (- '+description+')');
+              .text((translate ? 'Accumulated cases for the region ' : 'Casos agregados para a região ')+'(- '+description+')');
 
             aggregatedAreaWindow.append('text')
               .attr('x', 0)
@@ -4416,7 +4417,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos no período: '+(union[0].length > 0 ? 
+              .text((translate ? 'Cases in the period: ' : 'Casos no período: ')+(union[0].length > 0 ? 
                   union[0].length >= window_analysis ? (union[0][union[0].length-1].value-union[0][0].value) : union[0][union[0].length-1].value
 
                   : 0));
@@ -4429,7 +4430,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos acumulados: '+(union[0].length > 0 ? union[0][union[0].length-1].value : 0));  
+              .text((translate ? 'Accumulated cases: ' :'Casos acumulados: ')+(union[0].length > 0 ? union[0][union[0].length-1].value : 0));  
 
 
 
@@ -4541,7 +4542,7 @@
                 .attr('transform', 'translate(0,'+neighbors_yScaleEvolucao(0)+')')
                 .call(neighbors_xAxisEvolucao)
               .selectAll('text')
-                .attr('font-size', 0)
+                .attr('font-size', 8)
                 .attr('font-family', 'Helvetica');
             
 
@@ -4625,7 +4626,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos no período: '+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2 - city_object.slope_y1) : city_object.value));
+              .text((translate ? 'Cases in the period: ' : 'Casos no período: ')+(evolution_city_limited.length >= window_analysis ? (city_object.slope_y2 - city_object.slope_y1) : city_object.value));
 
             slopeArea.append('text')
               .attr('x', 0)
@@ -4635,7 +4636,7 @@
               .style('text-anchor', 'start')
               .attr('color', 'grey')
               .attr('font-weight', 'bold')
-              .text('Casos acumulados: '+city_object.value);
+              .text((translate ? 'Accumulated cases: ' : 'Casos acumulados: ')+city_object.value);
 
 
 
@@ -4795,7 +4796,7 @@
               .attr('font-family', 'Helvetica')
               .attr('font-size', '16px')
               .style('text-anchor', 'middle')
-              .text('Análise Visual do Risco de Contaminação*')
+              .text(translate ? 'Visual analytics of the dissemination risk' :'Análise Visual do Risco de Contaminação')
 
             return [chart, firstDayAnalysis, lastDayAnalysis];
         }
@@ -5181,7 +5182,7 @@
               .attr('text-anchor', 'middle')
               .style('font-size', '11px')
               .style('font-family', 'Helvetica')
-              .text('Dep. de Matemática e Computação - DMC');
+              .text(translate ? 'Dep. of Mathematics and Computer Science' : 'Dep. de Matemática e Computação - DMC');
 
             g.append('text')
               .attr('x', 80)
@@ -5189,7 +5190,7 @@
               .attr('text-anchor', 'middle')
               .style('font-size', '11px')
               .style('font-family', 'Helvetica')
-              .text('Campus de Presidente Prudente');
+              .text(translate ? 'Campus of Presidente Prudente': 'Campus de Presidente Prudente');
 
 
           } else {
@@ -5224,7 +5225,7 @@
               .attr('text-anchor', 'start')
               .style('font-size', '13px')
               .style('font-family', 'Helvetica')
-              .text('Dep. de Matemática e Computação - DMC');
+              .text(translate ? 'Dep. of Mathematics and Computer Science' : 'Dep. de Matemática e Computação - DMC');
 
             g.append('text')
               .attr('x', 0)
@@ -5232,7 +5233,7 @@
               .attr('text-anchor', 'start')
               .style('font-size', '13px')
               .style('font-family', 'Helvetica')
-              .text('Campus de Presidente Prudente');
+              .text(translate ? 'Campus of Presidente Prudente' : 'Campus de Presidente Prudente');
 
           }
 
