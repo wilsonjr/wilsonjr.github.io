@@ -4008,7 +4008,8 @@
                     .style('text-anchor', 'start')
                     .attr('color', 'grey')
                     .attr('font-weight', 'bold')
-                    .text((translate ? 'Cases in the period: ': 'Casos no período: ')+(knn_cases[0].evolution >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
+                    .text((translate ? 'Cases in the period: ': 'Casos no período: ')+(city_object.slope_y2 - city_object.slope_y1));
+                      // (knn_cases[0].evolution >= window_analysis ? (city_object.slope_y2-city_object.slope_y1) : city_object.value));
 
                   slopeArea.append('text')
                     .attr('x', 0)
