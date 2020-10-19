@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Desenvolvimento Web com JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Wilson Marcílio-Jr academic portifolio">
+    <link rel="canonical" href="https://wilsonjr.github.io/https://wilsonjr.github.io//">
+
+    <!-- Bootstrap -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- jQuery UI (used to do a nice animation of the Julia avatar -->
+    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+<div id="wrap">
+    <div class="navbar" >
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="no-decoration" href="/"  id="home_link" >
+                        <div style="display: inline-block">
+                            <img src="/assets/avatar.svg" id="avatar" width="30px" height="30px"
+                                 style="margin-top:-8px;">
+                            Julia Schwarz
+                        </div>
+
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <h3> Desenvolvimento Web com JavaScript </h3>
+
+                <div class="clearfix bottom-spacing">Ciência da Computação</div>
+                <div class="clearfix bottom-spacing-small">Universidade Estadual Paulista (UNESP) - Campus de Presidente Prudente</div>
+                
+
+                
+            </div>
+        </div>
+        <div class="row">
+    <div class="col-md-6">
+        <h3>Introdução ao HTML</h3>
+        <div class="clearfix bottom-spacing-small">Aula de 19 de Outubro de 2020</div>
+        <div class="clearfix bottom-spacing">
+                    
+            <a href="https://drive.google.com/file/d/1VI8Tnqg63wW3jjMyI1M0DeRyf7HGVTdY/view?usp=sharing">
+                <span class="glyphicon glyphicon-file"></span>
+                Material</a>
+            <span class="h-divider"></span>
+
+            <a href="https://drive.google.com/file/d/1dzUEudDqwAk2Gn7BqZ8hvOcGOIud1Nur/view?usp=sharing">
+                <span class="glyphicon glyphicon-file"></span>
+                Exercícios</a>
+            <span class="h-divider"></span>
+            
+            <a href="https://youtu.be/axWvbTodO0g" target="_blank">
+                <span class="glyphicon glyphicon-film"></span>
+                Vídeo</a>
+            <span class="h-divider"></span>
+            
+        </div>
+
+        <!-- <p>
+        This dissertation presents a new user interface architecture that treats user input as an uncertain process, approximates the probability distribution over possible interfaces using Monte Carlo sampling, and enables interface developers to easily build probabilistic user interfaces without needing to think probabilistically. 
+        </p>
+        <p>
+        This architecture is embodied in the JULIA toolkit: a JavaScript User interface Library for tracking Interface Alternatives. To demonstrate the versatility and power of this architecture, the dissertation presents a collection of applications and interaction techniques built using the JULIA toolkit. This architecture provides the foundation for a new era of nondeterministic user interfaces that leverage probabilistic models to better infer user intent.
+        </p>
+        <h3>Understanding the Architecture</h3>
+        <p> I've been told that Figure 1 provides the best overview of the approach in the toolkit. Next, I'd suggest watching <a href="https://youtu.be/axWvbTodO0g">my talk</a>. Finally, my <a href="https://julenka.github.io//publications/2015/05/05/probabilistic-feedback/">probabilistic feedback paper</a> provides
+        a concise architecture overview that I'd recommend reading. 
+        </p>
+        <p>If you have questions about the architecture, please don't hesitate to contact me.</p> -->
+    </div>
+    <!-- <div class="col-md-6">
+            <img class="img-responsive center-block" 
+                src="https://julenka.github.io//assets/dissertation/monte-carlo-architecture.png">
+    </div>   -->
+    
+</div>  
+
+
+
+
+        <!-- Generate some more breathing room near the bottom -->
+        <div class="row">
+            <div class="col-xs-12 top-spacing bottom-spacing">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="push"></div>
+
+</div>
+<div id="footer">
+    <div class="container">
+        <!-- TODO: Acknowledge http://ryanfait.com/sticky-footer/ for the sticky footer -->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="text-muted">
+                        <span class="hidden-xs">&copy; 
+                            <script type="text/javascript">
+                                document.write(new Date().getFullYear());
+                            </script>
+                            Wilson Marcílio-Jr</span>
+                        <a href="/">Home</a>
+                        <!-- <a href=" /archives ">Archives</a> -->
+                        <a href=" /acknowledgements ">Acknowledgements</a>
+                    </p>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    $(window).load(function(){
+        var $avatar = $("#avatar");
+        var start_top = parseInt($avatar.css("margin-top"));
+        var bounce_height1 = 30;
+        var bounce_height2 = 5;
+        var duration1 = 100;
+        var duration2 = 60;
+        $("#home_link").mouseenter(function(){
+            console.log("animate", start_top);
+            $avatar
+                    .animate({ "margin-top": start_top-bounce_height1}, duration1, "easeOutQuad")
+                    .animate({ "margin-top": start_top}, duration1, "easeInQuad")
+                    .animate({ "margin-top": start_top-bounce_height2}, duration2, "easeOutQuad")
+                    .animate({ "margin-top": start_top}, duration2, "easeInQuad");
+        });
+    });
+</script>
+</body>
+</html>
