@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Introdução à Tecnologia Java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Wilson Marcílio-Jr academic portifolio">
+    <link rel="canonical" href="https://wilsonjr.github.io/https://wilsonjr.github.io//">
+
+    <!-- Bootstrap -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- jQuery UI (used to do a nice animation of the Julia avatar -->
+    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div id="wrap">
+    <div class="navbar" >
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="no-decoration" href="/"  id="home_link" >
+                        <div style="display: inline-block">
+                            Wilson Marcílio-Jr
+                        </div>
+
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <h3> Introdução à Tecnologia Java - Primeiro semestre de 2021</h3>
+
+                <div class="clearfix bottom-spacing">Ciência da Computação - Universidade Estadual Paulista (UNESP) - Campus de Presidente Prudente</div>
+
+                
+            </div>
+        </div>
+        <div class="row">
+    <div class="col-md-6">
+
+        <h3>Aulas</h3>
+
+             <div class="clearfix bottom-spacing-small">Quarta-feira: 19h10 - 20h50</div>
+             <div class="clearfix bottom-spacing-small">Sexta-feira: 14h - 15h40 / Monitoria: 15h - 15h40 (<em>Link</em> para <em>meet</em> será enviado para e-mail institucional)</div>
+
+        <h3>Informações relevantes</h3>
+
+            <div class="clearfix bottom-spacing">
+                <a href="/teaching/web-development/2021/PlanoEnsino-Java.pdf" target="_blank">
+                    <span class="glyphicon glyphicon-file"></span>
+                    Plano de Ensino</a>
+                <span class="h-divider"></span>
+
+                <a href="/teaching/web-development/2021/Calendario-JavaOPT.pdf" target="_blank">
+                    <span class="glyphicon glyphicon-file"></span>
+                    Cronograma
+                </a>
+
+            </div>
+
+        <h3>Introdução à Tecnologia Java</h3>
+        <div class="clearfix bottom-spacing-small">Aula de 7 de Abril de 2021 - Prazo para exercícios: 9 de Abril de 2021</div>
+        <div class="clearfix bottom-spacing">
+                    
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-file"></span>
+                Material</a>
+            <span class="h-divider"></span>
+
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-file"></span>
+                Exercícios</a>
+            <span class="h-divider"></span>
+            
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-film"></span>
+                Vídeo</a>
+            <span class="h-divider"></span>
+            
+        </div>
+
+        <h3>POO</h3>
+        <div class="clearfix bottom-spacing-small">Aula de 9 de Abril de 2021 - Prazo para exercícios: 16 de Abril de 2020</div>
+        <div class="clearfix bottom-spacing">
+                    
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-file"></span>
+                Material</a>
+            <span class="h-divider"></span>
+
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-file"></span>
+                Exercícios</a>
+            <span class="h-divider"></span>
+            
+            <a href="#" target="_blank">
+                <span class="glyphicon glyphicon-film"></span>
+                Vídeo</a>
+            <span class="h-divider"></span>
+
+            <a href="https://daniloeler.github.io/teaching/POO2020/index.html" target="_blank">
+                <span class="glyphicon glyphicon-film"></span>
+                Material auxiliar</a>
+            <span class="h-divider"></span>
+            
+        </div>
+
+    </div>
+</div>  
+
+
+
+
+        <!-- Generate some more breathing room near the bottom -->
+        <div class="row">
+            <div class="col-xs-12 top-spacing bottom-spacing">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="push"></div>
+
+</div>
+<div id="footer">
+    <div class="container">
+        <!-- TODO: Acknowledge http://ryanfait.com/sticky-footer/ for the sticky footer -->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p class="text-muted">
+                        <span class="hidden-xs">&copy; 
+                            <script type="text/javascript">
+                                document.write(new Date().getFullYear());
+                            </script>
+                            Wilson Marcílio-Jr</span>
+                        <a href="/">Home</a>
+                        <!-- <a href=" /archives ">Archives</a> -->
+                        <a href=" /acknowledgements ">Acknowledgements</a>
+                    </p>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+
+
+<script>
+    $(window).load(function(){
+        var $avatar = $("#avatar");
+        var start_top = parseInt($avatar.css("margin-top"));
+        var bounce_height1 = 30;
+        var bounce_height2 = 5;
+        var duration1 = 100;
+        var duration2 = 60;
+        $("#home_link").mouseenter(function(){
+            console.log("animate", start_top);
+            $avatar
+                    .animate({ "margin-top": start_top-bounce_height1}, duration1, "easeOutQuad")
+                    .animate({ "margin-top": start_top}, duration1, "easeInQuad")
+                    .animate({ "margin-top": start_top-bounce_height2}, duration2, "easeOutQuad")
+                    .animate({ "margin-top": start_top}, duration2, "easeInQuad");
+        });
+    });
+</script>
+</body>
+</html>
